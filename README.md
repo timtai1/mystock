@@ -1,4 +1,4 @@
-# mystock - Taiwan Stock Target Price & K-Line Dashboard
+# mystock — 台股法人目標價 + 日 K 線儀表板
 
 <div align="center">
 
@@ -7,73 +7,73 @@
 ![License](https://img.shields.io/badge/License-MIT-yellow)
 ![Platform](https://img.shields.io/badge/Platform-macOS%20%7C%20Linux%20%7C%20Windows-lightgrey)
 
-**A local-only web dashboard that tracks broker target prices and daily K-line charts for a curated list of Taiwan stocks (TWSE + TPEX).**
+**本機執行的台股儀表板,整合法人目標價與日 K 線,支援上市(TWSE)與上櫃(TPEX)股票。**
 
 </div>
 
 ---
 
-## Purpose
+## 專案目的
 
-This project consolidates two independent Taiwan-market data pipelines into a single, privately-hosted web dashboard:
+將兩條獨立的台股資料管線整合進單一本機儀表板:
 
-1. **Broker target prices** pulled from CMoney's mobile API (daily snapshots of analyst ratings, target prices, and rationale summaries across the last 90 days).
-2. **Daily OHLCV K-line data** pulled from TWSE's `STOCK_DAY` OpenAPI (for listed stocks) and FinMind's `TaiwanStockPrice` dataset (for OTC / 上櫃 stocks).
+1. **法人目標價**:從 CMoney App API 每日拉取券商目標價、投資評等與敘述摘要(最近 90 天)。
+2. **日 K 線 OHLCV**:上市走 TWSE `STOCK_DAY` OpenAPI;上櫃走 FinMind `TaiwanStockPrice` 資料集。
 
-The web portal is read-only, binds to `127.0.0.1` only, and does not require an internet connection to browse data once cached.
-
----
-
-## Security Notice
-
-**IMPORTANT: this repository is structured so that no credentials need to be committed.**
-
-The CMoney Bearer JWT is read from the `CMONEY_AUTH_TOKEN` environment variable at runtime. The token is sensitive (it grants access to your CMoney account's data feed). Do **not**:
-
-- Paste the token into any file inside the repo.
-- Echo the token into a shell history file.
-- Share the token with others.
-
-If you accidentally leak a token, regenerate it by re-capturing a fresh request from the CMoney mobile app.
-
-The Flask server (`serve.py`) rejects any connection whose `remote_addr` is not `127.0.0.1` or `::1`, so the dashboard cannot be reached from other machines on your network.
+Web Portal 只讀不寫,綁定 `127.0.0.1`,資料快取到本地之後即使斷網也能瀏覽。
 
 ---
 
-## Features
+## 安全說明
 
-- Daily scheduled ingestion of broker target prices into per-day JSON folders.
-- Incremental daily K-line append (TWSE) plus full-history bootstrap (FinMind for TPEX).
-- Web dashboard with searchable / sortable stock table showing:
-  - 市 / 櫃 tag (TWSE listed vs TPEX over-the-counter)
-  - Latest close price (overridden by K-line data if available)
-  - Latest target price + broker + rating
-  - 90-day median target and potential return
-  - Free-text broker summaries in an expandable side panel
-- K-line chart modal powered by KLineChart with Bollinger Bands and volume, Taiwan-standard red-up / green-down colouring, and drawing tools (segments, Fibonacci, rectangles, notes, etc.).
-- Per-stock "重抓 K 線" button that re-runs the bootstrap for a single ticker.
-- Prev / Next arrow navigation in the K-line modal for rapid browsing.
-- Flask service pinned to `127.0.0.1:8765`; no remote access, no authentication state on disk.
-- 90-day log retention with automatic pruning of old daily folders.
+**重要:本 repo 刻意不提交任何憑證。**
+
+CMoney 的 Bearer JWT 在執行期從環境變數 `CMONEY_AUTH_TOKEN` 讀取。此 Token 很敏感(等同你 CMoney 帳號的資料讀取權),請**不要**:
+
+- 把 Token 寫進 repo 裡任何一個檔案。
+- 把 Token 貼進 shell 歷史紀錄。
+- 把 Token 分享給其他人。
+
+若不慎外流,請重新從 CMoney App 封包擷取新 Token 覆蓋掉舊的。
+
+Flask 伺服器 (`serve.py`) 會拒絕 `remote_addr` 非 `127.0.0.1` / `::1` 的連線,因此儀表板無法從同網段其他機器讀取。
 
 ---
 
-## Requirements
+## 功能
 
-- Python 3.9 or higher
-- pip (Python package manager)
-- Internet access to reach:
-  - `dtno.cmoney.tw` (target prices)
-  - `www.twse.com.tw` (TWSE listed stock K-line)
-  - `api.finmindtrade.com` (TPEX K-line)
-  - `isin.twse.com.tw` (weekly refresh of `tw_stock_list.csv`)
-- A valid CMoney Bearer JWT (see `Configuration` below)
+- 每日排程拉取法人目標價,依日期歸檔於 `法人目標價_log_file/{yyyyMMdd}/`。
+- 上市增量 K 線(TWSE)+ 上櫃整段歷史(FinMind)的一鍵 bootstrap。
+- Web 儀表板提供可搜尋、可排序的個股列表,包含:
+  - **市 / 櫃** 標籤(上市 vs 上櫃)
+  - 最新收盤價(若有 K 線資料會以 K 線為準)
+  - 最新目標價 + 券商 + 投資評等
+  - 90 天中位數目標價與潛在報酬
+  - 側邊面板展開各券商的敘述摘要
+- KLineChart 9.x 驅動的 K 線 modal,含 BOLL、VOL,台股紅漲綠跌配色,支援線段 / 水平線 / 垂直線 / 射線 / 價格線 / Fibonacci / 矩形 / 箭頭 / 文字註記等繪圖工具。
+- 每檔獨立的「重抓 K 線」按鈕,可針對單一檔觸發 bootstrap。
+- K 線 modal 支援 **左右箭頭快速切上下檔**(鍵盤 `←` / `→` 或畫面上的箭頭按鈕)。
+- Flask 綁 `127.0.0.1:8765`,無遠端存取、無帳號資料落地。
+- 90 天 log 保留機制:超過天數的日資料夾會自動清理。
 
 ---
 
-## Quick Start
+## 系統需求
 
-### 1. Clone and install
+- Python 3.9 以上
+- pip(Python 套件管理)
+- 對外連線權限,可達:
+  - `dtno.cmoney.tw`(法人目標價)
+  - `www.twse.com.tw`(TWSE 上市 K 線)
+  - `api.finmindtrade.com`(TPEX 上櫃 K 線)
+  - `isin.twse.com.tw`(每週刷新 `tw_stock_list.csv`)
+- 有效的 CMoney Bearer JWT(見下文「設定」)
+
+---
+
+## 快速上手
+
+### 1. Clone 並安裝依賴
 
 ```bash
 git clone https://github.com/timtai1/mystock.git
@@ -83,7 +83,7 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-On Windows (PowerShell):
+Windows(PowerShell):
 
 ```powershell
 git clone https://github.com/timtai1/mystock.git
@@ -93,197 +93,198 @@ python -m venv venv
 pip install -r requirements.txt
 ```
 
-### 2. Configure the CMoney token
+### 2. 設定 CMoney Token
 
-Capture a fresh Bearer JWT from the CMoney mobile app's network traffic and export it:
-
-```bash
-export CMONEY_AUTH_TOKEN="eyJhbGciOi..."      # paste your actual token
-```
-
-Append the same line to `~/.zshrc` (or `~/.bashrc`) to make it persist across shells.
-
-### 3. Run the daily jobs
+從 CMoney App 的網路封包擷取最新的 Bearer JWT,並設為環境變數:
 
 ```bash
-python fetch_target_price.py stocklist.txt          # broker target prices
-python fetch_daily_kline.py                         # incremental daily K-line
+export CMONEY_AUTH_TOKEN="eyJhbGciOi..."      # 貼上你真實的 token
 ```
 
-### 4. Bootstrap historical K-line (first time, or after a data reset)
+把同一行寫進 `~/.zshrc`(或 `~/.bashrc`),下次開新 shell 就自動帶入。
+
+### 3. 每日執行
+
+```bash
+python fetch_target_price.py stocklist.txt          # 法人目標價
+python fetch_daily_kline.py                         # 日 K 線增量
+```
+
+### 4. 首次回補(或清掉資料重抓)
 
 ```bash
 python fetch_daily_kline.py --bootstrap --months 13
 ```
 
-### 5. Launch the web portal
+### 5. 啟動 Web Portal
 
 ```bash
 python serve.py
 ```
 
-A browser tab will open at `http://127.0.0.1:8765/`.
+瀏覽器會自動開啟 `http://127.0.0.1:8765/`。
 
 ---
 
-## Configuration
+## 設定
 
-All configuration lives either in environment variables (for secrets) or at the top of each Python script (for non-secrets).
+所有設定分兩層:敏感資訊走環境變數,其餘走各腳本頂端的常數。
 
-### Environment variables
+### 環境變數
 
-| Name                 | Required | Purpose                                                                                  |
-| -------------------- | -------- | ---------------------------------------------------------------------------------------- |
-| `CMONEY_AUTH_TOKEN`  | Yes      | Bearer JWT for CMoney's `dtno/MobileCsv` endpoint. Refresh when it expires.              |
-| `FINMIND_TOKEN`      | No       | FinMind API token for TPEX historical data. Anonymous quota (300 req/hr) is enough for a ~40-stock bootstrap; register for 600 req/hr if you track more. |
+| 名稱                 | 必填 | 用途                                                                                           |
+| -------------------- | ---- | ---------------------------------------------------------------------------------------------- |
+| `CMONEY_AUTH_TOKEN`  | 是   | CMoney `dtno/MobileCsv` 端點的 Bearer JWT。會過期,到時需換。                                  |
+| `FINMIND_TOKEN`      | 否   | FinMind API token,用於上櫃歷史。匿名 300 req/hr 已足夠 ~40 檔 bootstrap;註冊後升到 600 req/hr。 |
 
-### In-script knobs (open each file to tweak)
+### 程式內可調常數
 
-| File                     | Constant            | Meaning                                                         |
-| ------------------------ | ------------------- | --------------------------------------------------------------- |
-| `fetch_target_price.py`  | `RETENTION_DAYS`    | Keep last N daily folders under `法人目標價_log_file/`.         |
-| `fetch_target_price.py`  | `VERIFY_SSL`        | Set to `False` on corporate networks with a MITM root CA.       |
-| `fetch_target_price.py`  | `INTERVAL_MS`       | Throttle between CMoney requests (default 1000ms).              |
-| `fetch_daily_kline.py`   | `BOOTSTRAP_MONTHS`  | Default history depth on first bootstrap.                       |
-| `fetch_daily_kline.py`   | `TWSE_INTERVAL_SEC` | Per-month TWSE request gap (default 1s).                        |
-| `serve.py`               | `PORT`              | Local Flask port (default 8765).                                |
-| `serve.py`               | `RECENT_DAYS`       | Time window for median / max target computations (default 90).  |
+| 檔案                     | 常數名              | 意義                                                         |
+| ------------------------ | ------------------- | ------------------------------------------------------------ |
+| `fetch_target_price.py`  | `RETENTION_DAYS`    | `法人目標價_log_file/` 保留的日資料夾天數。                  |
+| `fetch_target_price.py`  | `VERIFY_SSL`        | 公司網路有 MITM 根憑證時設 `False`。                         |
+| `fetch_target_price.py`  | `INTERVAL_MS`       | 對 CMoney 每次請求的間隔(毫秒,預設 1000)。                |
+| `fetch_daily_kline.py`   | `BOOTSTRAP_MONTHS`  | Bootstrap 預設抓取歷史的月數。                               |
+| `fetch_daily_kline.py`   | `TWSE_INTERVAL_SEC` | TWSE 每月請求之間的間隔(秒,預設 1)。                      |
+| `serve.py`               | `PORT`              | Flask 綁定的本機埠(預設 8765)。                            |
+| `serve.py`               | `RECENT_DAYS`       | 中位數 / 最新目標價的時間窗(預設 90 天)。                  |
 
-### Stock universe
+### 股票清單
 
-`stocklist.txt` is the whitelist of ticker codes to track (one code per line). Edit it to add or remove stocks; the fetchers pick up the new list on the next run.
+`stocklist.txt` 是要追蹤的股票代號白名單(一行一個)。改了之後下次執行 fetch 腳本會自動套用。
 
-`tw_stock_list.csv` is an auto-refreshed master list from TWSE (上市 + 上櫃) used to resolve code → name and market. It is regenerated weekly by `fetch_target_price.py`.
+`tw_stock_list.csv` 是從 TWSE 自動抓回來的上市 + 上櫃對照表(code → name → market),由 `fetch_target_price.py` 每週自動刷新。
 
 ---
 
-## Daily Workflow
+## 每日流程
 
-Once the initial bootstrap is done, a typical day looks like this:
+完成首次 bootstrap 之後,平日通常是這樣:
 
 ```bash
 source venv/bin/activate
-python fetch_target_price.py stocklist.txt          # ~1-2 minutes for a typical list
-python fetch_daily_kline.py                         # ~30 seconds incremental
-python serve.py                                     # browse the results
+python fetch_target_price.py stocklist.txt          # 1 ~ 2 分鐘
+python fetch_daily_kline.py                         # 約 30 秒
+python serve.py                                     # 開瀏覽器看結果
 ```
 
-You can also wire these up via `cron` or macOS `launchd` for hands-off daily ingestion.
+也可以用 `cron` 或 macOS `launchd` 排程,完全自動化。
 
 ---
 
-## Project Structure
+## 專案結構
 
 ```
 mystock/
-├── fetch_target_price.py        # CMoney target-price pipeline (daily)
-├── fetch_daily_kline.py         # TWSE / FinMind K-line pipeline (daily + bootstrap)
-├── serve.py                     # Local Flask web service (127.0.0.1:8765)
-├── index.html                   # Single-file vanilla-JS dashboard UI
-├── stocklist.txt                # Your tracked ticker codes (one per line)
-├── tw_stock_list.csv            # Master TWSE/TPEX code -> name -> market map
-├── requirements.txt             # Python dependencies
-├── readme.txt                   # Quick-reference commands (Chinese)
-├── PROJECT.md                   # Internal design notes / incident history
-└── LICENSE                      # MIT
+├── fetch_target_price.py        # CMoney 法人目標價管線(每日)
+├── fetch_daily_kline.py         # TWSE / FinMind 日 K 線管線(每日 + bootstrap)
+├── serve.py                     # 本機 Flask Web Service(127.0.0.1:8765)
+├── index.html                   # 單檔 vanilla-JS 儀表板 UI
+├── stocklist.txt                # 你的追蹤清單(一行一檔股票代號)
+├── tw_stock_list.csv            # TWSE/TPEX 完整對照表
+├── requirements.txt             # Python 依賴
+├── readme.txt                   # 中文快速指令備忘
+├── PROJECT.md                   # 內部設計筆記與事故紀錄
+├── CLAUDE.md                    # 給 AI 助理的永久規範
+└── LICENSE                      # MIT 授權
 ```
 
-Data directories are created on first run and are excluded from git:
+資料目錄在首次執行時自動建立,已加入 `.gitignore`:
 
 ```
-法人目標價_log_file/             # Daily broker target-price snapshots
+法人目標價_log_file/             # 每日法人目標價快照
   └── 20260418/
       └── 001_2330_台積電.json
-日K線_log_file/                   # Per-stock OHLCV history
+日K線_log_file/                   # 每檔股票的 OHLCV 歷史
   └── 2330.json
 ```
 
 ---
 
-## Data Sources
+## 資料來源
 
-| Source                                       | Used for                      | Notes                                                                                 |
-| -------------------------------------------- | ----------------------------- | ------------------------------------------------------------------------------------- |
-| CMoney `dtno/MobileCsv` (mobile API)         | Broker target prices          | Requires an expiring Bearer JWT captured from the iOS app.                            |
-| TWSE OpenAPI `STOCK_DAY`                     | TWSE listed K-line (history + daily) | One request per stock per month for bootstrap, one per stock per day for incremental. |
-| TPEX OpenAPI `tpex_mainboard_daily_close_quotes` | TPEX daily snapshot (today)   | The `d=` parameter is silently ignored by the server, so this endpoint cannot be used for historical data. |
-| FinMind `TaiwanStockPrice` dataset           | TPEX historical K-line         | One API call per stock returns the full range. Anonymous limit: 300 req/hr.           |
-| TWSE ISIN CSVs (`strMode=2` / `strMode=4`)   | Code -> name -> market mapping | Refreshed weekly into `tw_stock_list.csv`.                                            |
+| 來源                                              | 用途                         | 備註                                                                                             |
+| ------------------------------------------------- | ---------------------------- | ------------------------------------------------------------------------------------------------ |
+| CMoney `dtno/MobileCsv`(App API)                | 法人目標價                   | 需要會過期的 Bearer JWT,從 iOS App 封包擷取。                                                  |
+| TWSE OpenAPI `STOCK_DAY`                          | 上市日 K 線(歷史 + 當日)   | Bootstrap 每檔每月一次請求;增量每檔每日一次請求。                                              |
+| TPEX OpenAPI `tpex_mainboard_daily_close_quotes`  | 上櫃當日快照                 | `d=` 參數會被官方忽略,因此**不可**用此端點抓歷史資料。                                          |
+| FinMind `TaiwanStockPrice`                        | 上櫃歷史 K 線                | 一次 API 呼叫就能取得某檔整段歷史。匿名 300 req/hr;註冊後 600 req/hr。                         |
+| TWSE ISIN CSV(`strMode=2` / `strMode=4`)         | code → name → market 對照表 | 每週刷新到 `tw_stock_list.csv`。                                                                |
 
 ---
 
-## Troubleshooting
+## 疑難排解
 
 ### `[錯誤] 環境變數 CMONEY_AUTH_TOKEN 未設定`
 
-You forgot to `export CMONEY_AUTH_TOKEN="..."` in the current shell. Either re-export it or add it to your shell rc file.
+當前 shell 沒有 `export CMONEY_AUTH_TOKEN="..."`。再執行一次,或把這行加進 `~/.zshrc` / `~/.bashrc`。
 
-### All target-price fetches return HTTP 401 / 403
+### 所有法人目標價請求都回 HTTP 401 / 403
 
-Your Bearer token has expired. Re-capture a fresh one from the CMoney mobile app and re-export.
+Bearer Token 過期了。重新從 CMoney App 擷取新的並重新 export。
 
-### SSL verification errors on a corporate network
+### 公司網路 SSL 驗證錯誤
 
-Your company's proxy replaces the TLS certificate with an internal root CA. Set `VERIFY_SSL = False` at the top of `fetch_target_price.py` (and the equivalent flag in `fetch_daily_kline.py`), or point the constant at your company's CA bundle PEM file.
+公司 Proxy 會用內部 Root CA 換掉 TLS 憑證。打開 `fetch_target_price.py` 頂端把 `VERIFY_SSL = False`(或指向公司 CA bundle 的 `.pem` 路徑)。`fetch_daily_kline.py` 也有一樣的旗標。
 
-### TPEX stocks show no K-line history
+### 上櫃股票的 K 線沒有歷史
 
-If the bootstrap JSON looks malformed (all rows identical, or NaN), the file predates the FinMind switch. Delete it and re-run:
+若 bootstrap JSON 看起來壞掉(全部日期欄位相同、或 NaN),代表是舊版 TPEX OpenAPI 的產物。刪掉後重抓:
 
 ```bash
 python fetch_daily_kline.py --bootstrap --stock 8299 --months 13
 ```
 
-### Port 8765 is already in use
+### Port 8765 被占用
 
-Edit `PORT` at the top of `serve.py`, or kill the other process that's bound to 8765.
-
----
-
-## Development Notes
-
-See `PROJECT.md` for a detailed design journal, including:
-
-- Why TPEX historical data was migrated off the TPEX OpenAPI (the `d=` parameter bug).
-- The target-price schema and field indices.
-- Past incidents and how they were resolved.
-
-The UI is deliberately a single-file `index.html` with vanilla JS so that no build step is required. All server state is file-based JSON.
+改 `serve.py` 頂端的 `PORT` 常數,或關掉占用該埠的程式。
 
 ---
 
-## Contributing
+## 開發筆記
 
-This is primarily a personal tool, but pull requests are welcome. Please:
+詳細的設計決策、資料欄位規格、歷史事故整理都在 `PROJECT.md`,包含:
 
-1. Fork the repository.
-2. Create a feature branch (`git checkout -b feature/your-feature`).
-3. Commit your changes (`git commit -m 'Add your feature'`).
-4. Push to the branch (`git push origin feature/your-feature`).
-5. Open a Pull Request.
+- 為什麼上櫃歷史資料從 TPEX OpenAPI 搬到 FinMind(`d=` 參數 bug)。
+- 法人目標價的 schema 與各欄位索引。
+- 過往事故(上櫃資料大地震、K 線壞資料、TPEX 改版)與處理方式。
 
----
-
-## License
-
-This project is licensed under the MIT License - see the `LICENSE` file for details.
+UI 刻意保持成一個 `index.html` + vanilla JS,沒有 build step。後端狀態全走 JSON 檔案,不用資料庫。
 
 ---
 
-## Disclaimer
+## 貢獻
 
-This tool is provided as-is for personal research and educational use. It consumes third-party APIs (CMoney, TWSE, TPEX, FinMind) whose terms of service may change at any time. You are responsible for:
+本專案原則上為個人工具,但歡迎 PR:
 
-- Complying with each data provider's terms of use.
-- Treating market data as informational only, not as financial advice.
-- Safeguarding any credentials (including Bearer tokens) that you use to access those APIs.
+1. Fork 本 repo。
+2. 建立 feature branch(`git checkout -b feature/your-feature`)。
+3. Commit 你的改動(`git commit -m 'Add your feature'`)。
+4. Push(`git push origin feature/your-feature`)。
+5. 開 Pull Request。
 
-The author accepts no responsibility for investment decisions made on the basis of data surfaced by this tool, or for API access being revoked due to terms-of-service violations.
+---
+
+## 授權
+
+本專案採用 MIT License,詳見 `LICENSE`。
+
+---
+
+## 免責聲明
+
+本工具僅供個人研究與學習使用。它透過第三方 API(CMoney、TWSE、TPEX、FinMind)取得資料,這些 API 的服務條款隨時可能異動。使用者自行負責:
+
+- 遵守各資料來源的使用條款。
+- 把市場資料當參考而非投資建議。
+- 妥善保管憑證(尤其 Bearer Token)。
+
+作者對基於本工具所呈現資料所做的投資決策,或因違反第三方服務條款導致 API 權限被撤銷,不負任何責任。
 
 ---
 
 <div align="center">
 
-[Report Bug](https://github.com/timtai1/mystock/issues) · [Request Feature](https://github.com/timtai1/mystock/issues)
+[回報 Bug](https://github.com/timtai1/mystock/issues) · [功能許願](https://github.com/timtai1/mystock/issues)
 
 </div>
