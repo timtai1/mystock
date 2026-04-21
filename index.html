@@ -536,40 +536,306 @@ body.resizing * { cursor: ew-resize !important; }
   background: var(--canvas);
 }
 .kline-error { color: var(--pos); }
+
+/* ===== 左側選單 ===== */
+.layout {
+  display: flex;
+  min-height: 100vh;
+  align-items: stretch;
+}
+.sidebar {
+  width: 220px;
+  flex-shrink: 0;
+  background: var(--subtle);
+  border-right: 1px solid var(--border);
+  padding: 16px 0;
+  overflow-y: auto;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+.main-area {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+.sidebar-group {
+  margin-bottom: 8px;
+}
+.sidebar-group-head {
+  display: flex;
+  align-items: center;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  user-select: none;
+}
+.sidebar-group-head .sidebar-caret {
+  display: inline-flex;
+  width: 14px;
+  height: 14px;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  color: var(--muted);
+  margin-right: 4px;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+.sidebar-group.collapsed .sidebar-caret {
+  transform: rotate(-90deg);
+}
+.sidebar-group.collapsed .sidebar-list {
+  display: none;
+}
+.sidebar-group-head .sidebar-add {
+  margin-left: auto;
+  width: 20px; height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 18px;
+  line-height: 1;
+  padding: 0;
+}
+.sidebar-group-head .sidebar-add:hover {
+  background: var(--hover);
+  color: var(--fg);
+}
+.sidebar-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  padding: 6px 14px 6px 34px;
+  font-size: 13px;
+  color: var(--fg);
+  cursor: pointer;
+  user-select: none;
+  border-left: 3px solid transparent;
+  position: relative;
+}
+.sidebar-item:hover {
+  background: var(--hover);
+}
+.sidebar-item.active {
+  background: var(--active);
+  border-left-color: var(--link);
+  font-weight: 600;
+}
+.sidebar-item-count {
+  margin-left: auto;
+  font-size: 11px;
+  color: var(--muted);
+}
+.sidebar-item-top {
+  padding: 8px 14px;
+  padding-left: 18px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* ===== 右鍵選單 ===== */
+.context-menu {
+  position: fixed;
+  background: var(--canvas);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  box-shadow: var(--shadow);
+  padding: 4px 0;
+  min-width: 120px;
+  z-index: 100;
+  display: none;
+  font-size: 13px;
+}
+.context-menu.open { display: block; }
+.context-menu-item {
+  padding: 6px 14px;
+  cursor: pointer;
+  user-select: none;
+}
+.context-menu-item:hover { background: var(--hover); }
+.context-menu-item.danger { color: var(--pos); }
+.context-menu-item.danger:hover { background: #fff1f2; }
+
+/* ===== 一般對話框（改名 / 刪除確認） ===== */
+.dialog-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(27, 31, 35, 0.4);
+  z-index: 200;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+.dialog-backdrop.open { display: flex; }
+.dialog {
+  background: var(--canvas);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  min-width: 360px;
+  max-width: 480px;
+  padding: 20px;
+}
+.dialog-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 12px 0;
+}
+.dialog-body {
+  font-size: 14px;
+  color: var(--fg);
+  margin-bottom: 16px;
+}
+.dialog-body input[type="text"] {
+  width: 100%;
+  font-family: inherit;
+  font-size: 14px;
+  padding: 6px 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  outline: none;
+  background: var(--canvas);
+  color: var(--fg);
+  margin-top: 8px;
+}
+.dialog-body input[type="text"]:focus { border-color: var(--link); }
+.dialog-body .error-msg {
+  color: var(--pos);
+  font-size: 12px;
+  margin-top: 6px;
+  min-height: 16px;
+}
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+.dialog-btn {
+  font-size: 13px;
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--canvas);
+  cursor: pointer;
+  color: var(--fg);
+}
+.dialog-btn:hover { background: var(--hover); }
+.dialog-btn.primary {
+  background: var(--link);
+  border-color: var(--link);
+  color: #fff;
+}
+.dialog-btn.primary:hover { background: #0860c9; }
+.dialog-btn.danger {
+  background: var(--pos);
+  border-color: var(--pos);
+  color: #fff;
+}
+.dialog-btn.danger:hover { background: #a9232f; }
 </style>
 <script src="https://cdn.jsdelivr.net/npm/klinecharts@9.8.10/dist/umd/klinecharts.min.js"></script>
 </head>
 <body>
-<header class="site">
-  <div class="container">
-    <h1 class="site-title">法人目標價分析</h1>
-    <div class="meta" id="meta">載入中…</div>
-  </div>
-</header>
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-group" id="group-watchlists">
+      <div class="sidebar-group-head">
+        <span class="sidebar-caret" id="watchlists-caret">▼</span>
+        <span>自選股</span>
+        <button class="sidebar-add" id="watchlist-add-btn" title="新增自選股">+</button>
+      </div>
+      <ul class="sidebar-list" id="watchlist-list">
+        <!-- 動態產生 -->
+      </ul>
+    </div>
+    <div class="sidebar-group">
+      <ul class="sidebar-list">
+        <li class="sidebar-item sidebar-item-top" id="view-all" data-view="all">
+          法人目標價（全部）
+        </li>
+      </ul>
+    </div>
+  </aside>
 
-<main class="container main">
-  <div class="toolbar">
-    <input type="text" class="search" id="search" placeholder="搜尋股票代號或名稱…" autocomplete="off">
-    <label>每頁筆數：
-      <select id="page-size">
-        <option value="25">25</option>
-        <option value="50">50</option>
-        <option value="100">100</option>
-        <option value="All" selected>全部</option>
-      </select>
-    </label>
-    <div class="spacer" style="flex:1;"></div>
-    <label>資料日期：
-      <select id="date-select"></select>
-    </label>
-  </div>
+  <div class="main-area">
+    <header class="site">
+      <div class="container">
+        <h1 class="site-title" id="site-title">法人目標價分析</h1>
+        <div class="meta" id="meta">載入中…</div>
+      </div>
+    </header>
 
-  <div class="table-wrap" id="table-wrap">
-    <div class="empty-state">載入中…</div>
-  </div>
+    <main class="container main">
+      <div class="toolbar">
+        <input type="text" class="search" id="search" placeholder="搜尋股票代號或名稱…" autocomplete="off">
+        <label>每頁筆數：
+          <select id="page-size">
+            <option value="25">25</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+            <option value="All" selected>全部</option>
+          </select>
+        </label>
+        <div class="spacer" style="flex:1;"></div>
+      </div>
 
-  <div class="pagination" id="pagination"></div>
-</main>
+      <div class="table-wrap" id="table-wrap">
+        <div class="empty-state">載入中…</div>
+      </div>
+
+      <div class="pagination" id="pagination"></div>
+    </main>
+  </div>
+</div>
+
+<!-- 右鍵選單（自選股） -->
+<div class="context-menu" id="watchlist-ctx" role="menu">
+  <div class="context-menu-item" data-action="rename">改名</div>
+  <div class="context-menu-item danger" data-action="delete">刪除</div>
+</div>
+
+<!-- 改名 / 新增 對話框 -->
+<div class="dialog-backdrop" id="name-dialog" aria-hidden="true">
+  <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="name-dialog-title">
+    <div class="dialog-title" id="name-dialog-title">改名</div>
+    <div class="dialog-body">
+      <label for="name-input" id="name-dialog-label">新名稱：</label>
+      <input type="text" id="name-input" maxlength="32" autocomplete="off">
+      <div class="error-msg" id="name-dialog-error"></div>
+    </div>
+    <div class="dialog-actions">
+      <button class="dialog-btn" id="name-dialog-cancel">取消</button>
+      <button class="dialog-btn primary" id="name-dialog-confirm">確定</button>
+    </div>
+  </div>
+</div>
+
+<!-- 刪除確認對話框 -->
+<div class="dialog-backdrop" id="delete-dialog" aria-hidden="true">
+  <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="delete-dialog-title">
+    <div class="dialog-title" id="delete-dialog-title">確認刪除</div>
+    <div class="dialog-body" id="delete-dialog-body">
+      確定要刪除清單「<span id="delete-dialog-name"></span>」嗎？此動作無法復原。
+    </div>
+    <div class="dialog-actions">
+      <button class="dialog-btn" id="delete-dialog-cancel">取消</button>
+      <button class="dialog-btn danger" id="delete-dialog-confirm">刪除</button>
+    </div>
+  </div>
+</div>
 
 <aside class="panel" id="panel" aria-hidden="true">
   <div class="panel-resize-handle" id="resize-handle" title="拖曳調整寬度" aria-hidden="true"></div>
@@ -648,8 +914,34 @@ body.resizing * { cursor: ew-resize !important; }
   let pageSize = 'All';
   let searchQuery = '';
   let currentStockId = null;
-  let availableDates = [];
-  let selectedDate = null;  // null 表示使用後端最新日期
+
+  // 畫面目前顯示的 view：'all' = 法人目標價（全部）、'watchlist' = 某一份自選股
+  let currentView = { type: 'all', name: null };
+  // 從 /api/watchlists 拉回來的所有自選股清單
+  let watchlists = [];
+  // 清單 N 檔資訊（由 /api/stocks 回傳；僅 watchlist 模式有值）
+  let watchlistMeta = null;
+
+  // ===== localStorage 持久化 view =====
+  const VIEW_STORAGE_KEY = 'mystockCurrentView';
+  const SIDEBAR_COLLAPSED_KEY = 'mystockSidebarWatchlistsCollapsed';
+
+  function loadSavedView() {
+    try {
+      const raw = localStorage.getItem(VIEW_STORAGE_KEY);
+      if (!raw) return { type: 'all', name: null };
+      const obj = JSON.parse(raw);
+      if (obj && obj.type === 'watchlist' && typeof obj.name === 'string') {
+        return { type: 'watchlist', name: obj.name };
+      }
+      return { type: 'all', name: null };
+    } catch (_) {
+      return { type: 'all', name: null };
+    }
+  }
+  function saveView() {
+    try { localStorage.setItem(VIEW_STORAGE_KEY, JSON.stringify(currentView)); } catch (_) {}
+  }
 
   // ===== Columns =====
   const columns = [
@@ -695,49 +987,40 @@ body.resizing * { cursor: ew-resize !important; }
   }
 
   // ===== Load =====
-  async function loadDates() {
-    try {
-      const r = await fetch('/api/dates');
-      if (!r.ok) throw new Error('HTTP ' + r.status);
-      const data = await r.json();
-      availableDates = data.dates || [];
-      renderDateSelect();
-    } catch (e) {
-      availableDates = [];
-      renderDateSelect();
-    }
-  }
-
-  function renderDateSelect() {
-    const sel = document.getElementById('date-select');
-    if (!availableDates.length) {
-      sel.innerHTML = '<option value="">—</option>';
-      sel.disabled = true;
-      return;
-    }
-    sel.disabled = false;
-    sel.innerHTML = availableDates.map((d, i) => {
-      const isLatest = i === 0;
-      const val = d;
-      const label = fmtDate(d) + (isLatest ? '（最新）' : '');
-      const sel_attr = (selectedDate === d || (selectedDate == null && isLatest)) ? ' selected' : '';
-      return `<option value="${val}"${sel_attr}>${label}</option>`;
-    }).join('');
-  }
-
   async function load({ preservePanel = false } = {}) {
     try {
-      const url = selectedDate ? `/api/stocks?date=${encodeURIComponent(selectedDate)}` : '/api/stocks';
+      let url = '/api/stocks';
+      if (currentView.type === 'watchlist' && currentView.name) {
+        url += '?watchlist=' + encodeURIComponent(currentView.name);
+      }
       const r = await fetch(url);
       if (!r.ok) throw new Error('HTTP ' + r.status);
       const data = await r.json();
-      // 若 server 回傳的日期與要求不同（例如預設），同步到 selectedDate
-      if (data.date) selectedDate = data.date;
-      renderDateSelect();
-      document.getElementById('meta').textContent = data.date
-        ? `資料日期：${fmtDate(data.date)} · ${data.stocks.length} 檔 · 近 ${data.recent_days} 天統計窗口`
-        : '找不到資料，請先執行 fetch_target_price.py 抓取資料。';
+      const metaEl = document.getElementById('meta');
+      const titleEl = document.getElementById('site-title');
+
       allStocks = data.stocks || [];
+
+      if (currentView.type === 'watchlist') {
+        const name = currentView.name || '';
+        const withData = allStocks.filter(s => s.has_target_price).length;
+        watchlistMeta = {
+          listed: data.watchlist_total != null ? data.watchlist_total : allStocks.length,
+          withData,
+        };
+        titleEl.textContent = `自選股 · ${name}`;
+        const parts = [];
+        if (data.last_updated) parts.push(`最後更新：${data.last_updated}`);
+        parts.push(`清單 ${watchlistMeta.listed} 檔，其中 ${watchlistMeta.withData} 檔有法人目標價資料`);
+        parts.push(`近 ${data.recent_days} 天統計窗口`);
+        metaEl.textContent = parts.join(' · ');
+      } else {
+        watchlistMeta = null;
+        titleEl.textContent = '法人目標價分析';
+        metaEl.textContent = data.last_updated
+          ? `最後更新：${data.last_updated} · ${allStocks.length} 檔 · 近 ${data.recent_days} 天統計窗口`
+          : '找不到資料，請先執行 fetch_target_price.py 抓取資料。';
+      }
 
       if (preservePanel) {
         // 重抓場景：保留面板開啟，只更新資料
@@ -746,7 +1029,7 @@ body.resizing * { cursor: ew-resize !important; }
           openPanel(currentStockId);
         }
       } else if (document.getElementById('panel').classList.contains('open')) {
-        // 切換日期時關閉側邊面板，避免顯示跨日期的資料
+        // 重新載入時關掉側邊面板，避免資料不對齊
         closePanel();
       } else {
         render();
@@ -1296,6 +1579,254 @@ body.resizing * { cursor: ew-resize !important; }
     updateToolbarActive();
   }
 
+  // ===== Watchlist sidebar =====
+  async function loadWatchlists() {
+    try {
+      const r = await fetch('/api/watchlists');
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      const data = await r.json();
+      watchlists = data.watchlists || [];
+    } catch (e) {
+      watchlists = [];
+      showToast('載入自選股清單失敗：' + (e.message || e), 'error');
+    }
+    renderWatchlistList();
+  }
+
+  function renderWatchlistList() {
+    const ul = document.getElementById('watchlist-list');
+    if (!watchlists.length) {
+      ul.innerHTML = '<li class="sidebar-item" style="opacity:0.55;cursor:default;" data-empty="1">（尚無清單）</li>';
+    } else {
+      ul.innerHTML = watchlists.map(w => {
+        const isActive = currentView.type === 'watchlist' && currentView.name === w.name;
+        return `
+          <li class="sidebar-item ${isActive ? 'active' : ''}"
+              data-view="watchlist" data-name="${escapeHtml(w.name)}"
+              title="${escapeHtml(w.name)}（${w.count} 檔）">
+            <span class="sidebar-item-name">${escapeHtml(w.name)}</span>
+            <span class="sidebar-item-count">${w.count}</span>
+          </li>
+        `;
+      }).join('');
+    }
+    updateSidebarActive();
+  }
+
+  function updateSidebarActive() {
+    const all = document.getElementById('view-all');
+    if (all) all.classList.toggle('active', currentView.type === 'all');
+    document.querySelectorAll('#watchlist-list .sidebar-item').forEach(li => {
+      const match = currentView.type === 'watchlist' && li.dataset.name === currentView.name;
+      li.classList.toggle('active', !!match);
+    });
+  }
+
+  // 各 view 切過來的預設排序；切到該 view 會強制重設
+  function applyViewDefaultSort(view) {
+    if (view.type === 'all') {
+      sortKey = 'latest_target_date';  // 預估日期：新的在最上面
+      sortDir = 'desc';
+    }
+    // watchlist view 維持上一次使用者選擇的排序，不強制改
+  }
+
+  async function switchView(view) {
+    currentView = view;
+    saveView();
+    searchQuery = '';
+    currentPage = 1;
+    const searchEl = document.getElementById('search');
+    if (searchEl) searchEl.value = '';
+    applyViewDefaultSort(view);
+    updateSidebarActive();
+    await load();
+  }
+
+  function setWatchlistsCollapsed(collapsed) {
+    const grp = document.getElementById('group-watchlists');
+    const caret = document.getElementById('watchlists-caret');
+    grp.classList.toggle('collapsed', !!collapsed);
+    if (caret) caret.textContent = collapsed ? '▶' : '▼';
+    try { localStorage.setItem(SIDEBAR_COLLAPSED_KEY, collapsed ? '1' : '0'); } catch (_) {}
+  }
+
+  // ===== Context menu =====
+  const watchlistCtx = document.getElementById('watchlist-ctx');
+  let ctxTargetName = null;
+
+  function openContextMenu(x, y, name) {
+    ctxTargetName = name;
+    watchlistCtx.style.left = x + 'px';
+    watchlistCtx.style.top = y + 'px';
+    watchlistCtx.classList.add('open');
+    // 避免跑出視窗邊界
+    requestAnimationFrame(() => {
+      const rect = watchlistCtx.getBoundingClientRect();
+      const vw = window.innerWidth, vh = window.innerHeight;
+      if (rect.right > vw) watchlistCtx.style.left = Math.max(4, vw - rect.width - 4) + 'px';
+      if (rect.bottom > vh) watchlistCtx.style.top = Math.max(4, vh - rect.height - 4) + 'px';
+    });
+  }
+  function closeContextMenu() {
+    ctxTargetName = null;
+    watchlistCtx.classList.remove('open');
+  }
+
+  // ===== Name dialog（新增 / 改名 共用） =====
+  const nameDialog = document.getElementById('name-dialog');
+  const nameInput = document.getElementById('name-input');
+  const nameErrorEl = document.getElementById('name-dialog-error');
+  const nameTitleEl = document.getElementById('name-dialog-title');
+  const nameLabelEl = document.getElementById('name-dialog-label');
+  let nameDialogMode = null;           // 'create' | 'rename'
+  let nameDialogTargetName = null;     // rename 時的舊名；create 時為 null
+
+  const NAME_FORBIDDEN_CHARS = /[\/\\:\*\?"<>\|]/;
+  function validateWatchlistNameClient(name) {
+    if (!name) return '名稱不能為空';
+    if (name.length > 32) return '名稱不能超過 32 字';
+    if (NAME_FORBIDDEN_CHARS.test(name)) return '名稱不能包含 / \\ : * ? " < > |';
+    if (name.startsWith('.') || name.startsWith('-')) return '名稱不能以 . 或 - 開頭';
+    return '';
+  }
+
+  function openNameDialog(mode, targetName = null) {
+    nameDialogMode = mode;
+    nameDialogTargetName = targetName;
+    nameErrorEl.textContent = '';
+    if (mode === 'create') {
+      nameTitleEl.textContent = '新增自選股';
+      nameLabelEl.textContent = '新清單名稱：';
+      nameInput.value = '';
+      nameInput.placeholder = '留空會自動用「自選股N」';
+    } else {
+      nameTitleEl.textContent = '改名';
+      nameLabelEl.textContent = '新名稱：';
+      nameInput.value = targetName || '';
+      nameInput.placeholder = '';
+    }
+    nameDialog.classList.add('open');
+    nameDialog.setAttribute('aria-hidden', 'false');
+    setTimeout(() => { nameInput.focus(); nameInput.select(); }, 0);
+  }
+  function closeNameDialog() {
+    nameDialog.classList.remove('open');
+    nameDialog.setAttribute('aria-hidden', 'true');
+    nameDialogMode = null;
+    nameDialogTargetName = null;
+  }
+
+  async function submitNameDialog() {
+    const raw = nameInput.value.trim();
+
+    if (nameDialogMode === 'create') {
+      // 空字串 → 讓後端自動編號
+      if (raw) {
+        const err = validateWatchlistNameClient(raw);
+        if (err) { nameErrorEl.textContent = err; return; }
+      }
+      try {
+        const r = await fetch('/api/watchlists', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(raw ? { name: raw } : {}),
+        });
+        const data = await r.json().catch(() => ({}));
+        if (r.status === 409) { nameErrorEl.textContent = '已有同名清單'; return; }
+        if (!r.ok || !data.ok) {
+          nameErrorEl.textContent = data.error || `建立失敗（HTTP ${r.status}）`;
+          return;
+        }
+        closeNameDialog();
+        await loadWatchlists();
+        showToast(`已建立清單「${data.name}」`, 'success');
+        // 自動切到新建立的清單
+        await switchView({ type: 'watchlist', name: data.name });
+      } catch (e) {
+        nameErrorEl.textContent = '建立失敗：' + (e.message || e);
+      }
+      return;
+    }
+
+    if (nameDialogMode === 'rename') {
+      const err = validateWatchlistNameClient(raw);
+      if (err) { nameErrorEl.textContent = err; return; }
+      const oldName = nameDialogTargetName;
+      if (!oldName) { nameErrorEl.textContent = '找不到目標清單'; return; }
+      if (raw === oldName) { closeNameDialog(); return; }
+      try {
+        const r = await fetch('/api/watchlists/' + encodeURIComponent(oldName), {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ new_name: raw }),
+        });
+        const data = await r.json().catch(() => ({}));
+        if (r.status === 404) { nameErrorEl.textContent = '原清單不存在（可能已被刪除）'; return; }
+        if (r.status === 409) { nameErrorEl.textContent = '已有同名清單'; return; }
+        if (!r.ok || !data.ok) {
+          nameErrorEl.textContent = data.error || `改名失敗（HTTP ${r.status}）`;
+          return;
+        }
+        closeNameDialog();
+        // 若改的是目前正在看的清單，view 也跟著換
+        if (currentView.type === 'watchlist' && currentView.name === oldName) {
+          currentView = { type: 'watchlist', name: data.name };
+          saveView();
+        }
+        await loadWatchlists();
+        showToast(`已改名為「${data.name}」`, 'success');
+        if (currentView.type === 'watchlist' && currentView.name === data.name) {
+          await load();
+        }
+      } catch (e) {
+        nameErrorEl.textContent = '改名失敗：' + (e.message || e);
+      }
+    }
+  }
+
+  // ===== Delete dialog =====
+  const deleteDialog = document.getElementById('delete-dialog');
+  const deleteNameEl = document.getElementById('delete-dialog-name');
+  let deleteTargetName = null;
+
+  function openDeleteDialog(name) {
+    deleteTargetName = name;
+    deleteNameEl.textContent = name;
+    deleteDialog.classList.add('open');
+    deleteDialog.setAttribute('aria-hidden', 'false');
+    document.getElementById('delete-dialog-confirm').focus();
+  }
+  function closeDeleteDialog() {
+    deleteDialog.classList.remove('open');
+    deleteDialog.setAttribute('aria-hidden', 'true');
+    deleteTargetName = null;
+  }
+
+  async function confirmDeleteDialog() {
+    const name = deleteTargetName;
+    if (!name) return;
+    try {
+      const r = await fetch('/api/watchlists/' + encodeURIComponent(name), { method: 'DELETE' });
+      const data = await r.json().catch(() => ({}));
+      if (r.status === 404) { showToast('清單不存在（可能已被刪除）', 'error'); }
+      else if (!r.ok || !data.ok) {
+        showToast(data.error || `刪除失敗（HTTP ${r.status}）`, 'error');
+      } else {
+        showToast(`已刪除清單「${name}」`, 'success');
+      }
+    } catch (e) {
+      showToast('刪除失敗：' + (e.message || e), 'error');
+    } finally {
+      closeDeleteDialog();
+      // 若正在看的正是剛刪掉的，退回「法人目標價（全部）」
+      if (currentView.type === 'watchlist' && currentView.name === name) {
+        await switchView({ type: 'all', name: null });
+      }
+      await loadWatchlists();
+    }
+  }
+
   // ===== Events =====
   document.getElementById('panel-close').addEventListener('click', closePanel);
   document.getElementById('panel-refetch').addEventListener('click', refetchCurrentStock);
@@ -1309,13 +1840,6 @@ body.resizing * { cursor: ew-resize !important; }
     pageSize = v === 'All' ? 'All' : parseInt(v, 10);
     currentPage = 1;
     render();
-  });
-  document.getElementById('date-select').addEventListener('change', (e) => {
-    selectedDate = e.target.value || null;
-    currentPage = 1;
-    searchQuery = '';
-    document.getElementById('search').value = '';
-    load();
   });
   document.addEventListener('keydown', (e) => {
     const backdrop = document.getElementById('kline-backdrop');
@@ -1435,9 +1959,98 @@ body.resizing * { cursor: ew-resize !important; }
     });
   })();
 
+  // ===== Sidebar events =====
+  // 自選股群組：展開 / 收合
+  (() => {
+    let startCollapsed = false;
+    try { startCollapsed = localStorage.getItem(SIDEBAR_COLLAPSED_KEY) === '1'; } catch (_) {}
+    setWatchlistsCollapsed(startCollapsed);
+  })();
+  document.getElementById('watchlists-caret').addEventListener('click', (e) => {
+    e.stopPropagation();
+    const grp = document.getElementById('group-watchlists');
+    setWatchlistsCollapsed(!grp.classList.contains('collapsed'));
+  });
+
+  // + 按鈕：新增清單
+  document.getElementById('watchlist-add-btn').addEventListener('click', (e) => {
+    e.stopPropagation();
+    openNameDialog('create');
+  });
+
+  // 自選股清單項目：左鍵切換 view、右鍵彈選單
+  document.getElementById('watchlist-list').addEventListener('click', (e) => {
+    const li = e.target.closest('.sidebar-item[data-view="watchlist"]');
+    if (!li) return;
+    switchView({ type: 'watchlist', name: li.dataset.name });
+  });
+  document.getElementById('watchlist-list').addEventListener('contextmenu', (e) => {
+    const li = e.target.closest('.sidebar-item[data-view="watchlist"]');
+    if (!li) return;
+    e.preventDefault();
+    openContextMenu(e.clientX, e.clientY, li.dataset.name);
+  });
+
+  // 法人目標價（全部）
+  document.getElementById('view-all').addEventListener('click', () => {
+    switchView({ type: 'all', name: null });
+  });
+
+  // 右鍵選單動作
+  watchlistCtx.addEventListener('click', (e) => {
+    const item = e.target.closest('.context-menu-item');
+    if (!item) return;
+    const action = item.dataset.action;
+    const name = ctxTargetName;
+    closeContextMenu();
+    if (!name) return;
+    if (action === 'rename') openNameDialog('rename', name);
+    else if (action === 'delete') openDeleteDialog(name);
+  });
+  document.addEventListener('click', (e) => {
+    if (!watchlistCtx.contains(e.target)) closeContextMenu();
+  });
+  document.addEventListener('scroll', closeContextMenu, true);
+  window.addEventListener('resize', closeContextMenu);
+
+  // 改名 / 新增 對話框
+  document.getElementById('name-dialog-cancel').addEventListener('click', closeNameDialog);
+  document.getElementById('name-dialog-confirm').addEventListener('click', submitNameDialog);
+  nameInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') { e.preventDefault(); submitNameDialog(); }
+    else if (e.key === 'Escape') { e.preventDefault(); closeNameDialog(); }
+  });
+  nameDialog.addEventListener('click', (e) => {
+    if (e.target === nameDialog) closeNameDialog();
+  });
+
+  // 刪除確認對話框
+  document.getElementById('delete-dialog-cancel').addEventListener('click', closeDeleteDialog);
+  document.getElementById('delete-dialog-confirm').addEventListener('click', confirmDeleteDialog);
+  deleteDialog.addEventListener('click', (e) => {
+    if (e.target === deleteDialog) closeDeleteDialog();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    if (deleteDialog.classList.contains('open')) closeDeleteDialog();
+    else if (nameDialog.classList.contains('open')) closeNameDialog();
+    else if (watchlistCtx.classList.contains('open')) closeContextMenu();
+  });
+
   // ===== Start =====
   (async () => {
-    await loadDates();
+    currentView = loadSavedView();
+    // 先載入 watchlists；若儲存的 view 指向一個已不存在的清單，退回 all
+    await loadWatchlists();
+    if (currentView.type === 'watchlist') {
+      const found = watchlists.some(w => w.name === currentView.name);
+      if (!found) {
+        currentView = { type: 'all', name: null };
+        saveView();
+      }
+    }
+    applyViewDefaultSort(currentView);
+    updateSidebarActive();
     await load();
   })();
 })();

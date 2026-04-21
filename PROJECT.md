@@ -21,19 +21,18 @@
 ## 2. 檔案結構
 
 ```
-cmoney/
+mystock/
 ├── fetch_target_price.py      # ① 法人目標價每日擷取（CMoney API）
-├── fetch_daily_kline.py       # ② 日 K 線擷取（TWSE + TPEX OpenAPI）
+├── fetch_daily_kline.py       # ② 日 K 線擷取（TWSE + FinMind）
 ├── serve.py                   # ③ 本地 Flask Web Service
 ├── index.html                 # ④ 前端單檔（原生 JS）
-├── stocklist.txt              # 追蹤清單（股票代號，一行一檔，約 133 檔）
+├── stocklist_{群組名}.txt      # 自選股清單（每份一個群組；例：stocklist_自選股1.txt）
 ├── tw_stock_list.csv          # 台股上市/上櫃對照（code,name,market）
 ├── readme.txt                 # 操作指引
 ├── PROJECT.md                 # ← 本檔
 ├── venv/                      # Python 虛擬環境
 ├── 法人目標價_log_file/
-│   └── {yyyyMMdd}/
-│       └── {seq}_{code}_{name}.json   # 每日每檔 CMoney 回應
+│   └── {code}_{name}.json             # 每檔 CMoney 最新回應（每次執行覆蓋）
 └── 日K線_log_file/
     └── {code}.json                    # 每檔累積的 OHLCV
 ```
@@ -46,14 +45,20 @@ cmoney/
 
 - 來源：CMoney App API `https://dtno.cmoney.tw/app/v2/dtno/MobileCsv`，`DTNO=8459549`。
 - 認證：`CMONEY_AUTH_TOKEN` 環境變數（Bearer JWT）。**會過期**，過期時需要重新抓 CMoney App 封包後 `export CMONEY_AUTH_TOKEN="new_jwt"`。
+- Token 過期保護：若任何一檔回傳 `HTTP 401 Unauthorized`，腳本會**立即中止**（`sys.exit(3)`）而不繼續打 API，也不會寫出空殼錯誤檔覆蓋掉原本好的資料，避免整批資料被連帶污染。
 - 執行：
-  - 全量：`python fetch_target_price.py stocklist.txt`（每日排程）
-  - 單檔重抓：`python fetch_target_price.py --stock 2330`（單檔模式會自動跳過舊資料夾清理）
-- 輸出：`法人目標價_log_file/{yyyyMMdd}/{seq}_{code}_{name}.json`，
+  - 全量：`python fetch_target_price.py`（每日排程）→ 自動掃描所有 `stocklist_*.txt`，跨清單做**集合聯集去重**後一次抓完。
+  - 單檔重抓：`python fetch_target_price.py --stock 2330`
+- 輸出：`法人目標價_log_file/{code}_{name}.json`（扁平結構，不依日期分層）。
   其中 `titles` + `data` 是 CMoney 原生格式（日期、券商名稱、評等、目標價、收盤價、敘述摘要…等欄位）。
-- 保留策略：`RETENTION_DAYS=90`，超過天數的日資料夾會被自動清掉。
+  CMoney 每次回傳即為近 90 天完整快照，每次執行覆蓋舊檔即可，不需要保留歷史日資料夾。
+- 股票改名：寫新檔前會先刪除同 `{code}_*.json` 的舊檔，避免留孤兒。
 - 備援對照：`tw_stock_list.csv` 補 `code → name`，找不到就退回 `unknown`。
 - 公司 MITM：`VERIFY_SSL=False`（Trend Micro 內網自簽憑證會壞 SSL 驗證）。
+- 自選股清單檔格式：
+  - 檔名 `stocklist_{群組名}.txt`，群組名禁用 `/ \ : * ? " < > |`、開頭不能是 `.` 或 `-`、最大 32 字。
+  - 檔內一行一個股票代號，`#` 開頭視為註解，空行忽略。
+  - 新增 / 改名 / 刪除由 Web 儀表板左側選單透過 `/api/watchlists*` 完成，不建議手動改檔名。
 
 ### 管線 B：日 K 線（`fetch_daily_kline.py`，近期新加）
 
@@ -118,11 +123,15 @@ python fetch_daily_kline.py --stock 2330            # 測單檔
 
 - Flask，綁 `127.0.0.1:8765`，啟動 1 秒後自動開瀏覽器。
 - `before_request` 檢查 `remote_addr ∈ {127.0.0.1, ::1}`，其餘 403。
-- 三個主要 API：
+- 主要 API：
   - `GET /` → 回 `index.html`。
-  - `GET /api/stocks?date=YYYYMMDD` → 回該日資料夾的聚合結果；沒帶 date 就取最新。
-  - `GET /api/dates` → 列出所有可選日期。
+  - `GET /api/stocks` → 回所有股票的聚合結果，附 `last_updated` 欄位（取自目錄內最新檔的 mtime，格式 `YYYY-MM-DD HH:MM`）。
+  - `GET /api/stocks?watchlist=<群組名>` → 只回該自選股清單內的股票；清單有但還沒抓到法人目標價的股票會補空殼列（`has_target_price: false`，其他欄位 null，僅 `stock_id` / `stock_name` / `market` / `close` 可能有值）。回應會多帶 `watchlist_total`（清單原始檔數）。
   - `GET /api/kline?code=XXXX` → 單檔 K 線資料（`code.isalnum()` 防 path traversal）。
+  - `GET /api/watchlists` → 列出所有 `stocklist_*.txt` 清單，回 `[{name, count}]`。
+  - `POST /api/watchlists` → 新增清單；body `{"name":"..."}`，省略 `name` 會自動編號「自選股N」（找最小未使用整數）。
+  - `PATCH /api/watchlists/<name>` → 改名；body `{"new_name":"..."}`，同時改 `stocklist_{舊名}.txt` → `stocklist_{新名}.txt`。
+  - `DELETE /api/watchlists/<name>` → 刪除清單；真的會把對應檔案 `unlink()` 掉，UI 有確認對話框擋誤刪。
 - `POST /api/refetch?code=XXXX&scope=...` → 重抓單檔。`scope` 可以是：
   - `target_price`（預設）：只跑 `fetch_target_price.py --stock XXXX`
   - `kline`：先用 `_compute_existing_kline_months(code)` 掃現有 kline JSON 最早一筆的日期，算出從那天到今天的月數，再跑 `fetch_daily_kline.py --bootstrap --months M --stock XXXX`。意思是「本來有多久的資料、就重抓那麼久」。
@@ -140,10 +149,22 @@ python fetch_daily_kline.py --stock 2330            # 測單檔
 
 ### 版面
 
+- 最外層 `.layout`：左邊 `<aside class="sidebar">`（220 px、sticky），右邊 `.main-area` flex:1。
 - `.container`：`max-width: none; padding: 16px 50px;`（滿寬 + 50px 左右留白）。
 - 表格：主畫面列出所有股票、各欄可排序、支援關鍵字搜尋。
 - 側邊欄 `<aside class="panel">`：點主畫面一列後，側拉出詳細資料。
 - 色彩規範：**紅漲綠跌**（台股慣例，`--pos: #d1242f`、`--neg: #1a7f37`）。
+
+### 左側選單（自選股 + 法人目標價）
+
+- `自選股` 群組：可展開 / 收合，右邊有 `+` 按鈕可新增清單。每一項右鍵會彈出 `改名 / 刪除` 選單。
+- `法人目標價（全部）`：固定項，對應 view `{type: 'all'}`。
+- state：`currentView = {type: 'all' | 'watchlist', name: string | null}`，透過 `localStorage` key `mystockCurrentView` 持久化。
+- 自選股項目也會在 `localStorage` 記錄 `mystockSidebarWatchlistsCollapsed`，重開畫面保留展開狀態。
+- 改名 / 新增共用同一個 modal（`#name-dialog`），透過 `nameDialogMode = 'create' | 'rename'` 區分；建立時名稱留空代表「讓後端自動編號」。
+- 刪除有額外的確認 modal（`#delete-dialog`），避免誤刪。
+- 切換 view 時會：清空搜尋、重設 page、同步 sidebar active class、依 view 組 `/api/stocks[?watchlist=XXX]` URL，並改寫 header title 與 meta（watchlist 模式顯示「清單 N 檔，其中 M 檔有法人目標價資料」的提示）。
+- 預設排序：切到「法人目標價（全部）」時 `applyViewDefaultSort()` 會強制重設為 `latest_target_date desc`（預估日期新 → 舊）；切到 watchlist view 不強制重設，維持使用者當下的排序狀態。開啟頁面時也會依還原的 `currentView` 套用同一份邏輯。
 
 ### 表格欄位（主畫面）
 
@@ -250,8 +271,8 @@ export FINMIND_TOKEN="你的_token"
 
 ```bash
 source venv/bin/activate
-python fetch_target_price.py stocklist.txt
-python fetch_daily_kline.py
+python fetch_target_price.py       # 自動掃所有 stocklist_*.txt，集合聯集去重後抓法人目標價
+python fetch_daily_kline.py        # 上市 TWSE 增量 + 上櫃 FinMind 增量
 ```
 
 ### 首次 bootstrap K 線
@@ -309,9 +330,8 @@ python3 serve.py
 - Flask 只綁 `127.0.0.1`。
 - `before_request` 擋非本機來源。
 - `/api/kline` 的 `code` 參數限 `code.isalnum() and len(code) <= 10`。
-- `/api/stocks` 的 `date` 參數限 8 位數字 + `strptime` 驗證，擋掉 path traversal。
 - `CMONEY_AUTH_TOKEN` 是敏感資訊，請**只放在環境變數**（例如 `~/.zshrc`），絕對不要寫進程式碼或提交到 git。
 
 ---
 
-*最後更新：2026-04-18（TPEX 歷史資料改走 FinMind；壞資料已備份至 `_backup_corrupted_tpex_20260418/`，待使用者在 Mac 上重新 bootstrap）*
+*最後更新：2026-04-19（新增多組自選股：左側選單 + `/api/watchlists` CRUD；`fetch_target_price.py` 改成掃 `stocklist_*.txt` 集合聯集去重；「法人目標價（全部）」預設排序改為 `latest_target_date desc`）*

@@ -21,7 +21,7 @@ from datetime import datetime, timedelta
 from pathlib import Path
 
 try:
-    from flask import Flask, jsonify, send_from_directory, abort
+    from flask import Flask, jsonify, send_from_directory, abort, request
 except ImportError:
     print("[錯誤] 沒有安裝 flask，請執行：pip install flask")
     sys.exit(1)
@@ -35,6 +35,12 @@ MARKET_LIST_FILE = "tw_stock_list.csv"
 PORT = 8765
 RECENT_DAYS = 90  # 用於計算最高目標價與中位數的時間窗
 REFETCH_TIMEOUT_SEC = 180  # 重抓單檔的子程序逾時
+
+# 自選股清單檔名規則：stocklist_{群組名}.txt；群組名禁用字元與長度限制
+STOCKLIST_PREFIX = "stocklist_"
+STOCKLIST_SUFFIX = ".txt"
+WATCHLIST_NAME_MAX_LEN = 32
+WATCHLIST_FORBIDDEN_CHARS = set('/\\:*?"<>|')  # 跨平台安全的檔名禁用集
 # ============================================================
 
 # 同時間只允許一個重抓在跑（避免重複觸發 / race）
@@ -44,29 +50,64 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 app = Flask(__name__, static_folder=None)
 
 
-def find_latest_date_folder() -> Path | None:
-    """找到 LOG_ROOT_DIR 底下最新的 yyyyMMdd 資料夾"""
-    root = SCRIPT_DIR / LOG_ROOT_DIR
-    if not root.exists():
-        return None
-    candidates = []
-    for d in root.iterdir():
-        if d.is_dir() and len(d.name) == 8 and d.name.isdigit():
-            try:
-                datetime.strptime(d.name, "%Y%m%d")
-                candidates.append(d)
-            except ValueError:
-                pass
-    if not candidates:
-        return None
-    return max(candidates, key=lambda d: d.name)
-
-
 def _find_idx(titles, keyword, default):
     for i, t in enumerate(titles):
         if t and keyword in t:
             return i
     return default
+
+
+def load_stock_name_map() -> dict:
+    """讀 tw_stock_list.csv → {code: name}，給自選股中沒有 log 檔的股票補名稱用。"""
+    m = {}
+    path = SCRIPT_DIR / MARKET_LIST_FILE
+    if not path.exists():
+        return m
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                code = (row.get("code") or "").strip()
+                name = (row.get("name") or "").strip()
+                if code and name:
+                    m[code] = name
+    except Exception:
+        pass
+    return m
+
+
+def _empty_stock_row(stock_id: str, stock_name: str, market: str | None, latest_close: dict | None) -> dict:
+    """在 watchlist 模式下，清單有但還沒抓到法人目標價的股票，回一個空殼資料列。"""
+    close = None
+    close_date = None
+    close_source = None
+    if latest_close and latest_close.get("close") is not None:
+        close = latest_close["close"]
+        close_date = latest_close.get("date")
+        close_source = "kline"
+    return {
+        "stock_id": stock_id,
+        "stock_name": stock_name,
+        "market": market,
+        "has_target_price": False,
+        "close": close,
+        "close_date": close_date,
+        "close_source": close_source,
+        "max_target": None,
+        "max_target_date": None,
+        "max_target_broker": None,
+        "max_target_rating": None,
+        "max_target_summary": None,
+        "latest_target": None,
+        "latest_target_date": None,
+        "latest_target_broker": None,
+        "latest_target_rating": None,
+        "latest_target_summary": None,
+        "median_target": None,
+        "potential_return": None,
+        "entries": [],
+        "recent_count": 0,
+    }
 
 
 def load_market_map() -> dict:
@@ -153,10 +194,10 @@ def parse_stock_file(file_path: Path):
     if not rows:
         return None
 
-    # 從檔名取股票代號與名稱作為備援
-    stem_parts = file_path.stem.split("_", 2)
-    stock_id = stem_parts[1] if len(stem_parts) >= 2 else ""
-    stock_name_from_file = stem_parts[2] if len(stem_parts) >= 3 else ""
+    # 從檔名取股票代號與名稱作為備援：檔名格式為 `{code}_{name}.json`
+    stem_parts = file_path.stem.split("_", 1)
+    stock_id = stem_parts[0] if len(stem_parts) >= 1 else ""
+    stock_name_from_file = stem_parts[1] if len(stem_parts) >= 2 else ""
 
     idx_date = _find_idx(titles, "日期", 0)
     idx_broker = _find_idx(titles, "券商名稱", 2)
@@ -269,10 +310,74 @@ def parse_stock_file(file_path: Path):
     }
 
 
+# ----- 自選股（watchlist）輔助 -----
+def validate_watchlist_name(name: str) -> bool:
+    """檢查群組名是否合法（排除空字串、超長、含危險字元、以 . 開頭）。"""
+    if not isinstance(name, str):
+        return False
+    name = name.strip()
+    if not name or len(name) > WATCHLIST_NAME_MAX_LEN:
+        return False
+    if name.startswith(".") or name.startswith("-"):
+        return False
+    if any(c in WATCHLIST_FORBIDDEN_CHARS for c in name):
+        return False
+    # 禁止 ASCII 控制字元
+    if any(ord(c) < 32 for c in name):
+        return False
+    return True
+
+
+def watchlist_path(name: str) -> Path:
+    """群組名 → stocklist_{name}.txt 的完整路徑。"""
+    return SCRIPT_DIR / f"{STOCKLIST_PREFIX}{name}{STOCKLIST_SUFFIX}"
+
+
+def list_watchlists() -> list:
+    """掃描 stocklist_*.txt，回 [{name, count}]（依群組名字串排序）。"""
+    result = []
+    for p in sorted(SCRIPT_DIR.glob(f"{STOCKLIST_PREFIX}*{STOCKLIST_SUFFIX}")):
+        name = p.name[len(STOCKLIST_PREFIX): -len(STOCKLIST_SUFFIX)]
+        if not name:
+            continue
+        try:
+            with p.open("r", encoding="utf-8") as f:
+                count = sum(
+                    1 for line in f
+                    if line.strip() and not line.strip().startswith("#")
+                )
+        except OSError:
+            count = 0
+        result.append({"name": name, "count": count})
+    return result
+
+
+def read_watchlist_stocks(name: str) -> list:
+    """讀單一群組檔內的股票代號（忽略註解/空行）。找不到回空陣列。"""
+    p = watchlist_path(name)
+    if not p.exists():
+        return []
+    ids = []
+    with p.open("r", encoding="utf-8") as f:
+        for line in f:
+            s = line.strip()
+            if s and not s.startswith("#"):
+                ids.append(s)
+    return ids
+
+
+def next_default_watchlist_name() -> str:
+    """找出「自選股N」最小未使用的 N。"""
+    existing = {w["name"] for w in list_watchlists()}
+    n = 1
+    while f"自選股{n}" in existing:
+        n += 1
+    return f"自選股{n}"
+
+
 # ----- Security: 只讓 127.0.0.1 能用 -----
 @app.before_request
 def _limit_to_localhost():
-    from flask import request
     if request.remote_addr not in ("127.0.0.1", "::1"):
         abort(403)
 
@@ -285,39 +390,49 @@ def index():
 
 @app.route("/api/stocks")
 def api_stocks():
-    from flask import request
-    date_param = (request.args.get("date") or "").strip()
-
-    target_folder: Path | None = None
-    if date_param:
-        # 驗證格式，避免 path traversal
-        if len(date_param) != 8 or not date_param.isdigit():
+    # 可選：?watchlist=群組名 → 只回該清單內的股票
+    watchlist_name = (request.args.get("watchlist") or "").strip()
+    watchlist_ids: set | None = None
+    watchlist_total = None
+    if watchlist_name:
+        if not validate_watchlist_name(watchlist_name):
             abort(400)
-        try:
-            datetime.strptime(date_param, "%Y%m%d")
-        except ValueError:
-            abort(400)
-        candidate = SCRIPT_DIR / LOG_ROOT_DIR / date_param
-        if candidate.exists() and candidate.is_dir():
-            target_folder = candidate
+        if not watchlist_path(watchlist_name).exists():
+            abort(404)
+        watchlist_ids = set(read_watchlist_stocks(watchlist_name))
+        watchlist_total = len(watchlist_ids)
 
-    if target_folder is None:
-        target_folder = find_latest_date_folder()
-
-    if target_folder is None:
-        return jsonify({"date": None, "recent_days": RECENT_DAYS, "stocks": []})
+    root = SCRIPT_DIR / LOG_ROOT_DIR
+    if not root.exists():
+        return jsonify({
+            "last_updated": None,
+            "recent_days": RECENT_DAYS,
+            "stocks": [],
+            "watchlist": watchlist_name or None,
+            "watchlist_total": watchlist_total,
+        })
 
     latest_closes = load_latest_closes()
     market_map = load_market_map()
 
+    # 預先準備 stock_id → stock_name 對照（tw_stock_list.csv）
+    name_map = load_stock_name_map()
+
     stocks = []
-    for f in sorted(target_folder.glob("*.json")):
+    seen_ids: set = set()
+    latest_mtime = 0.0
+    for f in sorted(root.glob("*.json")):
         parsed = parse_stock_file(f)
         if not parsed:
             continue
 
+        # 有 watchlist 過濾時，非清單內的股票跳過
+        if watchlist_ids is not None and parsed["stock_id"] not in watchlist_ids:
+            continue
+
         # 標註上市 / 上櫃
         parsed["market"] = market_map.get(parsed["stock_id"]) or None
+        parsed["has_target_price"] = True
 
         # 以日 K 線資料覆寫主畫面的「最新收盤價」，並重算潛在報酬
         lc = latest_closes.get(parsed["stock_id"])
@@ -334,26 +449,116 @@ def api_stocks():
             parsed["close_source"] = "broker_report"
 
         stocks.append(parsed)
+        seen_ids.add(parsed["stock_id"])
+
+        try:
+            mt = f.stat().st_mtime
+            if mt > latest_mtime:
+                latest_mtime = mt
+        except OSError:
+            pass
+
+    # Watchlist 模式：清單中但還沒抓過資料的股票 → 補上空白 placeholder
+    if watchlist_ids is not None:
+        for sid in sorted(watchlist_ids):
+            if sid in seen_ids:
+                continue
+            stocks.append(_empty_stock_row(
+                sid,
+                name_map.get(sid, ""),
+                market_map.get(sid),
+                latest_closes.get(sid),
+            ))
+
+    last_updated = (
+        datetime.fromtimestamp(latest_mtime).strftime("%Y-%m-%d %H:%M")
+        if latest_mtime else None
+    )
 
     return jsonify({
-        "date": target_folder.name,
+        "last_updated": last_updated,
         "recent_days": RECENT_DAYS,
         "stocks": stocks,
+        "watchlist": watchlist_name or None,
+        "watchlist_total": watchlist_total,
     })
 
 
-@app.route("/api/dates")
-def api_dates():
-    """列出有哪些日期資料夾（之後擴充用）"""
-    root = SCRIPT_DIR / LOG_ROOT_DIR
-    if not root.exists():
-        return jsonify({"dates": []})
-    dates = []
-    for d in root.iterdir():
-        if d.is_dir() and len(d.name) == 8 and d.name.isdigit():
-            dates.append(d.name)
-    dates.sort(reverse=True)
-    return jsonify({"dates": dates})
+# ----- 自選股 CRUD -----
+
+@app.route("/api/watchlists", methods=["GET"])
+def api_watchlists_list():
+    """列出所有自選股清單。"""
+    return jsonify({"watchlists": list_watchlists()})
+
+
+@app.route("/api/watchlists", methods=["POST"])
+def api_watchlists_create():
+    """新增清單。body 可帶 {"name": "..."}，沒給就自動找「自選股N」最小未使用編號。"""
+    body = request.get_json(silent=True) or {}
+    name = (body.get("name") or "").strip()
+
+    if name:
+        if not validate_watchlist_name(name):
+            return jsonify({"ok": False, "error": "invalid_name"}), 400
+    else:
+        name = next_default_watchlist_name()
+
+    path = watchlist_path(name)
+    if path.exists():
+        return jsonify({"ok": False, "error": "name_exists"}), 409
+
+    try:
+        path.touch()
+    except OSError as e:
+        return jsonify({"ok": False, "error": f"write_failed: {e}"}), 500
+
+    return jsonify({"ok": True, "name": name, "count": 0})
+
+
+@app.route("/api/watchlists/<name>", methods=["PATCH"])
+def api_watchlists_rename(name: str):
+    """改名。body {"new_name": "..."}。"""
+    if not validate_watchlist_name(name):
+        abort(400)
+    old_path = watchlist_path(name)
+    if not old_path.exists():
+        abort(404)
+
+    body = request.get_json(silent=True) or {}
+    new_name = (body.get("new_name") or "").strip()
+    if not validate_watchlist_name(new_name):
+        return jsonify({"ok": False, "error": "invalid_new_name"}), 400
+    if new_name == name:
+        return jsonify({"ok": True, "name": new_name})
+
+    new_path = watchlist_path(new_name)
+    if new_path.exists():
+        return jsonify({"ok": False, "error": "name_exists"}), 409
+
+    try:
+        old_path.rename(new_path)
+    except OSError as e:
+        return jsonify({"ok": False, "error": f"rename_failed: {e}"}), 500
+
+    return jsonify({"ok": True, "name": new_name})
+
+
+@app.route("/api/watchlists/<name>", methods=["DELETE"])
+def api_watchlists_delete(name: str):
+    """刪除清單（會刪掉對應的 stocklist_{name}.txt 檔）。"""
+    if not validate_watchlist_name(name):
+        abort(400)
+    path = watchlist_path(name)
+    if not path.exists():
+        abort(404)
+
+    try:
+        path.unlink()
+    except OSError as e:
+        return jsonify({"ok": False, "error": f"delete_failed: {e}"}), 500
+
+    return jsonify({"ok": True, "name": name})
 
 
 @app.route("/api/kline")

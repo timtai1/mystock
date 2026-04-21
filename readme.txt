@@ -12,7 +12,7 @@ pip install flask        # 第一次才需要
 export CMONEY_AUTH_TOKEN="你的_bearer_jwt"
 
 每日執行
-python fetch_target_price.py stocklist.txt
+python fetch_target_price.py                       # 自動掃描 stocklist_*.txt（所有自選股清單）
 python fetch_daily_kline.py                        # 每日增量 K 線
 
 首次回補 K 線（或上櫃資料壞掉重抓時用）

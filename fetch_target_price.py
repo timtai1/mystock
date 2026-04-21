@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 """
 法人目標價撈取腳本
-每天排程執行，依據 stocklist.txt 中的股票代號，逐一撈取法人目標價資料。
-Response 會儲存為 JSON 檔案，放在 法人目標價_log_file/{yyyyMMdd}/ 資料夾下。
+每天排程執行，掃描目錄下所有 stocklist_*.txt（自選股清單）中的股票代號，
+以 set 去重後逐一撈取法人目標價資料。
+Response 會儲存為 JSON 檔案，放在 法人目標價_log_file/{stock_id}_{name}.json。
+每次執行會覆蓋舊檔；CMoney 每次回傳即為近 90 天完整快照，無需保留歷史日資料夾。
 """
 
 import argparse
@@ -10,10 +12,9 @@ import csv
 import json
 import os
 import re
-import shutil
 import sys
 import time
-from datetime import datetime, timedelta
+from datetime import datetime
 from pathlib import Path
 
 import requests
@@ -31,8 +32,8 @@ CMONEY_AUTH_TOKEN = os.environ.get("CMONEY_AUTH_TOKEN", "").strip()
 # 每檔股票之間的間隔時間（毫秒）
 INTERVAL_MS = 1000
 
-# 預設股票清單檔案（若執行時沒帶參數才會用這個）
-DEFAULT_STOCK_LIST_FILE = "stocklist.txt"
+# 自選股清單檔案的 glob pattern（一個群組一個檔，檔名為 stocklist_{群組名}.txt）
+STOCKLIST_GLOB = "stocklist_*.txt"
 
 # 輸出的 Log 根目錄
 LOG_ROOT_DIR = "法人目標價_log_file"
@@ -52,10 +53,6 @@ VERIFY_SSL = False
 
 # Response 中「股票名稱」欄位的索引（依 titles 中的順序，從 0 開始）
 STOCK_NAME_INDEX = 19
-
-# 保留幾天內的 log 資料夾，超過這個天數的 {yyyyMMdd} 子資料夾會被刪除。
-# 設為 0 或負數則不做清理。
-RETENTION_DAYS = 90
 
 # 台股上市/上櫃完整清單，用來對照股票代號→名稱（避免 unknown）
 TW_STOCK_LIST_FILE = "tw_stock_list.csv"
@@ -352,46 +349,6 @@ def fetch_one(stock_id: str, session: requests.Session):
     return ok, data, stock_name
 
 
-def cleanup_old_logs(log_root: Path, retention_days: int) -> None:
-    """刪除 log_root 底下名稱為 {yyyyMMdd} 且日期早於 retention_days 天前的資料夾。"""
-    if retention_days is None or retention_days <= 0:
-        print("[資訊] 未啟用資料保留清理（RETENTION_DAYS <= 0）")
-        return
-
-    if not log_root.exists():
-        return
-
-    cutoff_date = (datetime.now() - timedelta(days=retention_days)).date()
-    print(f"[資訊] 清理 log：刪除早於 {cutoff_date.strftime('%Y-%m-%d')} 的資料夾"
-          f"（保留 {retention_days} 天內）")
-
-    deleted = 0
-    kept = 0
-    for child in log_root.iterdir():
-        if not child.is_dir():
-            continue
-        name = child.name
-        # 只處理 8 位數字且可解析為日期的資料夾
-        if len(name) != 8 or not name.isdigit():
-            continue
-        try:
-            folder_date = datetime.strptime(name, "%Y%m%d").date()
-        except ValueError:
-            continue
-
-        if folder_date < cutoff_date:
-            try:
-                shutil.rmtree(child)
-                print(f"    已刪除：{child.name}")
-                deleted += 1
-            except OSError as e:
-                print(f"    刪除失敗 {child.name}：{e}")
-        else:
-            kept += 1
-
-    print(f"[完成] 清理結束：刪除 {deleted} 個資料夾，保留 {kept} 個。")
-
-
 def main():
     script_dir = SCRIPT_DIR
 
@@ -399,16 +356,8 @@ def main():
         description="法人目標價撈取（每日排程用，或以 --stock 重抓單檔）"
     )
     parser.add_argument(
-        "stocklist", nargs="?", default=None,
-        help="股票清單檔路徑；沒給時使用預設 stocklist.txt"
-    )
-    parser.add_argument(
         "--stock", "-s", dest="single_stock", default=None,
-        help="只重抓單檔股票代號（優先於 stocklist，會略過清單讀取）"
-    )
-    parser.add_argument(
-        "--no-cleanup", action="store_true",
-        help="不執行舊資料夾清理（單檔重抓時會自動設 True）"
+        help="只重抓單檔股票代號（會略過清單掃描）"
     )
     args = parser.parse_args()
 
@@ -431,40 +380,41 @@ def main():
     # 確保 TWSE 股票清單存在且未過期（每 N 天重抓一次）
     ensure_stock_name_list()
 
-    single_mode = False
     if args.single_stock:
-        single_mode = True
         stock_ids = [args.single_stock.strip()]
         print(f"[資訊] 單檔重抓模式：{stock_ids[0]}")
     else:
-        if args.stocklist:
-            arg_path = Path(args.stocklist)
-            stocklist_path = arg_path if arg_path.is_absolute() else Path.cwd() / arg_path
-        else:
-            stocklist_path = script_dir / DEFAULT_STOCK_LIST_FILE
-
-        if not stocklist_path.exists():
-            print(f"[錯誤] 找不到股票清單檔案：{stocklist_path}")
-            print(f"用法：python {Path(__file__).name} [股票清單檔案路徑] 或 --stock 2330")
+        stocklist_paths = sorted(script_dir.glob(STOCKLIST_GLOB))
+        if not stocklist_paths:
+            print(
+                f"[錯誤] 找不到任何股票清單檔（pattern：{STOCKLIST_GLOB}）。\n"
+                f"       請至少建立一份，例如 stocklist_自選股1.txt。",
+                file=sys.stderr,
+            )
             sys.exit(1)
 
-        print(f"[資訊] 使用股票清單檔：{stocklist_path}")
+        print(f"[資訊] 掃描到 {len(stocklist_paths)} 份自選股清單：")
+        # 跨清單用 set 去重；同一檔股票只會 fetch 一次
+        stock_ids_set: set[str] = set()
+        for p in stocklist_paths:
+            count_before = len(stock_ids_set)
+            with p.open("r", encoding="utf-8") as f:
+                for line in f:
+                    s = line.strip()
+                    if not s or s.startswith("#"):
+                        continue
+                    stock_ids_set.add(s)
+            print(f"    {p.name}（去重後新增 {len(stock_ids_set) - count_before} 檔）")
 
-        # 讀取股票清單（每行一檔，忽略空白與以 # 開頭的註解）
-        with stocklist_path.open("r", encoding="utf-8") as f:
-            stock_ids = []
-            for line in f:
-                s = line.strip()
-                if not s or s.startswith("#"):
-                    continue
-                stock_ids.append(s)
+        # 維持字串排序，輸出順序可預測
+        stock_ids = sorted(stock_ids_set)
+        print(f"[資訊] 去重後總共需撈取 {len(stock_ids)} 檔。")
 
     if not stock_ids:
         print("[警告] 股票清單是空的，結束執行。")
         return
 
-    today_str = datetime.now().strftime("%Y%m%d")
-    out_dir = script_dir / LOG_ROOT_DIR / today_str
+    out_dir = script_dir / LOG_ROOT_DIR
     out_dir.mkdir(parents=True, exist_ok=True)
 
     print(f"[資訊] 開始撈取，共 {len(stock_ids)} 檔，輸出資料夾：{out_dir}")
@@ -479,9 +429,31 @@ def main():
         print(f"[{idx}/{len(stock_ids)}] 撈取 {stock_id} ...", end=" ", flush=True)
         ok, data, stock_name = fetch_one(stock_id, session)
 
+        # HTTP 401 → 幾乎都是 CMoney Bearer Token 過期；立刻中止整個流程，
+        # 避免繼續打 API 把 log 洗滿,也不要寫出空殼錯誤檔覆蓋原本好的資料。
+        if not ok and isinstance(data, dict) and data.get("http_status") == 401:
+            print(f"失敗 -> HTTP 401 Unauthorized")
+            print(
+                "\n[中止] CMoney 回傳 HTTP 401 Unauthorized,"
+                "CMONEY_AUTH_TOKEN 極可能已過期。\n"
+                "       請重新取得 Bearer JWT 後更新環境變數:\n"
+                "         export CMONEY_AUTH_TOKEN=\"new_bearer_jwt\"\n"
+                "       然後重新執行本腳本。",
+                file=sys.stderr,
+            )
+            sys.exit(3)
+
         safe_name = sanitize_filename(stock_name) if stock_name else "unknown"
-        filename = f"{today_str}_{stock_id}_{safe_name}.json"
+        filename = f"{stock_id}_{safe_name}.json"
         out_path = out_dir / filename
+
+        # 寫新檔前，先清掉同 stock_id 開頭的舊檔（處理股票改名的情境）
+        for old in out_dir.glob(f"{stock_id}_*.json"):
+            if old.name != filename:
+                try:
+                    old.unlink()
+                except OSError:
+                    pass
 
         try:
             with out_path.open("w", encoding="utf-8") as f:
@@ -502,10 +474,6 @@ def main():
             time.sleep(interval_sec)
 
     print(f"[完成] 成功 {ok_count} 檔，失敗 {fail_count} 檔。")
-
-    # 撈取結束後清理舊資料（單檔重抓時跳過，避免誤傷）
-    if not single_mode and not args.no_cleanup:
-        cleanup_old_logs(script_dir / LOG_ROOT_DIR, RETENTION_DAYS)
 
 
 if __name__ == "__main__":
