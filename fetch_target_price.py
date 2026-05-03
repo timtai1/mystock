@@ -510,11 +510,9 @@ def main():
         if not ok and isinstance(data, dict) and data.get("http_status") == 401:
             print(f"失敗 -> HTTP 401 Unauthorized")
             print(
-                "\n[中止] CMoney 回傳 HTTP 401 Unauthorized,"
-                "CMONEY_AUTH_TOKEN 極可能已過期。\n"
-                "       請重新取得 Bearer JWT 後更新環境變數:\n"
-                "         export CMONEY_AUTH_TOKEN=\"new_bearer_jwt\"\n"
-                "       然後重新執行本腳本。",
+                "\n[中止] CMoney 回傳 HTTP 401 Unauthorized，\n"
+                f"       登入 Token 已失效。請檢查 {CREDENTIAL_FILE} 是否正確，\n"
+                "       並重新執行本腳本以重新登入取得 Token。",
                 file=sys.stderr,
             )
             sys.exit(3)
