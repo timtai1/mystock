@@ -24,9 +24,10 @@ import urllib3
 # 設定區（可依需求修改）
 # ============================================================
 
-# Authorization Bearer Token（從環境變數讀取，避免提交到版控）
-#   export CMONEY_AUTH_TOKEN="your_bearer_jwt"
-# 會過期，過期時請重新取得並更新環境變數。
+# Authorization Bearer Token（優先從 credential.txt 登入取得，若無則回退到環境變數）
+# credential.txt 格式：
+#   account=+886...
+#   hashed_password=...
 CMONEY_AUTH_TOKEN = os.environ.get("CMONEY_AUTH_TOKEN", "").strip()
 
 # 每檔股票之間的間隔時間（毫秒）
@@ -68,15 +69,86 @@ TWSE_LIST_URLS = {
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 
+# 登入 API 設定
+LOGIN_URL = "https://api.cmoney.tw/identity/token"
+CREDENTIAL_FILE = "credential.txt"
+
 CMONEY_TRACE_CONTEXT = json.dumps({
     "appId": 2,
     "osVersion": "26.3.1",
-    "appVersion": "10.123.0",
+    "appVersion": "10.124.0",
     "manufacturer": "Apple",
     "model": "iPhone16,1",
     "osName": "iOS",
     "platform": 1,
 }, separators=(",", ":"))
+
+
+def get_cmoney_token() -> str:
+    """從 credential.txt 讀取帳密並登入 CMoney 取得 access_token"""
+    cred_path = SCRIPT_DIR / CREDENTIAL_FILE
+    if not cred_path.exists():
+        return ""
+
+    account = ""
+    hashed_password = ""
+    try:
+        with cred_path.open("r", encoding="utf-8") as f:
+            for line in f:
+                if "=" in line:
+                    key, val = line.strip().split("=", 1)
+                    if key == "account":
+                        account = val
+                    elif key == "hashed_password":
+                        hashed_password = val
+    except Exception as e:
+        print(f"[警告] 讀取 {CREDENTIAL_FILE} 失敗：{e}")
+        return ""
+
+    if not account or not hashed_password:
+        print(f"[警告] {CREDENTIAL_FILE} 內容格式錯誤（需含 account 與 hashed_password）")
+        return ""
+
+    print(f"[資訊] 正在登入 CMoney (帳號: {account}) ...")
+    
+    headers = {
+        "Cmoneyapi-Trace-Context": CMONEY_TRACE_CONTEXT,
+        "X-Cmapi-Trace-Context": json.dumps({"Platform": 1, "AppId": 2, "Mode": 3}, separators=(",", ":")),
+        "Content-Type": "application/x-www-form-urlencoded; charset=utf-8",
+        "User-Agent": "ChipK/10.124.0.260416.0 CFNetwork/3860.400.51 Darwin/25.3.0",
+        "Accept": "*/*",
+    }
+    
+    payload = {
+        "grant_type": "password",
+        "account": account,
+        "hashed_password": hashed_password,
+        "client_id": "cmchipkmobile",
+        "login_method": "cellphone",
+    }
+    
+    try:
+        resp = requests.post(
+            LOGIN_URL,
+            headers=headers,
+            data=payload,
+            timeout=REQUEST_TIMEOUT,
+            verify=VERIFY_SSL
+        )
+        if resp.status_code == 200:
+            data = resp.json()
+            token = data.get("access_token")
+            if token:
+                print("[成功] 登入成功，已取得新 Token。")
+                return token
+            else:
+                print("[失敗] 登入回應中未包含 access_token")
+        else:
+            print(f"[失敗] 登入失敗 HTTP {resp.status_code}: {resp.text}")
+    except Exception as e:
+        print(f"[錯誤] 登入過程發生異常：{e}")
+        
+    return ""
 
 
 def build_headers():
@@ -91,7 +163,7 @@ def build_headers():
         # 故意不接受 br (Brotli)，因為 Python requests 沒內建 Brotli 解壓。
         # 只留 gzip, deflate 讓 requests 自動解壓。
         "Accept-Encoding": "gzip, deflate",
-        "User-Agent": "ChipK/10.123.0.260326.0 CFNetwork/3860.400.51 Darwin/25.3.0",
+        "User-Agent": "ChipK/10.124.0.260416.0 CFNetwork/3860.400.51 Darwin/25.3.0",
     }
 
 
@@ -351,6 +423,7 @@ def fetch_one(stock_id: str, session: requests.Session):
 
 def main():
     script_dir = SCRIPT_DIR
+    global CMONEY_AUTH_TOKEN
 
     parser = argparse.ArgumentParser(
         description="法人目標價撈取（每日排程用，或以 --stock 重抓單檔）"
@@ -361,13 +434,16 @@ def main():
     )
     args = parser.parse_args()
 
+    # 嘗試從 credential.txt 登入取得 Token
+    token_from_login = get_cmoney_token()
+    if token_from_login:
+        CMONEY_AUTH_TOKEN = token_from_login
+
     # 檢查 CMoney Authorization Token 是否設定
     if not CMONEY_AUTH_TOKEN:
         print(
-            "[錯誤] 環境變數 CMONEY_AUTH_TOKEN 未設定。\n"
-            "       請先取得 Bearer JWT（會過期，需要時重抓 CMoney App 的封包），然後：\n"
-            "         export CMONEY_AUTH_TOKEN=\"your_bearer_jwt\"\n"
-            "       或寫入 ~/.zshrc / ~/.bashrc 讓之後都能讀到。",
+            f"[錯誤] 無法取得登入憑證且環境變數 CMONEY_AUTH_TOKEN 未設定。\n"
+            f"       請確保 {CREDENTIAL_FILE} 存在且正確，或設定環境變數。",
             file=sys.stderr,
         )
         sys.exit(2)
