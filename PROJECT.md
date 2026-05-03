@@ -205,7 +205,7 @@ python fetch_daily_kline.py --stock 2330            # 測單檔
    - 舊介面 `st43_result.php` 沒了，`wwwov.tpex.org.tw` 2025/5/31 退役。
    - 一開始用舊 URL 卡在「404 + JSON 解析失敗」，一度以為是 rate limit，實際上是端點整個下線。
    - 最終解法：改用 `https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes`，日期格式 `d=YYY/MM/DD`（**民國年！**年份要減 1911）。
-   - 策略翻過來：以「交易日」為外層迴圈，一次取全市場，再在 Python 端依 `stocklist.txt` 分配進各檔的 JSON。
+   - 策略翻過來：以「交易日」為外層迴圈，一次取全市場，再在 Python 端依 `stocklist_*.txt` 分配進各檔的 JSON。
 
 6. **民國 ↔ 西元**
    TPEX 的 date param 是民國年格式（例如 `115/04/18`），轉換用 `dt.year - 1911`；回來 parse 時是 `+ 1911`。

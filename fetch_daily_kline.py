@@ -62,7 +62,7 @@ except ImportError:
 # 設定區
 # ============================================================
 SCRIPT_DIR = Path(__file__).resolve().parent
-STOCKLIST_FILE = SCRIPT_DIR / "stocklist.txt"
+STOCKLIST_GLOB = "stocklist_*.txt"
 MARKET_LIST_FILE = SCRIPT_DIR / "tw_stock_list.csv"
 KLINE_DIR = SCRIPT_DIR / "日K線_log_file"
 
@@ -128,8 +128,21 @@ def parse_number(s):
 
 
 def load_stocklist():
-    with open(STOCKLIST_FILE, "r", encoding="utf-8") as f:
-        return [line.strip() for line in f if line.strip()]
+    """掃描所有 stocklist_*.txt 並聯集去重"""
+    codes = set()
+    found_files = sorted(SCRIPT_DIR.glob(STOCKLIST_GLOB))
+    if not found_files:
+        log(f"[錯誤] 找不到任何股票清單檔（pattern：{STOCKLIST_GLOB}）")
+        sys.exit(1)
+
+    for p in found_files:
+        with open(p, "r", encoding="utf-8") as f:
+            for line in f:
+                code = line.strip()
+                # 排除空行與註解
+                if code and not code.startswith("#"):
+                    codes.add(code)
+    return sorted(list(codes))
 
 
 def load_market_map():
@@ -512,10 +525,38 @@ def incremental_update(stocks, market_map):
     day = today_ymd()
     updated = 0
     skipped_same_day = 0
+    backfilled_stocks = []
     not_found = []
 
     for code in stocks:
         market = market_map.get(code, "上市")
+        kline = load_kline(code)
+        entries = kline.get("entries", [])
+
+        # 檢測空窗期：如果最後一筆資料離今天超過 3 天（考慮假日），啟動補回
+        if entries:
+            last_date_str = entries[-1].get("date")
+            try:
+                last_dt = datetime.strptime(last_date_str, "%Y%m%d")
+                gap_days = (datetime.now() - last_dt).days
+                if gap_days > 3:  # 超過 3 天未更新，可能跨了多個交易日，執行 backfill
+                    log(f"  [Backfill] {code} 距離上次更新已過 {gap_days} 天，嘗試補回...")
+                    if market == "上櫃":
+                        bootstrap_tpex_stock(code, months=1)
+                    else:
+                        bootstrap_twse_stock(code, months=1)
+                    backfilled_stocks.append(code)
+                    # 重新讀取補完後的資料
+                    kline = load_kline(code)
+                    entries = kline.get("entries", [])
+            except Exception as e:
+                log(f"  [警告] {code} 日期解析失敗: {e}")
+
+        # 如果最後一筆已是今天，跳過
+        if entries and entries[-1].get("date") == day:
+            skipped_same_day += 1
+            continue
+
         # 主來源依 market 決定，若沒有再去另一個找
         if market == "上櫃":
             rec = tpex_today.get(code) or twse_today.get(code)
@@ -523,14 +564,8 @@ def incremental_update(stocks, market_map):
             rec = twse_today.get(code) or tpex_today.get(code)
 
         if not rec or rec.get("close") is None:
-            not_found.append(code)
-            continue
-
-        kline = load_kline(code)
-        entries = kline.get("entries", [])
-        # 如果最後一筆已是今天，跳過
-        if entries and entries[-1].get("date") == day:
-            skipped_same_day += 1
+            if code not in backfilled_stocks:
+                not_found.append(code)
             continue
 
         entries.append({
@@ -545,8 +580,9 @@ def incremental_update(stocks, market_map):
         save_kline(code, kline, market=market)
         updated += 1
 
-    log(f"更新 {updated} 檔；已是最新 {skipped_same_day} 檔；"
-        f"找不到 {len(not_found)} 檔"
+    log(f"更新 {updated} 檔；已是最新 {skipped_same_day} 檔"
+        + (f"；補回 {len(backfilled_stocks)} 檔" if backfilled_stocks else "")
+        + (f"；找不到 {len(not_found)} 檔" if not_found else "")
         + (f"：{not_found[:20]}{'…' if len(not_found) > 20 else ''}" if not_found else ""))
 
 
