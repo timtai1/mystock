@@ -329,7 +329,13 @@ def generate():
             except OSError:
                 pass
 
-    last_updated = datetime.fromtimestamp(latest_mtime).strftime("%Y-%m-%d %H:%M") if latest_mtime else None
+    # 取得檔案最後修改時間，並轉換為台灣時間 (UTC+8)
+    last_updated = None
+    if latest_mtime:
+        # GitHub Runner 是 UTC，手動加上 8 小時轉換為台灣時間
+        dt_utc = datetime.fromtimestamp(latest_mtime)
+        dt_taiwan = dt_utc + timedelta(hours=8)
+        last_updated = dt_taiwan.strftime("%Y-%m-%d %H:%M")
 
     # 3. 產生主表 stocks.json (All)
     all_list = sorted(all_parsed_stocks.values(), key=lambda x: x["stock_id"])
