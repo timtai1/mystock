@@ -40,29 +40,33 @@ jobs:
 
       - name: Clean Duplicates
         run: python clean_duplicates.py
+- name: Checkout code
+  uses: actions/checkout@v4
+  with:
+    fetch-depth: 0 # 取得完整歷史以利 rebase
 
-      - name: Generate Static Data
-        run: python generate_static_data.py
+- name: Set up Python
+# ... (中間步驟不變)
+- name: Commit and Push changes
+  env:
+    TZ: Asia/Taipei
+  run: |
+    git config --local user.email "github-actions[bot]@users.noreply.github.com"
+    git config --local user.name "github-actions[bot]"
 
-      - name: Commit and Push changes
-        env:
-          TZ: Asia/Taipei
-        run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          
-          # 先將當前變更暫存起來
-          git add .
-          if ! git diff --quiet --staged; then
-            # 建立 Commit
-            git commit -m "Auto update stock data: $(date +'%Y-%m-%d %H:%M')"
-            
-            # 核心修正：在 Push 前不斷重試 Pull & Rebase
-            # 這能處理「執行期間有人推送」的情況
-            for i in {1..5}; do
-              git pull --rebase origin main && git push origin main && break || sleep 5
-            done
-          fi
+    # 先抓取遠端最新狀態
+    git fetch origin main
+
+    # 關鍵：先提交本地新資料
+    git add .
+    if ! git diff --quiet --staged; then
+      git commit -m "Auto update stock data: $(date +'%Y-%m-%d %H:%M')"
+
+      # 核心修正：使用 -X ours 策略進行 rebase
+      # 如果 JSON 檔案衝突，自動以雲端剛抓好的這份為準
+      git pull --rebase -X ours origin main
+      git push origin main
+    fi
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
