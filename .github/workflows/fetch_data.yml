@@ -17,6 +17,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -40,33 +42,34 @@ jobs:
 
       - name: Clean Duplicates
         run: python clean_duplicates.py
-- name: Checkout code
-  uses: actions/checkout@v4
-  with:
-    fetch-depth: 0 # 取得完整歷史以利 rebase
 
-- name: Set up Python
-# ... (中間步驟不變)
-- name: Commit and Push changes
-  env:
-    TZ: Asia/Taipei
-  run: |
-    git config --local user.email "github-actions[bot]@users.noreply.github.com"
-    git config --local user.name "github-actions[bot]"
+      - name: Generate Static Data
+        run: python generate_static_data.py
 
-    # 先抓取遠端最新狀態
-    git fetch origin main
-
-    # 關鍵：先提交本地新資料
-    git add .
-    if ! git diff --quiet --staged; then
-      git commit -m "Auto update stock data: $(date +'%Y-%m-%d %H:%M')"
-
-      # 核心修正：使用 -X ours 策略進行 rebase
-      # 如果 JSON 檔案衝突，自動以雲端剛抓好的這份為準
-      git pull --rebase -X ours origin main
-      git push origin main
-    fi
+      - name: Commit and Push changes
+        env:
+          TZ: Asia/Taipei
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          
+          # 1. 確保拿到遠端最新狀態
+          git fetch origin main
+          
+          # 2. 將本地目前的修改暫存，並將分支頂端移到遠端最新處
+          # 這能保證後續的 commit 永遠是 Fast-forward
+          git add .
+          if ! git diff --quiet --staged; then
+            # 暫存修改，重設到遠端最新，再放回修改
+            git stash
+            git reset --hard origin/main
+            git stash pop || git checkout --theirs .
+            
+            # 3. 重新提交並推送
+            git add .
+            git commit -m "Auto update stock data: $(date +'%Y-%m-%d %H:%M')"
+            git push origin main
+          fi
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
