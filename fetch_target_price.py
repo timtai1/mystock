@@ -85,28 +85,26 @@ CMONEY_TRACE_CONTEXT = json.dumps({
 
 
 def get_cmoney_token() -> str:
-    """從 credential.txt 讀取帳密並登入 CMoney 取得 access_token"""
-    cred_path = SCRIPT_DIR / CREDENTIAL_FILE
-    if not cred_path.exists():
-        return ""
-
-    account = ""
-    hashed_password = ""
-    try:
-        with cred_path.open("r", encoding="utf-8") as f:
-            for line in f:
-                if "=" in line:
-                    key, val = line.strip().split("=", 1)
-                    if key == "account":
-                        account = val
-                    elif key == "hashed_password":
-                        hashed_password = val
-    except Exception as e:
-        print(f"[警告] 讀取 {CREDENTIAL_FILE} 失敗：{e}")
-        return ""
+    """從環境變數或 credential.txt 讀取帳密並登入 CMoney 取得 access_token"""
+    account = os.environ.get("CMONEY_ACCOUNT", "").strip()
+    hashed_password = os.environ.get("CMONEY_PASSWORD", "").strip()
 
     if not account or not hashed_password:
-        print(f"[警告] {CREDENTIAL_FILE} 內容格式錯誤（需含 account 與 hashed_password）")
+        cred_path = SCRIPT_DIR / CREDENTIAL_FILE
+        if cred_path.exists():
+            try:
+                with cred_path.open("r", encoding="utf-8") as f:
+                    for line in f:
+                        if "=" in line:
+                            key, val = line.strip().split("=", 1)
+                            if key == "account":
+                                account = val
+                            elif key == "hashed_password":
+                                hashed_password = val
+            except Exception as e:
+                print(f"[警告] 讀取 {CREDENTIAL_FILE} 失敗：{e}")
+        
+    if not account or not hashed_password:
         return ""
 
     print(f"[資訊] 正在登入 CMoney (帳號: {account}) ...")

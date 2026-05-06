@@ -986,12 +986,19 @@ body.resizing * { cursor: ew-resize !important; }
     }[c]));
   }
 
+  // ===== Constants & Mode Detection =====
+  const IS_STATIC = window.location.hostname.includes('github.io') || window.location.protocol === 'file:';
+
   // ===== Load =====
   async function load({ preservePanel = false } = {}) {
     try {
-      let url = '/api/stocks';
+      let url = IS_STATIC ? 'data/stocks.json' : '/api/stocks';
       if (currentView.type === 'watchlist' && currentView.name) {
-        url += '?watchlist=' + encodeURIComponent(currentView.name);
+        if (IS_STATIC) {
+          url = `data/stocks_${currentView.name}.json`;
+        } else {
+          url += '?watchlist=' + encodeURIComponent(currentView.name);
+        }
       }
       const r = await fetch(url);
       if (!r.ok) throw new Error('HTTP ' + r.status);
@@ -1420,7 +1427,8 @@ body.resizing * { cursor: ew-resize !important; }
     updateToolbarActive();
 
     try {
-      const r = await fetch(`/api/kline?code=${encodeURIComponent(stockId)}`);
+      const url = IS_STATIC ? `日K線_log_file/${stockId}.json` : `/api/kline?code=${encodeURIComponent(stockId)}`;
+      const r = await fetch(url);
       if (!r.ok) throw new Error('HTTP ' + r.status);
       const data = await r.json();
       const entries = (data.entries || []).slice()
@@ -1582,7 +1590,8 @@ body.resizing * { cursor: ew-resize !important; }
   // ===== Watchlist sidebar =====
   async function loadWatchlists() {
     try {
-      const r = await fetch('/api/watchlists');
+      const url = IS_STATIC ? 'data/watchlists.json' : '/api/watchlists';
+      const r = await fetch(url);
       if (!r.ok) throw new Error('HTTP ' + r.status);
       const data = await r.json();
       watchlists = data.watchlists || [];
@@ -1591,6 +1600,26 @@ body.resizing * { cursor: ew-resize !important; }
       showToast('載入自選股清單失敗：' + (e.message || e), 'error');
     }
     renderWatchlistList();
+  }
+
+  function initStaticUI() {
+    if (IS_STATIC) {
+      // 隱藏/禁用在靜態模式下無法使用的按鈕
+      const elementsToHide = [
+        'watchlist-add-btn',
+        'panel-refetch',
+        'kline-refetch'
+      ];
+      elementsToHide.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.style.display = 'none';
+      });
+      // 禁用右鍵選單
+      document.getElementById('watchlist-list').addEventListener('contextmenu', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+      }, true);
+    }
   }
 
   function renderWatchlistList() {
@@ -2039,6 +2068,7 @@ body.resizing * { cursor: ew-resize !important; }
 
   // ===== Start =====
   (async () => {
+    initStaticUI();
     currentView = loadSavedView();
     // 先載入 watchlists；若儲存的 view 指向一個已不存在的清單，退回 all
     await loadWatchlists();
