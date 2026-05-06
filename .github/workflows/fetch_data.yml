@@ -38,6 +38,9 @@ jobs:
           CMONEY_PASSWORD: ${{ secrets.HASHED_PASSWORD }}
         run: python fetch_target_price.py
 
+      - name: Clean Duplicates
+        run: python clean_duplicates.py
+
       - name: Generate Static Data
         run: python generate_static_data.py
 
