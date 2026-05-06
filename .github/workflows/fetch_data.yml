@@ -50,11 +50,18 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
+          
+          # 先將當前變更暫存起來
           git add .
           if ! git diff --quiet --staged; then
+            # 建立 Commit
             git commit -m "Auto update stock data: $(date +'%Y-%m-%d %H:%M')"
-            git pull --rebase origin main
-            git push origin main
+            
+            # 核心修正：在 Push 前不斷重試 Pull & Rebase
+            # 這能處理「執行期間有人推送」的情況
+            for i in {1..5}; do
+              git pull --rebase origin main && git push origin main && break || sleep 5
+            done
           fi
 
       - name: Setup Pages
