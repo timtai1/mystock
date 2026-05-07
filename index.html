@@ -792,8 +792,12 @@ body.resizing * { cursor: ew-resize !important; }
   tbody td { padding: 12px 8px; }
   thead th { padding: 10px 8px; }
   
-  /* Hide non-essential columns on mobile */
-  th:not(.always), td:not(.always) { display: none; }
+  /* Allow horizontal scroll instead of hiding columns */
+  .table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  table { min-width: 800px; } /* Ensure enough width to trigger scroll */
   
   /* Panel & Modal adjustments */
   :root { --panel-width: 100vw !important; }
@@ -2074,7 +2078,11 @@ body.resizing * { cursor: ew-resize !important; }
 
     toggle.addEventListener('click', (e) => {
       e.stopPropagation();
-      openSidebar();
+      if (sidebar.classList.contains('open')) {
+        closeSidebar();
+      } else {
+        openSidebar();
+      }
     });
     overlay.addEventListener('click', closeSidebar);
     
