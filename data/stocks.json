@@ -1,11 +1,11 @@
 {
-  "last_updated": "2026-05-11 21:28",
+  "last_updated": "2026-05-12 20:28",
   "recent_days": 90,
   "stocks": [
     {
       "stock_id": "1303",
       "stock_name": "南亞",
-      "close": 88.6,
+      "close": 91.5,
       "max_target": 125.0,
       "max_target_date": "20260420",
       "max_target_broker": "摩根大通證券",
@@ -17,7 +17,7 @@
       "latest_target_rating": "Overweight",
       "latest_target_summary": "",
       "median_target": 90.0,
-      "potential_return": 1.58,
+      "potential_return": -1.64,
       "entries": [
         {
           "date": "20260420",
@@ -151,13 +151,13 @@
       "recent_count": 3,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "1319",
       "stock_name": "東陽",
-      "close": 80.2,
+      "close": 80.8,
       "max_target": 120.0,
       "max_target_date": "20260302",
       "max_target_broker": "中國信託綜合證券",
@@ -169,7 +169,7 @@
       "latest_target_rating": "持有-超越同業",
       "latest_target_summary": "東陽股份有限公司目前在關稅政策不確定性及中國車型轉型的影響下，營運壓力增加，營收及獲利受到影響。然而，公司持續提升產能與最佳化現有生產基地的措施，將有助於未來的增長。",
       "median_target": 103.0,
-      "potential_return": 28.43,
+      "potential_return": 27.48,
       "entries": [
         {
           "date": "20260505",
@@ -535,13 +535,13 @@
       "recent_count": 9,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "1513",
       "stock_name": "中興電",
-      "close": 158.0,
+      "close": 158.5,
       "max_target": 200.0,
       "max_target_date": "20260226",
       "max_target_broker": "元大投顧",
@@ -553,7 +553,7 @@
       "latest_target_rating": "強力買進",
       "latest_target_summary": "",
       "median_target": 183.5,
-      "potential_return": 16.14,
+      "potential_return": 15.77,
       "entries": [
         {
           "date": "20260424",
@@ -815,13 +815,13 @@
       "recent_count": 12,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "1514",
       "stock_name": "亞力",
-      "close": 123.5,
+      "close": 126.5,
       "max_target": 152.0,
       "max_target_date": "20260413",
       "max_target_broker": "永豐金",
@@ -833,7 +833,7 @@
       "latest_target_rating": "買進",
       "latest_target_summary": "亞力股份公司因其在半導體及AI資料中心相關訂單的強勁需求，營收表現預期繼續增長，具有吸引力的長期成長潛力。",
       "median_target": 145.0,
-      "potential_return": 17.41,
+      "potential_return": 14.62,
       "entries": [
         {
           "date": "20260413",
@@ -999,26 +999,34 @@
       "recent_count": 5,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "1519",
       "stock_name": "華城",
-      "close": 896.0,
+      "close": 921.0,
       "max_target": 1150.0,
       "max_target_date": "20260511",
       "max_target_broker": "群益證券",
       "max_target_rating": "Buy",
       "max_target_summary": "華城 1519 於 2026 年預期受益於美國關稅減免及 AIDC 電力設備市場需求的提升，並計劃透過新增產能及專利開發，持續增強產品組合及營運競爭力。此外，公司未來營運預期增速將超過 38%，並給予整體持續看好的評價。目標股價為 1150 元。",
-      "latest_target": 1150.0,
-      "latest_target_date": "20260511",
-      "latest_target_broker": "群益證券",
-      "latest_target_rating": "Buy",
-      "latest_target_summary": "華城 1519 於 2026 年預期受益於美國關稅減免及 AIDC 電力設備市場需求的提升，並計劃透過新增產能及專利開發，持續增強產品組合及營運競爭力。此外，公司未來營運預期增速將超過 38%，並給予整體持續看好的評價。目標股價為 1150 元。",
-      "median_target": 1150.0,
-      "potential_return": 28.35,
+      "latest_target": 1050.0,
+      "latest_target_date": "20260512",
+      "latest_target_broker": "富邦證券",
+      "latest_target_rating": "買進",
+      "latest_target_summary": "華城（1519）於2026年和2027年在營收增長和外銷業務比重提高方面有顯著成效，尤其在電力基建和智慧電網增長的推動下，變壓器市場需求穩中見升。儘管面臨原物料成本變化風險，公司透過短交期優勢以及新產能佈局，展望其市場競爭力和獲利能力將得以進一步提振。",
+      "median_target": 1100.0,
+      "potential_return": 19.44,
       "entries": [
+        {
+          "date": "20260512",
+          "broker": "富邦證券",
+          "rating": "買進",
+          "target": 1050.0,
+          "close": 914.0,
+          "summary": "華城（1519）於2026年和2027年在營收增長和外銷業務比重提高方面有顯著成效，尤其在電力基建和智慧電網增長的推動下，變壓器市場需求穩中見升。儘管面臨原物料成本變化風險，公司透過短交期優勢以及新產能佈局，展望其市場競爭力和獲利能力將得以進一步提振。"
+        },
         {
           "date": "20260511",
           "broker": "群益證券",
@@ -1292,16 +1300,16 @@
           "summary": "2025年，華城的營運預期受惠於全球淨零轉型的需求，特別是在變壓器市場上的需求增長。儘管匯率波動仍可能影響短期利潤，但美國電力公用事業的資本支出攀升將支撐未來的營收成長。預料美國對中國的關稅政策將導致市場短缺，這可能增強華城在市場上的地位和增速。2026年預期，因關稅影響，中國的市場份額可能下降，從而增加華城的市場機會。"
         }
       ],
-      "recent_count": 5,
+      "recent_count": 6,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "1815",
       "stock_name": "富喬",
-      "close": 110.5,
+      "close": 108.0,
       "max_target": 206.0,
       "max_target_date": "20260421",
       "max_target_broker": "兆豐",
@@ -1313,7 +1321,7 @@
       "latest_target_rating": "買進",
       "latest_target_summary": "",
       "median_target": 206.0,
-      "potential_return": 86.43,
+      "potential_return": 90.74,
       "entries": [
         {
           "date": "20260421",
@@ -1351,13 +1359,13 @@
       "recent_count": 1,
       "market": "上櫃",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "2002",
       "stock_name": "中鋼",
-      "close": 18.75,
+      "close": 18.6,
       "max_target": 24.0,
       "max_target_date": "20260413",
       "max_target_broker": "國票",
@@ -1369,7 +1377,7 @@
       "latest_target_rating": "買進",
       "latest_target_summary": "中鋼(2002)於2026年財務與營運目標上正逐步改善。2026年第二季銷售與營收情況表現預期將轉虧為盈，主要受惠於下游需求的回升與國際鋼價的逐步上漲。此外，中國政策影響亞洲市場低價鋼品供應減少，使得本地與鄰近地區鋼價得以更具支撐。",
       "median_target": 23.5,
-      "potential_return": 25.33,
+      "potential_return": 26.34,
       "entries": [
         {
           "date": "20260506",
@@ -1663,13 +1671,13 @@
       "recent_count": 6,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "2059",
       "stock_name": "川湖",
-      "close": 5320.0,
+      "close": 5520.0,
       "max_target": 6750.0,
       "max_target_date": "20260508",
       "max_target_broker": "元富證券投顧",
@@ -1681,7 +1689,7 @@
       "latest_target_rating": "維持買進",
       "latest_target_summary": "川湖公司在2026年受到伺服器市場需求的強勁拉動，顯示全面增長的潛力。儘管面臨一些相關的一次性成本增加，但伴隨逐步的回復及新產能加入，預計未來營收將穩健增長，因此公司展望樂觀。",
       "median_target": 4775.0,
-      "potential_return": -10.24,
+      "potential_return": -13.5,
       "entries": [
         {
           "date": "20260508",
@@ -2335,13 +2343,13 @@
       "recent_count": 32,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "2301",
       "stock_name": "光寶科",
-      "close": 204.0,
+      "close": 224.0,
       "max_target": 245.0,
       "max_target_date": "20260226",
       "max_target_broker": "國泰",
@@ -2353,7 +2361,7 @@
       "latest_target_rating": "買進",
       "latest_target_summary": "光寶科在AI伺服器電源供應器領域持續展現成長力道，第二季營收與利潤增長預估顯著，800V DC電源櫃將於2027年量產進一步驅動成長。光寶科目標為持續提高產品規格，並透過AI資料中心需求支撐2026與2027的營運表現。",
       "median_target": 225.0,
-      "potential_return": 10.29,
+      "potential_return": 0.45,
       "entries": [
         {
           "date": "20260430",
@@ -2855,13 +2863,13 @@
       "recent_count": 26,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "2303",
       "stock_name": "聯電",
-      "close": 91.3,
+      "close": 95.0,
       "max_target": 120.0,
       "max_target_date": "20260508",
       "max_target_broker": "群益證券",
@@ -2873,7 +2881,7 @@
       "latest_target_rating": "Buy",
       "latest_target_summary": "聯電預計2026年晶圓代工市場的需求增長將超越平均增長率，主要為製程技術的持續提升以及客戶多元需求帶動。聯電透過新加坡Fab12i擴建，並與Intel合作開發12nm FinFET平台，進一步鞏固其市場地位。受惠於AI高速運算的需求，聯電在伺服器、光子晶片及封裝技術方面展現積極的佈局，預期其訂單穩步增長，營運表現可望穩健提升。",
       "median_target": 88.0,
-      "potential_return": -3.61,
+      "potential_return": -7.37,
       "entries": [
         {
           "date": "20260508",
@@ -3319,13 +3327,13 @@
       "recent_count": 14,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "2308",
       "stock_name": "台達電",
-      "close": 2200.0,
+      "close": 2245.0,
       "max_target": 3030.0,
       "max_target_date": "20260430",
       "max_target_broker": "麥格理證券",
@@ -3337,7 +3345,7 @@
       "latest_target_rating": "買進",
       "latest_target_summary": "台達電展望2026年，基於AI伺服器電源與液冷散熱的高速增長，產能及新廠建設的步伐將進一步提升效能，同時，承接多個CSP專案也將推動其資料中心相關業務佔比的進一步提升。",
       "median_target": 1968.0,
-      "potential_return": -10.55,
+      "potential_return": -12.34,
       "entries": [
         {
           "date": "20260506",
@@ -4455,13 +4463,13 @@
       "recent_count": 48,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "2313",
       "stock_name": "華通",
-      "close": 253.5,
+      "close": 242.0,
       "max_target": 344.0,
       "max_target_date": "20260507",
       "max_target_broker": "富邦證券",
@@ -4473,7 +4481,7 @@
       "latest_target_rating": "增加持股",
       "latest_target_summary": "華通於2026年受益於光模塊及衛星領域需求增長，新增資本支出擴充產能，預期未來營運與獲利將持續上升。",
       "median_target": 285.0,
-      "potential_return": 12.43,
+      "potential_return": 17.77,
       "entries": [
         {
           "date": "20260507",
@@ -4863,26 +4871,34 @@
       "recent_count": 8,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "2317",
       "stock_name": "鴻海",
-      "close": 250.0,
+      "close": 252.0,
       "max_target": 400.0,
       "max_target_date": "20260316",
       "max_target_broker": "高盛證券",
       "max_target_rating": "Buy",
       "max_target_summary": "鴻海在2026年度透過AI伺服器、高端消費性電子及電動車委外製造的持續成長，展現了穩定的運營效率及全球生產布局能力。企業展望顯示該公司有望利用自身的垂直整合優勢，促進長期訂單及市場份額的穩定性。",
-      "latest_target": 290.0,
-      "latest_target_date": "20260505",
-      "latest_target_broker": "摩根士丹利證券",
-      "latest_target_rating": "Overweight",
-      "latest_target_summary": "鴻海預估2026年第二季獲利表現將創新高，主要受到AI伺服器相關業務持續增長的推動。同時，公司在消費者及計算領域的季節性影響下，營收增長預估仍能維持強勢。",
+      "latest_target": 330.0,
+      "latest_target_date": "20260511",
+      "latest_target_broker": "富邦證券",
+      "latest_target_rating": "買進",
+      "latest_target_summary": "鴻海預計將受惠於其在伺服器及手機產品的穩定需求，以及與主要廠商如Google和NVIDIA的合作深化。公司的營收和獲利將在未來幾年內持續增長，尤其是在2026和2027年的增長尤為顯著，主要受到伺服器需求增加與iPhone銷售增勢的支持。公司的產業定位及經營戰略正獲得穩健推進，前景充滿機遇。",
       "median_target": 290.0,
-      "potential_return": 16.0,
+      "potential_return": 15.08,
       "entries": [
+        {
+          "date": "20260511",
+          "broker": "富邦證券",
+          "rating": "買進",
+          "target": 330.0,
+          "close": 252.0,
+          "summary": "鴻海預計將受惠於其在伺服器及手機產品的穩定需求，以及與主要廠商如Google和NVIDIA的合作深化。公司的營收和獲利將在未來幾年內持續增長，尤其是在2026和2027年的增長尤為顯著，主要受到伺服器需求增加與iPhone銷售增勢的支持。公司的產業定位及經營戰略正獲得穩健推進，前景充滿機遇。"
+        },
         {
           "date": "20260505",
           "broker": "摩根士丹利證券",
@@ -4981,11 +4997,11 @@
         },
         {
           "date": "20260317",
-          "broker": "摩根大通證券",
-          "rating": "Overweight",
-          "target": 270.0,
+          "broker": "中國信託綜合證券",
+          "rating": "買進",
+          "target": 246.0,
           "close": 212.0,
-          "summary": "鴻海精密在2025年度表現受到較高稅率的影響顯現出某程度的壓力，但在2026年的成長展望上具有顯著的正面信號。管理層對於雲端與網絡業務的需求高度期待，特別是AI伺服器領域的出貨增長。此外，消費電子業務亦因新款智慧型手機的發佈而具備增長潛力。資本支出計劃的增速也表明公司未來的投資與生產計劃對應的高需求環境。"
+          "summary": "鴻海展望未來年度的成長動能來自於雲端網路產品需求增長，特別是AI伺服器的強勁表現。此外，公司在垂直整合及標準化上的深度投入也有助於提升產業競爭力，儘管需應對利差擴大及稅率的影響。"
         },
         {
           "date": "20260317",
@@ -5005,11 +5021,11 @@
         },
         {
           "date": "20260317",
-          "broker": "中國信託綜合證券",
-          "rating": "買進",
-          "target": 246.0,
+          "broker": "摩根大通證券",
+          "rating": "Overweight",
+          "target": 270.0,
           "close": 212.0,
-          "summary": "鴻海展望未來年度的成長動能來自於雲端網路產品需求增長，特別是AI伺服器的強勁表現。此外，公司在垂直整合及標準化上的深度投入也有助於提升產業競爭力，儘管需應對利差擴大及稅率的影響。"
+          "summary": "鴻海精密在2025年度表現受到較高稅率的影響顯現出某程度的壓力，但在2026年的成長展望上具有顯著的正面信號。管理層對於雲端與網絡業務的需求高度期待，特別是AI伺服器領域的出貨增長。此外，消費電子業務亦因新款智慧型手機的發佈而具備增長潛力。資本支出計劃的增速也表明公司未來的投資與生產計劃對應的高需求環境。"
         },
         {
           "date": "20260316",
@@ -5644,16 +5660,16 @@
           "summary": "公司預期在未來的營運中，AI 和伺服器需求將持續增長，推動公司的營收成長。這主要受到市場對 AI 算力需求的持續強勁推動，導致伺服器及雲端服務的需求大幅提升。此外，公司在印度的產能布局有助於應對美國市場對非中國製造的供應要求，提升供應鏈效率並降低成本。總體而言，隨著AI應用的深化及雲端業務的增長，公司在未來一年有望保持良好的增長態勢。"
         }
       ],
-      "recent_count": 24,
+      "recent_count": 25,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "2327",
       "stock_name": "國巨*",
-      "close": 389.0,
+      "close": 391.5,
       "max_target": 440.0,
       "max_target_date": "20260507",
       "max_target_broker": "群益證券",
@@ -5665,7 +5681,7 @@
       "latest_target_rating": "Buy",
       "latest_target_summary": "國巨積極推動產業結構改變，並受益於AI伺服器需求增長及被動元件定價力上升，其未來在鉭電容領域與外溢訂單效益下，加速營運效率及市場份額提升。2026年Q2預估營收及毛利率皆有提高，顯示出對未來成長前景的信心。",
       "median_target": 355.5,
-      "potential_return": -8.61,
+      "potential_return": -9.2,
       "entries": [
         {
           "date": "20260507",
@@ -6119,13 +6135,13 @@
       "recent_count": 32,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "2330",
       "stock_name": "台積電",
-      "close": 2290.0,
+      "close": 2235.0,
       "max_target": 3000.0,
       "max_target_date": "20260417",
       "max_target_broker": "兆豐",
@@ -6137,7 +6153,7 @@
       "latest_target_rating": "買進",
       "latest_target_summary": "",
       "median_target": 2615.0,
-      "potential_return": 14.19,
+      "potential_return": 17.0,
       "entries": [
         {
           "date": "20260417",
@@ -7231,13 +7247,13 @@
       "recent_count": 35,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "2337",
       "stock_name": "旺宏",
-      "close": 153.0,
+      "close": 159.5,
       "max_target": 300.0,
       "max_target_date": "20260427",
       "max_target_broker": "凱基證券",
@@ -7249,7 +7265,7 @@
       "latest_target_rating": "BUY",
       "latest_target_summary": "旺宏預計透過產品漲價、產能擴充與產品組合調整，改善整體財務表現。展望2026年及2027年，公司逐步提升投資於高毛利業務如NOR Flash與eMMC領域，將持續推動營運成長。",
       "median_target": 181.0,
-      "potential_return": 18.3,
+      "potential_return": 13.48,
       "entries": [
         {
           "date": "20260429",
@@ -7463,13 +7479,13 @@
       "recent_count": 14,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "2344",
       "stock_name": "華邦電",
-      "close": 107.0,
+      "close": 117.5,
       "max_target": 200.0,
       "max_target_date": "20260505",
       "max_target_broker": "凱基證券",
@@ -7480,8 +7496,8 @@
       "latest_target_broker": "群益證券",
       "latest_target_rating": "Buy",
       "latest_target_summary": "華邦電在2026年因市場需求強勁及供給限制，營收及毛利率大幅提升，其業績優於預期。同時，公司計畫加碼新技術及設備的投資以支援未來邊緣AI市場需求，顯示未來有望持續增長。",
-      "median_target": 136.0,
-      "potential_return": 27.1,
+      "median_target": 126.0,
+      "potential_return": 7.23,
       "entries": [
         {
           "date": "20260511",
@@ -8060,16 +8076,16 @@
           "summary": "本研究報告主要探討公司未來的發展策略與預期表現。公司目前預期在CUBE業務的進展上有良好的發展，並計劃在未來一年內將部分產品推向量產。此外，在記憶體市場中，公司面臨來自不同方面的競爭壓力，尤其在價格走勢上。儘管如此，隨著市場調整，公司預計會在下半年轉盈。在產業前景方面，市場的訂單需求有望在未來幾季增強，但需注意全球關稅政策及經濟形勢的變化可能對價格及需求造成影響。"
         }
       ],
-      "recent_count": 25,
+      "recent_count": 22,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "2345",
       "stock_name": "智邦",
-      "close": 2375.0,
+      "close": 2590.0,
       "max_target": 3500.0,
       "max_target_date": "20260511",
       "max_target_broker": "花旗美邦證券",
@@ -8081,7 +8097,7 @@
       "latest_target_rating": "Buy",
       "latest_target_summary": "智邦預計在2026年度將因800G交換器的需求成長和新的合作夥伴關係而持續推動業績增長。此外，AWS Trainium 3即將在未來幾個月內量產，並且採用液冷技術，這可能成為下半年新的收入和毛利率增長的來源。基於產品趨勢與企業效能的提升，該公司被視為在未來具有良好的成長潛力。",
       "median_target": 2400.0,
-      "potential_return": 1.05,
+      "potential_return": -7.34,
       "entries": [
         {
           "date": "20260511",
@@ -8527,13 +8543,13 @@
       "recent_count": 12,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "2356",
       "stock_name": "英業達",
-      "close": 49.55,
+      "close": 50.2,
       "max_target": 47.0,
       "max_target_date": "20260310",
       "max_target_broker": "凱基證券",
@@ -8545,7 +8561,7 @@
       "latest_target_rating": "中立",
       "latest_target_summary": "英業達在 AI 伺服器業務方面展現出持續成長的動能，特別是在針對 AMD 和 Google 的產品開發上。儘管 NB 業務面臨不利條件，但整體獲利仍具有一定優勢。公司對下一代產品的關注以及策略性合作的加強將為未來帶來更多可能性。",
       "median_target": 45.0,
-      "potential_return": -9.18,
+      "potential_return": -10.36,
       "entries": [
         {
           "date": "20260311",
@@ -8671,13 +8687,13 @@
       "recent_count": 3,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "2357",
       "stock_name": "華碩",
-      "close": 650.0,
+      "close": 686.0,
       "max_target": 710.0,
       "max_target_date": "20260311",
       "max_target_broker": "元大投顧",
@@ -8689,7 +8705,7 @@
       "latest_target_rating": "Buy",
       "latest_target_summary": "華碩(2357.TW)於人工智慧領域展現良好增長潛力，尤其是伺服器業務近期成長表現非凡。此新增業務單位預期未來將持續促進收入貢獻，並憑其吸引力股息收益率，獲得市場正面評價。本年伺服器業務成長預估達50-100%。",
       "median_target": 615.0,
-      "potential_return": -5.38,
+      "potential_return": -10.35,
       "entries": [
         {
           "date": "20260318",
@@ -9015,13 +9031,13 @@
       "recent_count": 11,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "2359",
       "stock_name": "所羅門",
-      "close": 119.5,
+      "close": 122.5,
       "max_target": null,
       "max_target_date": null,
       "max_target_broker": null,
@@ -9047,13 +9063,13 @@
       "recent_count": 0,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "2360",
       "stock_name": "致茂",
-      "close": 2230.0,
+      "close": 2360.0,
       "max_target": 3115.0,
       "max_target_date": "20260505",
       "max_target_broker": "群益證券",
@@ -9065,7 +9081,7 @@
       "latest_target_rating": "Buy",
       "latest_target_summary": "致茂（Chroma ATE）於2026年4月創下月營收新高，達4866百萬新台幣，同比增長129%，月比增長11%。該公司在AI伺服器供電、SLT測試、電池及光子元件領域表現出色，並預期以上創新驅動力將於未來持續推動成長。此外，公司管理層表示SLT和光子方面需求存在上行空間，並探索新商機如處理器和燒入工具。這表明致茂於未來數年具備可持續成長潛力。",
       "median_target": 1600.0,
-      "potential_return": -28.25,
+      "potential_return": -32.2,
       "entries": [
         {
           "date": "20260506",
@@ -9543,13 +9559,13 @@
       "recent_count": 32,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "2367",
       "stock_name": "燿華",
-      "close": 61.7,
+      "close": 62.6,
       "max_target": null,
       "max_target_date": null,
       "max_target_broker": null,
@@ -9599,13 +9615,13 @@
       "recent_count": 0,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "2368",
       "stock_name": "金像電",
-      "close": 1330.0,
+      "close": 1400.0,
       "max_target": 1450.0,
       "max_target_date": "20260324",
       "max_target_broker": "中國信託綜合證券",
@@ -9616,8 +9632,8 @@
       "latest_target_broker": "大和",
       "latest_target_rating": "Buy",
       "latest_target_summary": "金像電的近期表現顯示銷售增長顯著。對於未來，面臨產業供需不平衡的挑戰，但由於產品規格升級及原材料價格上漲，預期能保持良好盈利能力。",
-      "median_target": 1100.0,
-      "potential_return": -17.29,
+      "median_target": 1105.0,
+      "potential_return": -21.07,
       "entries": [
         {
           "date": "20260413",
@@ -9972,16 +9988,16 @@
           "summary": "展望未來，公司將受惠於AI伺服器和高階Switch產品需求的增長，將有助於提升其營運表現。隨著高階產品市場滲透率的增加，及美系ASIC訂單的放大，公司預計在2025年能夠取得更好的財務成果。此外，800G Switch的需求增長，也預示著公司未來機會增多。公司不斷擴展的產能與優化的產品組合，將是維持增長的重要因素。"
         }
       ],
-      "recent_count": 10,
+      "recent_count": 8,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "2376",
       "stock_name": "技嘉",
-      "close": 317.0,
+      "close": 324.5,
       "max_target": 385.0,
       "max_target_date": "20260506",
       "max_target_broker": "花旗美邦證券",
@@ -9993,7 +10009,7 @@
       "latest_target_rating": "Buy",
       "latest_target_summary": "技嘉 (2376) 預期因市場對於 AI 伺服器及新型雲端需求的推進，其營收將迎來穩定的結構性成長。考量市場訂單分配的調整及技嘉伺服器業務的拓展，其股票預估目標價被調升，並預計未來數季中的強勁需求將帶動其營運數據方面的持續改善。",
       "median_target": 330.0,
-      "potential_return": 4.1,
+      "potential_return": 1.69,
       "entries": [
         {
           "date": "20260506",
@@ -10303,13 +10319,13 @@
       "recent_count": 7,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "2377",
       "stock_name": "微星",
-      "close": 100.0,
+      "close": 107.5,
       "max_target": 100.0,
       "max_target_date": "20260325",
       "max_target_broker": "元大投顧",
@@ -10321,7 +10337,7 @@
       "latest_target_rating": "持有-超越同業",
       "latest_target_summary": "微星公司於2026年的營運面臨多方面挑戰，包括記憶體成本上漲和北美競爭壓力，加上非中國製造比重上升雖帶來低稅率優勢，但亦增加了成本。2026年其營收總額預計為2552億新台幣，同比增長11%。而其稅後純益略有成長至65.8億新台幣，導致稅後每股盈餘估值為7.79元。未來盈利表現預估仍面臨原材料價格波動、全球需求趨勢不確定性及競爭壓力影響，然而，公司策略性地藉由產品定價回應市場動態，展望仍可保持穩健。",
       "median_target": 97.5,
-      "potential_return": -2.5,
+      "potential_return": -9.3,
       "entries": [
         {
           "date": "20260325",
@@ -10447,13 +10463,13 @@
       "recent_count": 4,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "2379",
       "stock_name": "瑞昱",
-      "close": 592.0,
+      "close": 584.0,
       "max_target": 630.0,
       "max_target_date": "20260430",
       "max_target_broker": "花旗美邦證券",
@@ -10465,7 +10481,7 @@
       "latest_target_rating": "買進",
       "latest_target_summary": "瑞昱（2379 TT）將受益於網通規格升級及消費者需求增長，其2026全年營收預估年增率達13%。公司預期透過Wi-Fi、AI PC和車用乙太網市場的滲透率提升以及產品的規格升級取得穩定成長。基於近期庫存回補及提前備貨效益，公司維持審慎有序的營運策略，展望下半年其訂單能見度有限，仍需觀察供應鏈的不確定性。",
       "median_target": 590.0,
-      "potential_return": -0.34,
+      "potential_return": 1.03,
       "entries": [
         {
           "date": "20260504",
@@ -10919,13 +10935,13 @@
       "recent_count": 13,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "2382",
       "stock_name": "廣達",
-      "close": 340.5,
+      "close": 343.5,
       "max_target": 405.0,
       "max_target_date": "20260226",
       "max_target_broker": "凱基證券",
@@ -10937,7 +10953,7 @@
       "latest_target_rating": "買進",
       "latest_target_summary": "",
       "median_target": 370.0,
-      "potential_return": 8.66,
+      "potential_return": 7.71,
       "entries": [
         {
           "date": "20260417",
@@ -11303,26 +11319,34 @@
       "recent_count": 10,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "2383",
       "stock_name": "台光電",
-      "close": 4750.0,
+      "close": 4850.0,
       "max_target": 6600.0,
       "max_target_date": "20260508",
       "max_target_broker": "群益證券",
       "max_target_rating": "Buy",
       "max_target_summary": "台光電近期通過提升產能利用率和擴充產品線取得了良好的成績，顯示其持續成長的能力。隨著新技術和市場需求的推動，未來的營收增長將主要來自於市場份額的增加及產品定價的提升。",
-      "latest_target": 6600.0,
-      "latest_target_date": "20260508",
-      "latest_target_broker": "群益證券",
-      "latest_target_rating": "Buy",
-      "latest_target_summary": "台光電近期通過提升產能利用率和擴充產品線取得了良好的成績，顯示其持續成長的能力。隨著新技術和市場需求的推動，未來的營收增長將主要來自於市場份額的增加及產品定價的提升。",
-      "median_target": 3600.0,
-      "potential_return": -24.21,
+      "latest_target": 5900.0,
+      "latest_target_date": "20260512",
+      "latest_target_broker": "中國信託綜合證券",
+      "latest_target_rating": "買進",
+      "latest_target_summary": "台光電(2383)於2026年展望樂觀，主因AI與基礎設施需求強勁推動；公司持續推動產品結構優化並預期實現營收額大幅增長。",
+      "median_target": 4085.0,
+      "potential_return": -15.77,
       "entries": [
+        {
+          "date": "20260512",
+          "broker": "中國信託綜合證券",
+          "rating": "買進",
+          "target": 5900.0,
+          "close": 4900.0,
+          "summary": "台光電(2383)於2026年展望樂觀，主因AI與基礎設施需求強勁推動；公司持續推動產品結構優化並預期實現營收額大幅增長。"
+        },
         {
           "date": "20260508",
           "broker": "群益證券",
@@ -11876,16 +11900,16 @@
           "summary": "未來的成長主要由多元化的AI ASIC客戶組合所驅動，尤其在雲端服務提供商領域的增長顯著。該公司提高了2025年和2026年的盈餘預期，這是由於AI ASIC需求的強勁增長。目標價格已調升至TWD975，未來的財務表現將依賴於拓展中的產能和市場佔有率的增長。AI及雲端科技的發展被視為未來增長的關鍵動力，並將對未來的銷售和利潤產生積極的影響。"
         }
       ],
-      "recent_count": 21,
+      "recent_count": 22,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "2395",
       "stock_name": "研華",
-      "close": 476.5,
+      "close": 478.5,
       "max_target": 550.0,
       "max_target_date": "20260508",
       "max_target_broker": "元富證券投顧",
@@ -11897,7 +11921,7 @@
       "latest_target_rating": "BUY",
       "latest_target_summary": "研華為全球工業電腦龍頭，預期其Edge AI與工業自動化方案將持續成長，公司加強綠能及AI相關平台的投資，預估2026年營收達到880億新台幣，同比增長率24%，Edge AI業務預期占2026年公司營收比例達30%。",
       "median_target": 425.0,
-      "potential_return": -10.81,
+      "potential_return": -11.18,
       "entries": [
         {
           "date": "20260508",
@@ -12415,13 +12439,13 @@
       "recent_count": 30,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "2404",
       "stock_name": "漢唐",
-      "close": 1015.0,
+      "close": 1025.0,
       "max_target": 1345.0,
       "max_target_date": "20260226",
       "max_target_broker": "群益證券",
@@ -12433,7 +12457,7 @@
       "latest_target_rating": "買進",
       "latest_target_summary": "漢唐 (2404) 在2026年度預估營收和獲利將實現顯著的雙位數成長。憑藉於國內外半導體產業的積極擴產，預估全年營收為881.83億元，同比增長33.42%；稅後淨利為126.99億元，同比增長40.02%。其長期訂單能見度高達2030年，預計未來在台市場及美國半導體廠區的專案相繼完成，將帶來明顯增長動能與穩定毛利率。",
       "median_target": 1272.5,
-      "potential_return": 25.37,
+      "potential_return": 24.15,
       "entries": [
         {
           "date": "20260325",
@@ -12503,26 +12527,34 @@
       "recent_count": 4,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "2408",
       "stock_name": "南亞科",
-      "close": 274.0,
-      "max_target": 365.0,
-      "max_target_date": "20260409",
-      "max_target_broker": "凱基證券",
-      "max_target_rating": "增加持股",
-      "max_target_summary": "南亞科在2026年第1季度表現良好，受益於產品組合和客戶結構的優化，管理層預計在即將召開的法說會上分享正向市場展望。憑藉著堅實的現金儲備，公司將為技術追趕提供有力支撐。",
-      "latest_target": 305.0,
-      "latest_target_date": "20260505",
+      "close": 301.0,
+      "max_target": 407.0,
+      "max_target_date": "20260512",
+      "max_target_broker": "群益證券",
+      "max_target_rating": "Buy",
+      "max_target_summary": "從報告中可見南亞科於2026年在DRAM記憶體市場中因需求增長與產品升級而帶動營收與獲利大幅提升，特別是AI伺服器的興起及技術升級將進一步拉動其市場需求。此外，公司對綠色科技和人才培養的投入，為未來的持續發展奠定基礎。",
+      "latest_target": 407.0,
+      "latest_target_date": "20260512",
       "latest_target_broker": "群益證券",
       "latest_target_rating": "Buy",
-      "latest_target_summary": "南亞科在2026年因人工智慧伺服器需求及新技術應用推動記憶體搭載量上升，預期營收持續增長，且供應鏈合作將確保長期需求穩定。未來展望樂觀，但必須注意景氣循環可能的波動影響。",
-      "median_target": 294.0,
-      "potential_return": 7.3,
+      "latest_target_summary": "從報告中可見南亞科於2026年在DRAM記憶體市場中因需求增長與產品升級而帶動營收與獲利大幅提升，特別是AI伺服器的興起及技術升級將進一步拉動其市場需求。此外，公司對綠色科技和人才培養的投入，為未來的持續發展奠定基礎。",
+      "median_target": 298.0,
+      "potential_return": -1.0,
       "entries": [
+        {
+          "date": "20260512",
+          "broker": "群益證券",
+          "rating": "Buy",
+          "target": 407.0,
+          "close": 321.0,
+          "summary": "從報告中可見南亞科於2026年在DRAM記憶體市場中因需求增長與產品升級而帶動營收與獲利大幅提升，特別是AI伺服器的興起及技術升級將進一步拉動其市場需求。此外，公司對綠色科技和人才培養的投入，為未來的持續發展奠定基礎。"
+        },
         {
           "date": "20260505",
           "broker": "群益證券",
@@ -13101,19 +13133,19 @@
         },
         {
           "date": "20251013",
-          "broker": "摩根士丹利證券",
-          "rating": "Overweight",
-          "target": 110.0,
-          "close": 95.6,
-          "summary": "隨著主要記憶體製造商退出DDR4市場，這帶來的供應驅動上升周期有望使公司未來獲益。儘管面臨來自中國競爭對手的競爭壓力，預期供不應求的狀況將持續到2026年下半年，使公司的競爭優勢得以維持。預計未來幾季收入主要由平均售價提高所驅動，而非出貨量增加，因公司未來將延至2027年擴充產能。"
-        },
-        {
-          "date": "20251013",
           "broker": "中國信託綜合證券",
           "rating": "增加持股",
           "target": 103.0,
           "close": 95.6,
           "summary": "未來幾季，市場對於AI需求的增長可能會持續推動DRAM的需求。公司預計DDR4報價將上漲，這將有助於改善獲利能力。此外，儘管目前市場存在對舊製程DRAM的需求，新的高階產品如DDR5和HBM的製造也在擴展中，這可能影響DDR4的供應情況。總體而言，隨著AI應用的增多和新一代產品的推廣，公司對於即將到來的季度營運持正面展望。"
+        },
+        {
+          "date": "20251013",
+          "broker": "摩根士丹利證券",
+          "rating": "Overweight",
+          "target": 110.0,
+          "close": 95.6,
+          "summary": "隨著主要記憶體製造商退出DDR4市場，這帶來的供應驅動上升周期有望使公司未來獲益。儘管面臨來自中國競爭對手的競爭壓力，預期供不應求的狀況將持續到2026年下半年，使公司的競爭優勢得以維持。預計未來幾季收入主要由平均售價提高所驅動，而非出貨量增加，因公司未來將延至2027年擴充產能。"
         },
         {
           "date": "20251003",
@@ -13316,29 +13348,37 @@
           "summary": "南亞科技在2025年的經營前景中，預期記憶體產品需求將會回升，尤其受益於DDR5和人工智慧應用的興起。公司將於2025年提升出貨增長目標，並預計在下半年受惠於DDR4報價上漲。此外，儘管第一季的低毛利受製程轉換和ASP下降影響，公司自第二季起預期營運狀況將逐步改善。整體而言，未來營運前景具正面成長潛力。"
         }
       ],
-      "recent_count": 18,
+      "recent_count": 19,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "2421",
       "stock_name": "建準",
-      "close": 149.0,
+      "close": 151.0,
       "max_target": 200.0,
       "max_target_date": "20260508",
       "max_target_broker": "大和",
       "max_target_rating": "Buy",
       "max_target_summary": "建準電機的2026財務展望顯示，其伺服器與通訊產品需求保持穩健，且其逐漸採用液冷技術的轉型計畫為公司帶來增長潛力。淨利潤的穩定上升加上良好的毛利率提升展現了公司在內部成本控制上的成效。",
       "latest_target": 180.0,
-      "latest_target_date": "20260511",
-      "latest_target_broker": "國票",
-      "latest_target_rating": "買進",
-      "latest_target_summary": "建準公司於 2026 年第二季度的業務展望樂觀，受惠於伺服器及高階筆記型電腦的需求增長，加上新的產品線如水冷模組與大型 EC 扇的推廣，已對公司的逐步成長注入動能。",
+      "latest_target_date": "20260512",
+      "latest_target_broker": "元富證券投顧",
+      "latest_target_rating": "BUY",
+      "latest_target_summary": "建準 (2421) 因伺服器需求增強及產品規格升級，於產業市場中具有成長空間，計劃持續擴大其技術與產品應用範圍以提升整體表現追求利益最大化。",
       "median_target": 182.0,
-      "potential_return": 22.15,
+      "potential_return": 20.53,
       "entries": [
+        {
+          "date": "20260512",
+          "broker": "元富證券投顧",
+          "rating": "BUY",
+          "target": 180.0,
+          "close": 149.0,
+          "summary": "建準 (2421) 因伺服器需求增強及產品規格升級，於產業市場中具有成長空間，計劃持續擴大其技術與產品應用範圍以提升整體表現追求利益最大化。"
+        },
         {
           "date": "20260511",
           "broker": "國票",
@@ -13373,19 +13413,19 @@
         },
         {
           "date": "20251107",
-          "broker": "康和證券",
-          "rating": "買進",
-          "target": 195.0,
-          "close": 168.5,
-          "summary": "未來展望樂觀，公司將專注於高階風扇及液冷技術的推進。由於GPU平台的占比提升及產品升級策略，預期伺服器散熱業務將保持成長動能。此外，公司積極開發液冷產品線，計畫在2026年達成營收增長。另外，車用業務在ADAS及新能源車等驅動下也保持長線增長潛力。此一綜合布局策略預示著穩健的成長前景。"
-        },
-        {
-          "date": "20251107",
           "broker": "國票",
           "rating": "區間操作",
           "target": 180.0,
           "close": 168.5,
           "summary": "建準於第三季2025年達成營收及盈利雙增長，主要受到電信與伺服器、工業產品的銷售推動。展望未來，公司將持續從AI伺服器中獲得支持，以保持財務穩定性和增長。即使在其他產品進入淡季，公司仍有望在第四季繼續保持營收增長及提升毛利率。菲律賓的擴產計畫預期將於2027年投產，將顯著提升其全球供應能力，並可能為公司帶來更大的市場份額。"
+        },
+        {
+          "date": "20251107",
+          "broker": "康和證券",
+          "rating": "買進",
+          "target": 195.0,
+          "close": 168.5,
+          "summary": "未來展望樂觀，公司將專注於高階風扇及液冷技術的推進。由於GPU平台的占比提升及產品升級策略，預期伺服器散熱業務將保持成長動能。此外，公司積極開發液冷產品線，計畫在2026年達成營收增長。另外，車用業務在ADAS及新能源車等驅動下也保持長線增長潛力。此一綜合布局策略預示著穩健的成長前景。"
         },
         {
           "date": "20251106",
@@ -13476,16 +13516,16 @@
           "summary": "在未來的展望中，許多因素促使公司預計在2025年達到收入和盈利的增長。特別是AI伺服器和車用風扇的需求增長將引領成長。此外，產品組合的優化和液冷新項目的研究開發也將推動盈利率的持續提升。儘管匯率變動和全球經濟不確定性會對業績造成一定影響，但總體來看，公司的營收和盈利能力預計將保持穩定增長。"
         }
       ],
-      "recent_count": 4,
+      "recent_count": 5,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "2439",
       "stock_name": "美律",
-      "close": 86.2,
+      "close": 86.4,
       "max_target": 130.0,
       "max_target_date": "20260303",
       "max_target_broker": "群益證券",
@@ -13497,7 +13537,7 @@
       "latest_target_rating": "中立轉買進",
       "latest_target_summary": "美律（2439）的營運前景策略主要依賴於耳機與揚聲器兩類主力產品的需求。隨著2026年的伽晶技術及市場需求提升，公司計劃優化其供應鏈並擴展市場，以實現全年營收同比增長10%的目標。",
       "median_target": 102.0,
-      "potential_return": 18.33,
+      "potential_return": 18.06,
       "entries": [
         {
           "date": "20260504",
@@ -13703,26 +13743,42 @@
       "recent_count": 7,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "2449",
       "stock_name": "京元電子",
-      "close": 311.0,
+      "close": 299.5,
       "max_target": 435.0,
       "max_target_date": "20260508",
       "max_target_broker": "高盛證券",
       "max_target_rating": "Buy",
       "max_target_summary": "京元電子於2026財年第一季表現優異，受益於人工智慧 ASIC 與 GPU 測試需求的增長。管理層預測未來幾季業績將持續提升，並透過擴展領先節點測試以增強毛利率。預估2027年的成長將由分散的客戶基礎與高度測試需求推動。",
-      "latest_target": 370.0,
-      "latest_target_date": "20260511",
-      "latest_target_broker": "元大投顧",
+      "latest_target": 380.0,
+      "latest_target_date": "20260512",
+      "latest_target_broker": "中國信託綜合證券",
       "latest_target_rating": "買進",
-      "latest_target_summary": "京元電子於2026年第1季展現穩健的營運基礎，儘管費用增加導致獲利略低於市場預期，但通訊晶片表現超越預期。第2季預料因Rubin GPU開始出貨及通訊類晶片的成長，營收和獲利均將顯著提升。此外，公司在AI晶片及ASIC領域的深入布局，預期將持續提升其在先進製程測試業務的市場占比，未來成長可期。",
-      "median_target": 367.0,
-      "potential_return": 18.01,
+      "latest_target_summary": "京元電子未來的發展聚焦於AI與高階晶片測試相關的技術提升以及新產能佈建。透過新廠房的啟用及先進測試設備的配置，預計將顯著提振公司營收。而伴隨未來市場需求增長，資本支出的增加將進一步支持其戰略目標。",
+      "median_target": 369.0,
+      "potential_return": 23.21,
       "entries": [
+        {
+          "date": "20260512",
+          "broker": "中國信託綜合證券",
+          "rating": "買進",
+          "target": 380.0,
+          "close": 301.0,
+          "summary": "京元電子未來的發展聚焦於AI與高階晶片測試相關的技術提升以及新產能佈建。透過新廠房的啟用及先進測試設備的配置，預計將顯著提振公司營收。而伴隨未來市場需求增長，資本支出的增加將進一步支持其戰略目標。"
+        },
+        {
+          "date": "20260511",
+          "broker": "富邦證券",
+          "rating": "買進",
+          "target": 400.0,
+          "close": 299.5,
+          "summary": "京元電子於2026年因AI/HPC需求增長，營收及毛利率表現提升，未來數年將持續受惠於相關需求推升，其營運計劃及資本支出焦點落於擴增無塵室及測試設備以滿足高需求客戶。此外，公司維持正向的財務預測，且未來幾季的收入持續向上，特別在AI部門的持續支撐下將表現穩健。"
+        },
         {
           "date": "20260511",
           "broker": "元大投顧",
@@ -13738,22 +13794,6 @@
           "target": 369.0,
           "close": 299.5,
           "summary": "京元電子於IC測試領域持續展現成長潛力，透過資本支出擴張產能以迎合新客戶需求，並在AI GPU產品測試需求及相關技術整合方面取得優勢。考量整體業務在2027年快速成長的可能，該公司未來的營運仍具值得期待的空間。"
-        },
-        {
-          "date": "20260511",
-          "broker": "富邦證券",
-          "rating": "買進",
-          "target": 400.0,
-          "close": 299.5,
-          "summary": "京元電子於2026年因AI/HPC需求增長，營收及毛利率表現提升，未來數年將持續受惠於相關需求推升，其營運計劃及資本支出焦點落於擴增無塵室及測試設備以滿足高需求客戶。此外，公司維持正向的財務預測，且未來幾季的收入持續向上，特別在AI部門的持續支撐下將表現穩健。"
-        },
-        {
-          "date": "20260508",
-          "broker": "摩根士丹利證券",
-          "rating": "Overweight",
-          "target": 338.0,
-          "close": 311.0,
-          "summary": "京元電子2026年全年收入目標維持不變，管理層預期下半年將有更強的收入增長動力，預期年度收入增長將超過40%，主要由Google需求強勁和新型處理器系列的量產推動。"
         },
         {
           "date": "20260508",
@@ -13786,6 +13826,14 @@
           "target": 360.0,
           "close": 311.0,
           "summary": "京元電子預期將自第三季開始加速下一代XPU生產，並於第四季達到更高的生產量，其ASIC及CPU需求強勁有望持續推進並多樣化客戶群。另外AI需求的快速增長為其長期成長提供支撐，但消費電子需求疲弱可能影響整體表現。"
+        },
+        {
+          "date": "20260508",
+          "broker": "摩根士丹利證券",
+          "rating": "Overweight",
+          "target": 338.0,
+          "close": 311.0,
+          "summary": "京元電子2026年全年收入目標維持不變，管理層預期下半年將有更強的收入增長動力，預期年度收入增長將超過40%，主要由Google需求強勁和新型處理器系列的量產推動。"
         },
         {
           "date": "20260505",
@@ -14156,16 +14204,16 @@
           "summary": "2025年，隨著人工智慧（AI）和遊戲圖形處理單元（GPU）的需求興盛，公司的測試業務將迎來增長。測試?格的提升和時間的增加，預計將使公司的產能利用率逐季提升，下半年更可望達到70%。這些趨勢將主要由GPU的大客戶推動，而過去的手機大客戶也預計將成長10至15%。公司將因應AI、HPC、AP等高端芯片的測試需求持續增加產能，包括短期租賃廠房以及規劃興建新廠。總體來看，2025年的營收預計將大幅增長。"
         }
       ],
-      "recent_count": 20,
+      "recent_count": 21,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "2454",
       "stock_name": "聯發科",
-      "close": 3630.0,
+      "close": 3880.0,
       "max_target": 4300.0,
       "max_target_date": "20260504",
       "max_target_broker": "統一證券",
@@ -14177,7 +14225,7 @@
       "latest_target_rating": "Buy",
       "latest_target_summary": "聯發科於2026年保持穩定的財務表現並持續加強研發投入，特別聚焦於AI ASIC等新興技術，預期將為其營收和獲利帶來正面影響。儘管手機晶片需求逐漸減弱，聯發科對其他產品線的多樣化策略及市場份額擴大提供了穩固之基。2027年預計因AI ASIC技術的產能提升和市場佔有率擴增而帶來更顯著的成長。",
       "median_target": 3110.0,
-      "potential_return": -14.33,
+      "potential_return": -19.85,
       "entries": [
         {
           "date": "20260505",
@@ -15151,13 +15199,13 @@
       "recent_count": 24,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "2467",
       "stock_name": "志聖",
-      "close": 537.0,
+      "close": 590.0,
       "max_target": 650.0,
       "max_target_date": "20260429",
       "max_target_broker": "中國信託綜合證券",
@@ -15169,7 +15217,7 @@
       "latest_target_rating": "買進",
       "latest_target_summary": "志聖公司在2026-2027年的營運中預計維持中高雙位數成長，主因來自於其半導體與PCB設備業務的成長動能。公司對高毛利業務的聚焦以及產能的擴大將進一步提升毛利率。此外，半導體客戶在設備需求的推動下，公司的營收前景表現亮眼。",
       "median_target": 467.5,
-      "potential_return": -12.94,
+      "potential_return": -20.76,
       "entries": [
         {
           "date": "20260429",
@@ -15335,26 +15383,34 @@
       "recent_count": 8,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "2472",
       "stock_name": "立隆電",
-      "close": 221.5,
-      "max_target": 146.0,
-      "max_target_date": "20260326",
-      "max_target_broker": "兆豐",
-      "max_target_rating": "逢低買進",
-      "max_target_summary": "立隆電於 AI 應用和車用電子領域表現顯著，切入NVIDIA新平台並取得松下核心專利。2026年營收與毛利穩定成長，投資前景樂觀。",
-      "latest_target": 146.0,
-      "latest_target_date": "20260326",
-      "latest_target_broker": "兆豐",
-      "latest_target_rating": "逢低買進",
-      "latest_target_summary": "立隆電於 AI 應用和車用電子領域表現顯著，切入NVIDIA新平台並取得松下核心專利。2026年營收與毛利穩定成長，投資前景樂觀。",
-      "median_target": 146.0,
-      "potential_return": -34.09,
+      "close": 225.0,
+      "max_target": 286.0,
+      "max_target_date": "20260512",
+      "max_target_broker": "國票",
+      "max_target_rating": "買進",
+      "max_target_summary": "立隆電於未來展望顯露出於車用電子與AI伺服器市場中具增長可能性，著力於創新及提高毛利率產品的製作，同時拓展產能以應對不斷膨脹的市場需求。發展電動車以及AI相關應用促進產品升級和技術進步，此舉可能推動其營運表現至新高峰。",
+      "latest_target": 286.0,
+      "latest_target_date": "20260512",
+      "latest_target_broker": "國票",
+      "latest_target_rating": "買進",
+      "latest_target_summary": "立隆電於未來展望顯露出於車用電子與AI伺服器市場中具增長可能性，著力於創新及提高毛利率產品的製作，同時拓展產能以應對不斷膨脹的市場需求。發展電動車以及AI相關應用促進產品升級和技術進步，此舉可能推動其營運表現至新高峰。",
+      "median_target": 216.0,
+      "potential_return": -4.0,
       "entries": [
+        {
+          "date": "20260512",
+          "broker": "國票",
+          "rating": "買進",
+          "target": 286.0,
+          "close": 223.0,
+          "summary": "立隆電於未來展望顯露出於車用電子與AI伺服器市場中具增長可能性，著力於創新及提高毛利率產品的製作，同時拓展產能以應對不斷膨脹的市場需求。發展電動車以及AI相關應用促進產品升級和技術進步，此舉可能推動其營運表現至新高峰。"
+        },
         {
           "date": "20260326",
           "broker": "兆豐",
@@ -15372,16 +15428,16 @@
           "summary": ""
         }
       ],
-      "recent_count": 1,
+      "recent_count": 2,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "2481",
       "stock_name": "強茂",
-      "close": 99.5,
+      "close": 109.0,
       "max_target": 131.0,
       "max_target_date": "20260417",
       "max_target_broker": "元富證券投顧",
@@ -15393,7 +15449,7 @@
       "latest_target_rating": "維持買進",
       "latest_target_summary": "",
       "median_target": 130.0,
-      "potential_return": 30.65,
+      "potential_return": 19.27,
       "entries": [
         {
           "date": "20260417",
@@ -15495,13 +15551,13 @@
       "recent_count": 3,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "2634",
       "stock_name": "漢翔",
-      "close": 50.1,
+      "close": 47.2,
       "max_target": 64.0,
       "max_target_date": "20260304",
       "max_target_broker": "富邦證券",
@@ -15513,7 +15569,7 @@
       "latest_target_rating": "買進",
       "latest_target_summary": "",
       "median_target": 61.5,
-      "potential_return": 22.75,
+      "potential_return": 30.3,
       "entries": [
         {
           "date": "20260421",
@@ -15767,13 +15823,13 @@
       "recent_count": 6,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "3008",
       "stock_name": "大立光",
-      "close": 2570.0,
+      "close": 2545.0,
       "max_target": 3545.0,
       "max_target_date": "20260417",
       "max_target_broker": "永豐金",
@@ -15785,7 +15841,7 @@
       "latest_target_rating": "Equal-weight",
       "latest_target_summary": "大立光近期財務數據顯示，其年度營收較去年有所提升，而月對月成長則略有下降，可能受到季節性因素影響，對未來需求的預期可能由Android手機出貨不順所影響。公司估值相對穩定，但依估算2026年的調整後每股盈餘的市盈率呈現一定區間的波動，符合市場歷史水平。",
       "median_target": 3060.0,
-      "potential_return": 19.07,
+      "potential_return": 20.24,
       "entries": [
         {
           "date": "20260505",
@@ -16391,13 +16447,13 @@
       "recent_count": 18,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "3013",
       "stock_name": "晟銘電",
-      "close": 107.0,
+      "close": 112.0,
       "max_target": null,
       "max_target_date": null,
       "max_target_broker": null,
@@ -16487,13 +16543,13 @@
       "recent_count": 0,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "3017",
       "stock_name": "奇鋐",
-      "close": 2445.0,
+      "close": 2555.0,
       "max_target": 3780.0,
       "max_target_date": "20260428",
       "max_target_broker": "凱基證券",
@@ -16505,7 +16561,7 @@
       "latest_target_rating": "買進",
       "latest_target_summary": "奇鋐公司在散熱解決方案的市場中處於領先地位，近期隨伺服器冷卻技術的演進和客戶需求的改變，預計未來數年將會有穩定的增長。雖然短期內受到拉貨動能放緩的影響，但由於公司擁有全面的解決方案及大的產能規模，未來營收及獲利仍有望持續成長。",
       "median_target": 2690.0,
-      "potential_return": 10.02,
+      "potential_return": 5.28,
       "entries": [
         {
           "date": "20260507",
@@ -17359,13 +17415,13 @@
       "recent_count": 32,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "3030",
       "stock_name": "德律",
-      "close": 389.5,
+      "close": 397.0,
       "max_target": null,
       "max_target_date": null,
       "max_target_broker": null,
@@ -17399,13 +17455,13 @@
       "recent_count": 0,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "3034",
       "stock_name": "聯詠",
-      "close": 498.0,
+      "close": 496.5,
       "max_target": 610.0,
       "max_target_date": "20260508",
       "max_target_broker": "永豐金",
@@ -17417,7 +17473,7 @@
       "latest_target_rating": "區間操作",
       "latest_target_summary": "聯詠於2026第二季度展望中，受益於記憶體價格上漲及供應緊缺，產品需求增加，其中部分產品因成本上漲而進行價格調整，預期營收及獲利呈現成長態勢。",
       "median_target": 518.0,
-      "potential_return": 4.02,
+      "potential_return": 4.33,
       "entries": [
         {
           "date": "20260511",
@@ -17863,13 +17919,13 @@
       "recent_count": 11,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "3035",
       "stock_name": "智原",
-      "close": 178.0,
+      "close": 195.5,
       "max_target": 210.0,
       "max_target_date": "20260429",
       "max_target_broker": "國泰",
@@ -17881,7 +17937,7 @@
       "latest_target_rating": "中立",
       "latest_target_summary": "智原的2026年表現受限於先進封裝應用的延後貢獻以及AI晶片產能的排擠影響，導致全年營收和獲利的預估下降。然而，公司在先進製程和封裝領域的佈局展現長期增長潛力，並期待未來季度的營運恢復能力。",
       "median_target": 185.0,
-      "potential_return": 3.93,
+      "potential_return": -5.37,
       "entries": [
         {
           "date": "20260430",
@@ -18212,16 +18268,16 @@
           "summary": "本報告預估公司2025年的營收將超過200億元，年增超過80%，且毛利率將高於30%。未來發展主要是由於先進封裝的量產與HBM2E備料的關鍵作用推動。雖然年間營益率可能因主流產品衰退而下滑，但公司預期全年展望仍穩定，並朝健康產品組合的目標成長。預計第二季營收將因先進封裝營收下滑而季減30%，不過隨後毛利率將回升至27~30%，並計畫逐步開拓中國以外的市場，特別是歐洲地區以擴大客戶基礎。"
         }
       ],
-      "recent_count": 21,
+      "recent_count": 19,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "3036",
       "stock_name": "文曄",
-      "close": 240.5,
+      "close": 264.5,
       "max_target": 350.0,
       "max_target_date": "20260507",
       "max_target_broker": "花旗美邦證券",
@@ -18233,7 +18289,7 @@
       "latest_target_rating": "買進",
       "latest_target_summary": "文曄將受惠於AI資料中心及伺服器需求迅速增長，預計其業績將持續提高，目標設定價格顯示未來有望增值空間。",
       "median_target": 272.5,
-      "potential_return": 13.31,
+      "potential_return": 3.02,
       "entries": [
         {
           "date": "20260511",
@@ -18551,13 +18607,13 @@
       "recent_count": 24,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "3037",
       "stock_name": "欣興",
-      "close": 818.0,
+      "close": 861.0,
       "max_target": 1350.0,
       "max_target_date": "20260428",
       "max_target_broker": "野村證券",
@@ -18569,7 +18625,7 @@
       "latest_target_rating": "買進",
       "latest_target_summary": "欣興電子(3037)在2026年的營運計畫專注於高階ABF載板的產能擴增。該公司目前計畫增加資本支出並簽訂多項長期供貨合約，以確保高效能運算及AI需求的穩定供應。",
       "median_target": 597.5,
-      "potential_return": -26.96,
+      "potential_return": -30.6,
       "entries": [
         {
           "date": "20260429",
@@ -19255,7 +19311,7 @@
       "recent_count": 36,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
@@ -19287,13 +19343,13 @@
       "recent_count": 0,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "3081",
       "stock_name": "聯亞",
-      "close": 2780.0,
+      "close": 3055.0,
       "max_target": 4738.0,
       "max_target_date": "20260423",
       "max_target_broker": "高盛證券",
@@ -19305,7 +19361,7 @@
       "latest_target_rating": "Buy",
       "latest_target_summary": "聯亞光電於全球AI基礎建設需求增長的背景下，持續擴展其產品與市場。未來的主力包括該公司於CW Laser和CW Epi的出貨成長，並伴隨著矽光子技術模組的需求擴張。預期於2026年，會持續帶動營收及EPS倍增成長，受益於新增的北美客戶以及與住友電工簽訂的供應合約。",
       "median_target": 3082.5,
-      "potential_return": 10.88,
+      "potential_return": 0.9,
       "entries": [
         {
           "date": "20260506",
@@ -19831,13 +19887,13 @@
       "recent_count": 20,
       "market": "上櫃",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "3131",
       "stock_name": "弘塑",
-      "close": 3090.0,
+      "close": 3140.0,
       "max_target": 4066.0,
       "max_target_date": "20260424",
       "max_target_broker": "永豐金",
@@ -19849,7 +19905,7 @@
       "latest_target_rating": "買進",
       "latest_target_summary": "弘塑（GPTC）預期在先進封裝技術需求的帶動下，收入將持續增長，其中CoWoS技術及新增產能貢獻營收尤其顯著。此外，設備自製率上升與產品組合最優化，將推動2027年毛利率達46.1%，並預估每股盈餘達NT$110，展望樂觀。",
       "median_target": 3200.0,
-      "potential_return": 3.56,
+      "potential_return": 1.91,
       "entries": [
         {
           "date": "20260505",
@@ -20143,13 +20199,13 @@
       "recent_count": 15,
       "market": "上櫃",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "3163",
       "stock_name": "波若威",
-      "close": 1040.0,
+      "close": 1065.0,
       "max_target": 1000.0,
       "max_target_date": "20260311",
       "max_target_broker": "康和證券",
@@ -20161,7 +20217,7 @@
       "latest_target_rating": "買進",
       "latest_target_summary": "波若威(3163)在光纖相關產品領域展現出色的研發能力並找準AI資料中心的市場機會。公司今年透過三大產品線（光纖套件、光纖配線盒及光纖跳接線），逐步增強在光收發模組市場的地位。預期2026年起波若威的相關技術將全面量產，並在後續因新型交換機的架構升級帶動需求持續提升。",
       "median_target": 957.5,
-      "potential_return": -7.93,
+      "potential_return": -10.09,
       "entries": [
         {
           "date": "20260311",
@@ -20207,26 +20263,34 @@
       "recent_count": 2,
       "market": "上櫃",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "3189",
       "stock_name": "景碩",
-      "close": 458.0,
+      "close": 503.0,
       "max_target": 650.0,
       "max_target_date": "20260424",
       "max_target_broker": "凱基證券",
       "max_target_rating": "增加持股",
       "max_target_summary": "景碩在ABF載板需求及漲價效應的帶動下，於2026年處於上升循環週期。公司透過擴產計畫及私募引進策略性客戶，預期未來幾季的營收及利益將有穩定成長。",
-      "latest_target": 335.0,
-      "latest_target_date": "20260511",
-      "latest_target_broker": "麥格理證券",
-      "latest_target_rating": "Underperform",
-      "latest_target_summary": "景碩 (3189) 預期未來產能將於 2026 至 2029 年間顯著擴展，並預計利潤將受到更佳邊際率和市場份額提升的支撐。不過，公司面臨一些短期挑戰，例如原料價格壓力和股本稀釋風險，可能限制潛在增長。",
-      "median_target": 420.0,
-      "potential_return": -8.3,
+      "latest_target": 620.0,
+      "latest_target_date": "20260512",
+      "latest_target_broker": "富邦證券",
+      "latest_target_rating": "買進",
+      "latest_target_summary": "景碩公司預計在2027年的主要成長動能將來自於為nVidia提供的CPU載板產品，本次還修正了未來幾年的財測。",
+      "median_target": 435.0,
+      "potential_return": -13.52,
       "entries": [
+        {
+          "date": "20260512",
+          "broker": "富邦證券",
+          "rating": "買進",
+          "target": 620.0,
+          "close": 494.0,
+          "summary": "景碩公司預計在2027年的主要成長動能將來自於為nVidia提供的CPU載板產品，本次還修正了未來幾年的財測。"
+        },
         {
           "date": "20260511",
           "broker": "麥格理證券",
@@ -20492,16 +20556,16 @@
           "summary": "景碩面對料源上漲的壓力，其次是消費性產品高比重使未來具不確定性，因此評等降至「區間操作」。在2025年，ABF載板的成長預期將居於首位，接下來是隱形眼鏡及BT載板。然而，蘋果手機的新機規格升級略微，可能不大刺激銷售，而隱形眼鏡部分則預期成長平穩。由於原材料價格上升帶來的逆風，其與客戶季度漲價基本互相抵銷，對毛利幫助有限，因此毛利率面臨壓力。在蘇州子的計畫未達成協議而取消，對短期股價造成壓力，整體前景仍有不確定性。"
         }
       ],
-      "recent_count": 9,
+      "recent_count": 10,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "3211",
       "stock_name": "順達",
-      "close": 403.0,
+      "close": 402.0,
       "max_target": 550.0,
       "max_target_date": "20260505",
       "max_target_broker": "富邦證券",
@@ -20513,7 +20577,7 @@
       "latest_target_rating": "買進",
       "latest_target_summary": "順達在未來幾年內預期會有顯著的業績增長，主要是受到非IT相關業務(BBU)持續擴展所驅動，並且毛利率和營益率預計有穩定的提升。BBU需求的大幅提升以及產品的瓦數升級也會促進平均售價增長，進一步推動整體的獲利能力。",
       "median_target": 392.5,
-      "potential_return": -2.61,
+      "potential_return": -2.36,
       "entries": [
         {
           "date": "20260505",
@@ -20663,26 +20727,42 @@
       "recent_count": 8,
       "market": "上櫃",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "3217",
       "stock_name": "優群",
-      "close": 178.0,
-      "max_target": 200.0,
-      "max_target_date": "20260313",
+      "close": 182.5,
+      "max_target": 240.0,
+      "max_target_date": "20260512",
       "max_target_broker": "元富證券投顧",
-      "max_target_rating": "BUY",
-      "max_target_summary": "優群在2026年的展望主要集中於營收成長及穩健分紅策略。公司預估2026年營收將有10%到15%的成長空間，搭配現金股利政策提供投資者良好的回報。由於原材料價格上漲，公司毛利率預期微幅下降而達到49.8%，但整體殖利率仍預估可達6.3%，並提供穩定的財務安全性。長期來看，公司持續拓展技術及產品種類，如高階CAMM及CABB模組化技術以及新型Long-DIMM及M.2規格，反映出其積極創新及進一步擴展市場的策略。",
-      "latest_target": 200.0,
-      "latest_target_date": "20260313",
+      "max_target_rating": "維持買進",
+      "max_target_summary": "優群(3217)作為連接器專業製造商，面臨市場趨勢及技術變革機會。未來展望顯示其2026年CAMM/CABB營收占比增至5%，技術進步與產品布局提升需求，尤其是Type-C及微型沖壓件等雙位數增長的展望將成為動力。其技術探索與客戶分布利於長期成長。",
+      "latest_target": 240.0,
+      "latest_target_date": "20260512",
       "latest_target_broker": "元富證券投顧",
-      "latest_target_rating": "BUY",
-      "latest_target_summary": "優群在2026年的展望主要集中於營收成長及穩健分紅策略。公司預估2026年營收將有10%到15%的成長空間，搭配現金股利政策提供投資者良好的回報。由於原材料價格上漲，公司毛利率預期微幅下降而達到49.8%，但整體殖利率仍預估可達6.3%，並提供穩定的財務安全性。長期來看，公司持續拓展技術及產品種類，如高階CAMM及CABB模組化技術以及新型Long-DIMM及M.2規格，反映出其積極創新及進一步擴展市場的策略。",
-      "median_target": 197.5,
-      "potential_return": 10.96,
+      "latest_target_rating": "維持買進",
+      "latest_target_summary": "優群(3217)作為連接器專業製造商，面臨市場趨勢及技術變革機會。未來展望顯示其2026年CAMM/CABB營收占比增至5%，技術進步與產品布局提升需求，尤其是Type-C及微型沖壓件等雙位數增長的展望將成為動力。其技術探索與客戶分布利於長期成長。",
+      "median_target": 200.0,
+      "potential_return": 9.59,
       "entries": [
+        {
+          "date": "20260512",
+          "broker": "元富證券投顧",
+          "rating": "維持買進",
+          "target": 240.0,
+          "close": 182.5,
+          "summary": "優群(3217)作為連接器專業製造商，面臨市場趨勢及技術變革機會。未來展望顯示其2026年CAMM/CABB營收占比增至5%，技術進步與產品布局提升需求，尤其是Type-C及微型沖壓件等雙位數增長的展望將成為動力。其技術探索與客戶分布利於長期成長。"
+        },
+        {
+          "date": "20260512",
+          "broker": "永豐金",
+          "rating": "買進",
+          "target": 213.0,
+          "close": 182.5,
+          "summary": "優群短期毛利率已過低點，隨著部分低毛利產品價格上漲、限制高毛利產品回扣及ASP提升，其毛利率略優於預期。未來營收增長動能主要來自Memory Bar、CAMM系列及Long DIMM產品，也可期待DDR6等新品帶來長期成長潛力。投資建議為逢低佈局，預估2026年EPS達14.2元，目標價213元。"
+        },
         {
           "date": "20260313",
           "broker": "元富證券投顧",
@@ -20765,14 +20845,6 @@
         },
         {
           "date": "20250812",
-          "broker": "永豐金",
-          "rating": "買進",
-          "target": 209.0,
-          "close": 184.5,
-          "summary": "未來公司預期在產品規格升級及新客戶訂單量產的動力下，營運動能將持續強勁。雖然原物料價格上漲與匯率變動對毛利率造成壓力，但透過加強產品組合與提升單一產品售價來優化利潤，公司仍能維持穩健的財力表現。隨著產品規格轉換及新訂單的成長潛力，公司在高毛利產品如Metal Bar的推動下，整體收益預計可維持在較高水平。"
-        },
-        {
-          "date": "20250812",
           "broker": "華南永昌",
           "rating": "區間持有",
           "target": 179.5,
@@ -20786,6 +20858,14 @@
           "target": 225.0,
           "close": 184.5,
           "summary": "優群在2025年下半年持續維持營收雙位數的年成長率，預期毛利率能保持在50%以上。雖然受到台幣升值的影響，但營運狀況穩定。DDR5的滲透率持續上升到年底可能達到80%，並推出新產品，引入新客戶，預期將帶來持續的成長。未來幾年，隨著新技術如DDR6的推出，公司將進一步提升市場地位與競爭力。"
+        },
+        {
+          "date": "20250812",
+          "broker": "永豐金",
+          "rating": "買進",
+          "target": 209.0,
+          "close": 184.5,
+          "summary": "未來公司預期在產品規格升級及新客戶訂單量產的動力下，營運動能將持續強勁。雖然原物料價格上漲與匯率變動對毛利率造成壓力，但透過加強產品組合與提升單一產品售價來優化利潤，公司仍能維持穩健的財力表現。隨著產品規格轉換及新訂單的成長潛力，公司在高毛利產品如Metal Bar的推動下，整體收益預計可維持在較高水平。"
         },
         {
           "date": "20250812",
@@ -20812,29 +20892,37 @@
           "summary": "優群預期在未來的營運將繼續創下歷史新高，主要源於DDR5滲透率提升及新產品CAMM 2的發展驅動。目前優群已計劃在越南擴產，以支持未來的增長需求，表明其資本適應力強大。隨著新客戶的切入及產品規格的升級，預估短期內將實現營運高峰。"
         }
       ],
-      "recent_count": 4,
+      "recent_count": 6,
       "market": "上櫃",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "3231",
       "stock_name": "緯創",
-      "close": 146.5,
+      "close": 139.0,
       "max_target": 245.0,
       "max_target_date": "20260313",
       "max_target_broker": "麥格理證券",
       "max_target_rating": "Outperform",
       "max_target_summary": "緯創於近日召開法說會，並預期未來在AI伺服器市場中有強勁的發展機會。憑藉技術優勢與策略部署，公司致力於提升長期毛利率，尤其在AI伺服器相關產品線整合與優化方面。隨著市場需求推動，公司正進一步建構相關產能，以抓住市場機會。",
-      "latest_target": 203.0,
+      "latest_target": 220.0,
       "latest_target_date": "20260511",
-      "latest_target_broker": "富邦證券",
-      "latest_target_rating": "買進",
-      "latest_target_summary": "緯創電子展望未來幾年的營運成長及市場表現表現受到關注。公司積極拓展AI伺服器及CPO相關產品業務，預期將支撐未來數年間的業務增長。FY26及FY27年度的收益及EPS都有望呈現增長，搭配對毛利率穩定的應對策略，緯創有望持續具備競爭力。整體營運受多重行業需求驅動有望維持上升態勢。",
-      "median_target": 201.5,
-      "potential_return": 37.54,
+      "latest_target_broker": "大和",
+      "latest_target_rating": "Buy",
+      "latest_target_summary": "緯創的2026年第一季表現顯著好於預期，主要歸因於NVL72伺服器的強勢出貨與關鍵業務WiWynn的增長推動。同時，儘管GPU伺服器的毛利率低於平均，未來幾年緯創仍被預測市場需求旺盛，特別是在AI伺服器市場的佔有率上有很大的提升空間。該公司亦提升了2026至2027年的EPS預測，顯現營運信心與長期成長動能。",
+      "median_target": 203.0,
+      "potential_return": 46.04,
       "entries": [
+        {
+          "date": "20260511",
+          "broker": "大和",
+          "rating": "Buy",
+          "target": 220.0,
+          "close": 139.0,
+          "summary": "緯創的2026年第一季表現顯著好於預期，主要歸因於NVL72伺服器的強勢出貨與關鍵業務WiWynn的增長推動。同時，儘管GPU伺服器的毛利率低於平均，未來幾年緯創仍被預測市場需求旺盛，特別是在AI伺服器市場的佔有率上有很大的提升空間。該公司亦提升了2026至2027年的EPS預測，顯現營運信心與長期成長動能。"
+        },
         {
           "date": "20260511",
           "broker": "富邦證券",
@@ -20845,19 +20933,19 @@
         },
         {
           "date": "20260508",
-          "broker": "摩根士丹利證券",
-          "rating": "Overweight",
-          "target": 210.0,
-          "close": 146.5,
-          "summary": "緯創（Wistron，代號3231）預期未來營運將受益於AI伺服器需求的強勁成長，同時其子公司Wiwynn也有良好的市場表現。隨著產品組合的改善以及價格上升，公司整體的利潤預期將有所增長，同時報告指出其估值具有吸引力。2026年的出貨量增幅以及需求持續上揚，有望支持全年的營運表現。"
-        },
-        {
-          "date": "20260508",
           "broker": "凱基證券",
           "rating": "增加持股",
           "target": 225.0,
           "close": 146.5,
           "summary": "無相關資訊"
+        },
+        {
+          "date": "20260508",
+          "broker": "摩根士丹利證券",
+          "rating": "Overweight",
+          "target": 210.0,
+          "close": 146.5,
+          "summary": "緯創（Wistron，代號3231）預期未來營運將受益於AI伺服器需求的強勁成長，同時其子公司Wiwynn也有良好的市場表現。隨著產品組合的改善以及價格上升，公司整體的利潤預期將有所增長，同時報告指出其估值具有吸引力。2026年的出貨量增幅以及需求持續上揚，有望支持全年的營運表現。"
         },
         {
           "date": "20260413",
@@ -20981,27 +21069,27 @@
         },
         {
           "date": "20260116",
+          "broker": "花旗美邦證券",
+          "rating": "Buy",
+          "target": 190.0,
+          "close": 145.0,
+          "summary": "緯創於2025年第4季的績效因毛利壓力與利息費用增加而受影響，然而2026年展望受AI伺服器需求增長支持，預期長期成長值得期待。"
+        },
+        {
+          "date": "20260116",
+          "broker": "花旗美邦證券",
+          "rating": "Buy",
+          "target": 190.0,
+          "close": 145.0,
+          "summary": "緯創於2025年第4季的績效因毛利壓力與利息費用增加而受影響，然而2026年展望受AI伺服器需求增長支持，預期長期成長值得期待。"
+        },
+        {
+          "date": "20260116",
           "broker": "凱基證券",
           "rating": "增加持股",
           "target": 220.0,
           "close": 145.0,
           "summary": "緯創於2026年展望持正向態勢，主要受伺服器業務及AI技術推動影響。伺服器營收占比預計由2025年的74%升至84%，且全年每股盈餘預估為新台幣13.23元，年增46%。此外，公司不斷拓展新客戶與AI伺服器專案，將成為財務表現的主要動力。"
-        },
-        {
-          "date": "20260116",
-          "broker": "花旗美邦證券",
-          "rating": "Buy",
-          "target": 190.0,
-          "close": 145.0,
-          "summary": "緯創於2025年第4季的績效因毛利壓力與利息費用增加而受影響，然而2026年展望受AI伺服器需求增長支持，預期長期成長值得期待。"
-        },
-        {
-          "date": "20260116",
-          "broker": "花旗美邦證券",
-          "rating": "Buy",
-          "target": 190.0,
-          "close": 145.0,
-          "summary": "緯創於2025年第4季的績效因毛利壓力與利息費用增加而受影響，然而2026年展望受AI伺服器需求增長支持，預期長期成長值得期待。"
         },
         {
           "date": "20260116",
@@ -21101,43 +21189,43 @@
         },
         {
           "date": "20251113",
-          "broker": "富邦證券",
-          "rating": "買進",
-          "target": 182.0,
-          "close": 144.0,
-          "summary": "公司未來的營運重點在擴大AI及網通業務，預期AI伺服器需求將持續增長，公司計畫增加AI相關產線的投資以擴充產能。此外，網通業務將成為增長重點，預期會有顯著增長，儘管目前規模不大，但潛力可觀。未來的財務表現預測正面，毛利率和營益率將持續上升，公司亦有計畫增加資本支出以支持業務擴張。"
-        },
-        {
-          "date": "20251113",
-          "broker": "富邦證券",
-          "rating": "買進",
-          "target": 182.0,
-          "close": 144.0,
-          "summary": "公司未來的營運重點在擴大AI及網通業務，預期AI伺服器需求將持續增長，公司計畫增加AI相關產線的投資以擴充產能。此外，網通業務將成為增長重點，預期會有顯著增長，儘管目前規模不大，但潛力可觀。未來的財務表現預測正面，毛利率和營益率將持續上升，公司亦有計畫增加資本支出以支持業務擴張。"
-        },
-        {
-          "date": "20251113",
-          "broker": "群益證券",
-          "rating": "Buy",
-          "target": 165.0,
-          "close": 144.0,
-          "summary": "緯創在未來幾年將繼續受益於AI伺服器的強勁需求，4Q25預計維持季成長表現，而2026年營運增長動能則值得期待。隨著AI伺服器業務的增長成為主要動能，帶動整體營收以雙位數增長。雖然筆電及PC業務因關稅因素可能趨緩，但整體營運表現仍然樂觀。"
-        },
-        {
-          "date": "20251113",
-          "broker": "群益證券",
-          "rating": "Buy",
-          "target": 165.0,
-          "close": 144.0,
-          "summary": "緯創在未來幾年將繼續受益於AI伺服器的強勁需求，4Q25預計維持季成長表現，而2026年營運增長動能則值得期待。隨著AI伺服器業務的增長成為主要動能，帶動整體營收以雙位數增長。雖然筆電及PC業務因關稅因素可能趨緩，但整體營運表現仍然樂觀。"
-        },
-        {
-          "date": "20251113",
           "broker": "國票",
           "rating": "買進",
           "target": 185.0,
           "close": 144.0,
           "summary": "未來展望方面，公司預期AI伺服器的出貨將驅動營收大幅增長，尤其在2026年計畫達到雙位數成長。由於AI伺服器毛利率高於傳統產品，預期毛利率將隨出貨增加而提升。此外，與NVIDIA持續深入的合作，無論其未來銷售策略如何，公司預期能保持其供應鏈優勢。整體營運展望樂觀，特別是網通產品的出貨預期在2026年達到顯著增長，可能成為未來長期成長的動力。"
+        },
+        {
+          "date": "20251113",
+          "broker": "富邦證券",
+          "rating": "買進",
+          "target": 182.0,
+          "close": 144.0,
+          "summary": "公司未來的營運重點在擴大AI及網通業務，預期AI伺服器需求將持續增長，公司計畫增加AI相關產線的投資以擴充產能。此外，網通業務將成為增長重點，預期會有顯著增長，儘管目前規模不大，但潛力可觀。未來的財務表現預測正面，毛利率和營益率將持續上升，公司亦有計畫增加資本支出以支持業務擴張。"
+        },
+        {
+          "date": "20251113",
+          "broker": "富邦證券",
+          "rating": "買進",
+          "target": 182.0,
+          "close": 144.0,
+          "summary": "公司未來的營運重點在擴大AI及網通業務，預期AI伺服器需求將持續增長，公司計畫增加AI相關產線的投資以擴充產能。此外，網通業務將成為增長重點，預期會有顯著增長，儘管目前規模不大，但潛力可觀。未來的財務表現預測正面，毛利率和營益率將持續上升，公司亦有計畫增加資本支出以支持業務擴張。"
+        },
+        {
+          "date": "20251113",
+          "broker": "群益證券",
+          "rating": "Buy",
+          "target": 165.0,
+          "close": 144.0,
+          "summary": "緯創在未來幾年將繼續受益於AI伺服器的強勁需求，4Q25預計維持季成長表現，而2026年營運增長動能則值得期待。隨著AI伺服器業務的增長成為主要動能，帶動整體營收以雙位數增長。雖然筆電及PC業務因關稅因素可能趨緩，但整體營運表現仍然樂觀。"
+        },
+        {
+          "date": "20251113",
+          "broker": "群益證券",
+          "rating": "Buy",
+          "target": 165.0,
+          "close": 144.0,
+          "summary": "緯創在未來幾年將繼續受益於AI伺服器的強勁需求，4Q25預計維持季成長表現，而2026年營運增長動能則值得期待。隨著AI伺服器業務的增長成為主要動能，帶動整體營收以雙位數增長。雖然筆電及PC業務因關稅因素可能趨緩，但整體營運表現仍然樂觀。"
         },
         {
           "date": "20251113",
@@ -21221,19 +21309,19 @@
         },
         {
           "date": "20251001",
-          "broker": "群益證券",
-          "rating": "Buy",
-          "target": 165.0,
-          "close": 146.0,
-          "summary": "後續營運動能值得期待，由於AI伺服器在2025年9月起增速加快，預期將持續至第四季。此外，匯率衝擊減緩及AI系統組裝良率提升有助於毛利率的改善。整體而言，預期公司在2025年可能取得營收大幅增長，並將帶動整體收益和業績的提升。"
-        },
-        {
-          "date": "20251001",
           "broker": "摩根士丹利證券",
           "rating": "Overweight",
           "target": 210.0,
           "close": 146.0,
           "summary": "本報告分析了一家公司的未來發展，指出其正轉向商業市場，以增加穩定性和盈利能力。隨著企業逐步取代消費者導向的業務，公司營收益顯著提升。預計未來三年，伺服器和儲存業務將強勁增長，但儘管如此，由於較低毛利的系統層級業務佔比提升，預期運營利潤率將保持在穩定的範圍。值得注意的是，與主要客戶的合作將增強市場能見度和可向性。"
+        },
+        {
+          "date": "20251001",
+          "broker": "群益證券",
+          "rating": "Buy",
+          "target": 165.0,
+          "close": 146.0,
+          "summary": "後續營運動能值得期待，由於AI伺服器在2025年9月起增速加快，預期將持續至第四季。此外，匯率衝擊減緩及AI系統組裝良率提升有助於毛利率的改善。整體而言，預期公司在2025年可能取得營收大幅增長，並將帶動整體收益和業績的提升。"
         },
         {
           "date": "20250930",
@@ -21340,16 +21428,16 @@
           "summary": "未來展望顯示該公司在核心客戶市佔率提升的背景下，將看到增長的可能性，特別是在新計劃和客戶內引進的合作之下，有望產生新增的營收來源。儘管非AI領域的成長較為疲弱，公司仍在AI伺服器的潛在需求下預計持續改善財務和營運狀況。未來幾季內，產品設計和生產線的改良應會帶來更順利的產品增產過程，以滿足市場需求。"
         }
       ],
-      "recent_count": 16,
+      "recent_count": 17,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "3260",
       "stock_name": "威剛",
-      "close": 457.0,
+      "close": 445.5,
       "max_target": 1000.0,
       "max_target_date": "20260507",
       "max_target_broker": "兆豐",
@@ -21361,7 +21449,7 @@
       "latest_target_rating": "買進",
       "latest_target_summary": "威剛科技(3260)專注於記憶體與快閃儲存產品製造，受惠於記憶體市場的供不應求，以及AI需求的持續增長，預計未來毛利率與獲利能力將進一步提升。",
       "median_target": 655.5,
-      "potential_return": 43.44,
+      "potential_return": 47.14,
       "entries": [
         {
           "date": "20260507",
@@ -21543,13 +21631,13 @@
       "recent_count": 6,
       "market": "上櫃",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "3264",
       "stock_name": "欣銓",
-      "close": 225.5,
+      "close": 228.5,
       "max_target": 257.0,
       "max_target_date": "20260505",
       "max_target_broker": "康和證券",
@@ -21561,7 +21649,7 @@
       "latest_target_rating": "買進",
       "latest_target_summary": "欣銓在2026年的成長主要受到AI ASIC業務開始貢獻、記憶體市況回暖及通訊客戶需求持續增強的推動。管理層預計龍潭廠商新增產能將於後半年投入使用，並預期營益率和稼動率有所提高。截至目前，欣銓的多重題材激勵著其未來的成長潛力。",
       "median_target": 239.0,
-      "potential_return": 5.99,
+      "potential_return": 4.6,
       "entries": [
         {
           "date": "20260505",
@@ -21647,13 +21735,13 @@
       "recent_count": 5,
       "market": "上櫃",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "3324",
       "stock_name": "雙鴻",
-      "close": 1070.0,
+      "close": 1060.0,
       "max_target": 1600.0,
       "max_target_date": "20260311",
       "max_target_broker": "兆豐",
@@ -21665,7 +21753,7 @@
       "latest_target_rating": "Buy",
       "latest_target_summary": "雙鴻科技於2026年第一季業績表現亮眼，其淨利潤因營收擴增及運營成本改進而顯著提升。隨著泰國工廠的規模擴大，以及液冷產品比重增?，其毛利率已由前一季度的26.4%提高至29.7%。儘管4月份因假期影響泰國的工作日有所減少，第二季的預期仍保持穩定並有望環比增長。展望未來，高價值解決方案如DIMM冷板、機架單元CDU以及內部集管有望成為下半年增長的主要動能。",
       "median_target": 1480.0,
-      "potential_return": 38.32,
+      "potential_return": 39.62,
       "entries": [
         {
           "date": "20260506",
@@ -22039,13 +22127,13 @@
       "recent_count": 9,
       "market": "上櫃",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "3363",
       "stock_name": "上詮",
-      "close": 853.0,
+      "close": 920.0,
       "max_target": 708.0,
       "max_target_date": "20260311",
       "max_target_broker": "摩根士丹利證券",
@@ -22057,7 +22145,7 @@
       "latest_target_rating": "Overweight",
       "latest_target_summary": "上詮公司未來數年的成長預測受到其在高度光纖通信技術領域的穩健進展支持，特別是在CPO技術的應用推動下，預計將於2027年至2028年達到顯著成就。",
       "median_target": 708.0,
-      "potential_return": -17.0,
+      "potential_return": -23.04,
       "entries": [
         {
           "date": "20260311",
@@ -22079,13 +22167,13 @@
       "recent_count": 1,
       "market": "上櫃",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "3376",
       "stock_name": "新日興",
-      "close": 202.5,
+      "close": 206.5,
       "max_target": 332.0,
       "max_target_date": "20260316",
       "max_target_broker": "高盛證券",
@@ -22097,7 +22185,7 @@
       "latest_target_rating": "買進",
       "latest_target_summary": "新日興預計於2026年下半年隨著折疊手機產品線增長而迎來顯著營收貢獻，並得益於非Apple業務的穩健進展。此外，新廠布局和技術提升將為公司未來業務支援提供基石。",
       "median_target": 316.0,
-      "potential_return": 56.05,
+      "potential_return": 53.03,
       "entries": [
         {
           "date": "20260319",
@@ -22279,13 +22367,13 @@
       "recent_count": 2,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "3413",
       "stock_name": "京鼎",
-      "close": 315.5,
+      "close": 308.5,
       "max_target": 380.0,
       "max_target_date": "20260327",
       "max_target_broker": "元大投顧",
@@ -22297,7 +22385,7 @@
       "latest_target_rating": "買進",
       "latest_target_summary": "京鼎展望2026年營運情勢，隨著AI投資帶動先進製程及記憶體需求，設備訂單能見度延長至年底，促使營收持續增加。同時，新代工與富蘭登全部營收併入將助益全年表現，儘管費用增加部分影響毛利率，但WFE市場成長率的提升有助整體營運成長。目標價上調至380元，維持買進評等，反映營運展望樂觀。",
       "median_target": 361.0,
-      "potential_return": 14.42,
+      "potential_return": 17.02,
       "entries": [
         {
           "date": "20260327",
@@ -22487,13 +22575,13 @@
       "recent_count": 5,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "3443",
       "stock_name": "創意",
-      "close": 5210.0,
+      "close": 5730.0,
       "max_target": 6000.0,
       "max_target_date": "20260504",
       "max_target_broker": "富邦證券",
@@ -22505,7 +22593,7 @@
       "latest_target_rating": "買進",
       "latest_target_summary": "創意半導體的2026年首季財報表現優於預期，主要受益於高毛利率的設計段認列，同時也因NRE和Turnkey營收的強勢表現推動。展望未來，公司預期下季營收將季增個位數，且預估未來貢獻收入的車用晶片和雲端應用量產出貨成長性強勁，支持其後續獲利上修。",
       "median_target": 5035.0,
-      "potential_return": -3.36,
+      "potential_return": -12.13,
       "entries": [
         {
           "date": "20260506",
@@ -23135,13 +23223,13 @@
       "recent_count": 12,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "3450",
       "stock_name": "聯鈞",
-      "close": 410.0,
+      "close": 428.0,
       "max_target": null,
       "max_target_date": null,
       "max_target_broker": null,
@@ -23175,26 +23263,34 @@
       "recent_count": 0,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "3481",
       "stock_name": "群創",
-      "close": 29.4,
+      "close": 32.3,
       "max_target": 39.0,
       "max_target_date": "20260313",
       "max_target_broker": "兆豐",
       "max_target_rating": "逢低買進",
       "max_target_summary": "群創對於2026年的展望樂觀，得益於非顯示器業務的增長，尤其是FOPLP技術的突破及車用電子的需求持續上升。公司將在AI、高性能運算及光通領域進行佈局，同時受惠於車用電子和智慧座艙發展的有利趨勢。公司表現值得關注。",
-      "latest_target": 29.9,
-      "latest_target_date": "20260331",
-      "latest_target_broker": "中國信託綜合證券",
-      "latest_target_rating": "增加持股",
-      "latest_target_summary": "群創的未來專注於朝高毛利業務方向發展，並持續加強其非顯示器的產品和高階封裝技術，這些舉措預料將在2026年帶動其毛利率與營運績效的提升。",
-      "median_target": 27.0,
-      "potential_return": -8.16,
+      "latest_target": 19.5,
+      "latest_target_date": "20260511",
+      "latest_target_broker": "摩根士丹利證券",
+      "latest_target_rating": "Equal-weight",
+      "latest_target_summary": "群創光電於1Q26的財報表現勝預期，毛利率上升，公司仍集中於現有顯示技術領域，並同時進行新技術的開發與測試。整體營收在當年度顯示持穩並維持增長。",
+      "median_target": 28.45,
+      "potential_return": -11.92,
       "entries": [
+        {
+          "date": "20260511",
+          "broker": "摩根士丹利證券",
+          "rating": "Equal-weight",
+          "target": 19.5,
+          "close": 32.3,
+          "summary": "群創光電於1Q26的財報表現勝預期，毛利率上升，公司仍集中於現有顯示技術領域，並同時進行新技術的開發與測試。整體營收在當年度顯示持穩並維持增長。"
+        },
         {
           "date": "20260331",
           "broker": "中國信託綜合證券",
@@ -23364,28 +23460,28 @@
           "summary": "未來群創在面板產業中將面臨多重挑戰，需求疲軟影響了面板價格的上漲動能，特別是在電視產品領域。此外，關稅政策的變動迫使部分急單提前釋出，對下半年的需求造成不明影響。雖然FOPLP技術持續發展，但短期內對營收的貢獻有限。公司需要在面對價格壓力和產業趨勢不明的情況下，尋找新的增長點以維持穩定的營運表現。"
         }
       ],
-      "recent_count": 9,
+      "recent_count": 8,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "3529",
       "stock_name": "力旺",
-      "close": 4460.0,
-      "max_target": 4800.0,
+      "close": 4115.0,
+      "max_target": 5450.0,
       "max_target_date": "20260511",
-      "max_target_broker": "元大投顧",
+      "max_target_broker": "永豐金",
       "max_target_rating": "買進",
-      "max_target_summary": "力旺電子在未來的願景中，受益於PUF相關技術的快速成長，高階製程密度需求提高，且其作為安全架構的滲透率持續提升，讓其營運展現穩步增長。",
+      "max_target_summary": "力旺展示出嵌入式非揮發性記憶體矽智財業務具持續成長潛力，未來受益於八寸晶圓價格上升、新技術的推展以及與主要晶片設計商的合作拓展有望進一步鞏固市場地位和財務表現。",
       "latest_target": 4800.0,
       "latest_target_date": "20260511",
       "latest_target_broker": "元大投顧",
       "latest_target_rating": "買進",
       "latest_target_summary": "力旺電子在未來的願景中，受益於PUF相關技術的快速成長，高階製程密度需求提高，且其作為安全架構的滲透率持續提升，讓其營運展現穩步增長。",
-      "median_target": 3000.0,
-      "potential_return": -32.74,
+      "median_target": 3119.0,
+      "potential_return": -24.2,
       "entries": [
         {
           "date": "20260511",
@@ -23394,6 +23490,14 @@
           "target": 4800.0,
           "close": 4460.0,
           "summary": "力旺電子在未來的願景中，受益於PUF相關技術的快速成長，高階製程密度需求提高，且其作為安全架構的滲透率持續提升，讓其營運展現穩步增長。"
+        },
+        {
+          "date": "20260511",
+          "broker": "永豐金",
+          "rating": "買進",
+          "target": 5450.0,
+          "close": 4460.0,
+          "summary": "力旺展示出嵌入式非揮發性記憶體矽智財業務具持續成長潛力，未來受益於八寸晶圓價格上升、新技術的推展以及與主要晶片設計商的合作拓展有望進一步鞏固市場地位和財務表現。"
         },
         {
           "date": "20260511",
@@ -23429,19 +23533,19 @@
         },
         {
           "date": "20260223",
-          "broker": "元富證券投顧",
-          "rating": "BUY",
-          "target": 2500.0,
-          "close": 2180.0,
-          "summary": "力旺公司展望充滿機遇，隨著權利金與授權金收入的穩健增長，公司透過引入新應用及提升製程技術，預期能進一步提高獲利能力。此外，與人工智慧相關的產品需求帶動市場增長，公司未來有很好的發展潛力。"
-        },
-        {
-          "date": "20260223",
           "broker": "永豐金",
           "rating": "買進",
           "target": 2435.0,
           "close": 2180.0,
           "summary": "力旺致力於嵌入式非揮發性記憶體IP的開發，預期未來幾年將迎來多項技術突破及應用擴展，特別是在AI伺服器、車用ADAS及小晶片封裝等方面，將驅動其授權金和權利金的長期增長。公司財務狀況穩健，研究員對其營運保持正向態度並建議買進。"
+        },
+        {
+          "date": "20260223",
+          "broker": "元富證券投顧",
+          "rating": "BUY",
+          "target": 2500.0,
+          "close": 2180.0,
+          "summary": "力旺公司展望充滿機遇，隨著權利金與授權金收入的穩健增長，公司透過引入新應用及提升製程技術，預期能進一步提高獲利能力。此外，與人工智慧相關的產品需求帶動市場增長，公司未來有很好的發展潛力。"
         },
         {
           "date": "20260223",
@@ -23588,16 +23692,16 @@
           "summary": "於未來不確定性中，該公司計畫透過提升PUF技術的採用來推動業績增長。預期匯率變動將對短期盈利造成輕微影響，但長期市場需求使展望普遍看好。"
         }
       ],
-      "recent_count": 11,
+      "recent_count": 12,
       "market": "上櫃",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "3533",
       "stock_name": "嘉澤",
-      "close": 2700.0,
+      "close": 2845.0,
       "max_target": 3060.0,
       "max_target_date": "20260422",
       "max_target_broker": "凱基證券",
@@ -23609,7 +23713,7 @@
       "latest_target_rating": "增加持股",
       "latest_target_summary": "",
       "median_target": 2150.0,
-      "potential_return": -20.37,
+      "potential_return": -24.43,
       "entries": [
         {
           "date": "20260422",
@@ -24055,13 +24159,13 @@
       "recent_count": 13,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "3548",
       "stock_name": "兆利",
-      "close": 100.5,
+      "close": 99.9,
       "max_target": 95.0,
       "max_target_date": "20260319",
       "max_target_broker": "國票",
@@ -24073,7 +24177,7 @@
       "latest_target_rating": "區間操作",
       "latest_target_summary": "兆利在2026年將面臨挑戰，如3C業務出貨空窗期及市場需求壓力，預估營收將衰退。但光通訊業務的成長是主要亮點，未來或可透過新產品發展拉高營收表現。公司目前致力於爭取新產品訂單以拓展市占率。建議採區間操作策略。",
       "median_target": 91.4,
-      "potential_return": -9.05,
+      "potential_return": -8.51,
       "entries": [
         {
           "date": "20260319",
@@ -24119,13 +24223,13 @@
       "recent_count": 2,
       "market": "上櫃",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "3583",
       "stock_name": "辛耘",
-      "close": 788.0,
+      "close": 866.0,
       "max_target": 700.0,
       "max_target_date": "20260408",
       "max_target_broker": "永豐金",
@@ -24137,7 +24241,7 @@
       "latest_target_rating": "買進",
       "latest_target_summary": "辛耘(3583)預期於2026-2028年因台灣晶圓代工廠與封測廠的擴產需求帶動先進封裝設備成長，並因自製設備及再生晶圓營收佔比提升而改善獲利率及結構。整體業務轉型將從代理商逐漸升級為設備商，市場評價具修復空間。",
       "median_target": 700.0,
-      "potential_return": -11.17,
+      "potential_return": -19.17,
       "entries": [
         {
           "date": "20260408",
@@ -24183,13 +24287,13 @@
       "recent_count": 1,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "3653",
       "stock_name": "健策",
-      "close": 3650.0,
+      "close": 4015.0,
       "max_target": 7000.0,
       "max_target_date": "20260422",
       "max_target_broker": "大和",
@@ -24201,7 +24305,7 @@
       "latest_target_rating": "增加持股",
       "latest_target_summary": "健策預計其均熱片技術在未來幾年將迎來顯著需求增長，包括AI晶片和GPU相關應用推動，並且產品單價大幅提升，有利於營收與獲利擴展。隨著新產品出貨量增加以及新製程帶來的技術優勢，公司整體未來前景樂觀且成長潛力巨大。",
       "median_target": 4500.0,
-      "potential_return": 23.29,
+      "potential_return": 12.08,
       "entries": [
         {
           "date": "20260428",
@@ -24399,13 +24503,13 @@
       "recent_count": 13,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "3661",
       "stock_name": "世芯-KY",
-      "close": 4890.0,
+      "close": 5375.0,
       "max_target": 7000.0,
       "max_target_date": "20260511",
       "max_target_broker": "中國信託綜合證券",
@@ -24417,7 +24521,7 @@
       "latest_target_rating": "買進",
       "latest_target_summary": "世芯-KY 預計於 2026 年開始生產 Trainium 3 晶片，營收和獲利於其 AI 零組件需求的推升下，具備高度成長潛力。憑藉與 AWS 的深度合作及先進製程能力，預期 2026-2027 年將成為營運重要成長期。",
       "median_target": 4595.0,
-      "potential_return": -6.03,
+      "potential_return": -14.51,
       "entries": [
         {
           "date": "20260511",
@@ -25039,13 +25143,13 @@
       "recent_count": 32,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "3663",
       "stock_name": "鑫科",
-      "close": 67.9,
+      "close": 68.2,
       "max_target": null,
       "max_target_date": null,
       "max_target_broker": null,
@@ -25071,13 +25175,13 @@
       "recent_count": 0,
       "market": "上櫃",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "3665",
       "stock_name": "貿聯-KY",
-      "close": 2750.0,
+      "close": 2905.0,
       "max_target": 3780.0,
       "max_target_date": "20260428",
       "max_target_broker": "富邦證券",
@@ -25089,7 +25193,7 @@
       "latest_target_rating": "Overweight",
       "latest_target_summary": "貿聯-KY在2026第二季的營收表現符合預期，且預計全年收入將每季持續增長。公司從技術和產品整合中取得的額外光學解決方案，未來有望在電力和資料互連以及車用業務獲得提升。",
       "median_target": 2300.0,
-      "potential_return": -16.36,
+      "potential_return": -20.83,
       "entries": [
         {
           "date": "20260505",
@@ -25791,13 +25895,13 @@
       "recent_count": 23,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "3693",
       "stock_name": "營邦",
-      "close": 582.0,
+      "close": 593.0,
       "max_target": null,
       "max_target_date": null,
       "max_target_broker": null,
@@ -25831,13 +25935,13 @@
       "recent_count": 0,
       "market": "上櫃",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "3702",
       "stock_name": "大聯大",
-      "close": 113.5,
+      "close": 114.0,
       "max_target": 100.0,
       "max_target_date": "20260317",
       "max_target_broker": "群益證券",
@@ -25849,7 +25953,7 @@
       "latest_target_rating": "Buy",
       "latest_target_summary": "大聯大的營運展望受到生成式AI需求及伺服器市場的驅動，預計 2026 年營收將穩健增長約 10%，其毛利率和 EPS 亦將分別增至 4.23% 和 9.09 元。公司逐步拓展汽車電子及工業自動化領域的業務，並向地緣風險較低的東南亞及北美轉移重心，以應對關稅及地緣政治問題。",
       "median_target": 96.5,
-      "potential_return": -14.98,
+      "potential_return": -15.35,
       "entries": [
         {
           "date": "20260317",
@@ -25991,13 +26095,13 @@
       "recent_count": 4,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "3711",
       "stock_name": "日月光投控",
-      "close": 516.0,
+      "close": 537.0,
       "max_target": 640.0,
       "max_target_date": "20260430",
       "max_target_broker": "中國信託綜合證券",
@@ -26009,7 +26113,7 @@
       "latest_target_rating": "持有-超越同業",
       "latest_target_summary": "日月光投控 (ASEH) 長期受惠半導體先進封裝及測試需求，特別是 AI GPU 和 ASIC 應用訂單預計從 2026 年下半年至 2027 年持續增長。但短期因折舊成本認列，毛利率可能受到一定影響，故建議持有。",
       "median_target": 562.0,
-      "potential_return": 8.91,
+      "potential_return": 4.66,
       "entries": [
         {
           "date": "20260430",
@@ -26575,13 +26679,13 @@
       "recent_count": 16,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "3715",
       "stock_name": "定穎投控",
-      "close": 180.5,
+      "close": 181.5,
       "max_target": 297.0,
       "max_target_date": "20260416",
       "max_target_broker": "兆豐",
@@ -26593,7 +26697,7 @@
       "latest_target_rating": "強力買進",
       "latest_target_summary": "定穎投控預期於2026年至2027年進入快速成長階段，得益於AI基礎設施需求帶動與在地高階產能的優勢。",
       "median_target": 247.5,
-      "potential_return": 37.12,
+      "potential_return": 36.36,
       "entries": [
         {
           "date": "20260508",
@@ -26759,7 +26863,7 @@
       "recent_count": 10,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
@@ -26996,16 +27100,16 @@
           "summary": "新應材在近期內顯示了其在半導體材料行業的長期增長潛力，主要得益於先進製程需求的增加。其產品特別是針對3奈米和2奈米製程的Rinse、BARC及EBR，在應用面料上取得顯著突破。隨著新奈米製程需求的上升，這些產品的銷量亦將上升，並帶動整體營利的增長。此外，公司正在開發新的光阻劑以保持競爭優勢，進一步對未來的市場擴張充滿信心。"
         }
       ],
-      "recent_count": 10,
+      "recent_count": 9,
       "market": "上櫃",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "4919",
       "stock_name": "新唐",
-      "close": 167.5,
+      "close": 184.0,
       "max_target": 145.0,
       "max_target_date": "20260506",
       "max_target_broker": "兆豐",
@@ -27017,7 +27121,7 @@
       "latest_target_rating": "區間操作",
       "latest_target_summary": "新唐公司2026年的計劃旨在提升其 AI 伺服器產品的市場份額，並期望通過策略性重組解決由日本子公司帶來的運營挑戰。預估未來的營收與利潤有望上升。短期目標價格調整至新台幣 145 元，投資建議評級維持為『區間操作』的狀態。",
       "median_target": 81.5,
-      "potential_return": -51.34,
+      "potential_return": -55.71,
       "entries": [
         {
           "date": "20260506",
@@ -27111,13 +27215,13 @@
       "recent_count": 4,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "4958",
       "stock_name": "臻鼎-KY",
-      "close": 401.0,
+      "close": 412.0,
       "max_target": 421.0,
       "max_target_date": "20260427",
       "max_target_broker": "富邦證券",
@@ -27128,8 +27232,8 @@
       "latest_target_broker": "富邦證券",
       "latest_target_rating": "買進",
       "latest_target_summary": "臻鼎-KY（4958）的營運展望強勁，其IC載板與光模塊業務在AI伺服器需求支持下維持高度成長，佔比持續提升。該公司預計2026年資本支出達800億元，主要用於擴充AI應用PCB產能，並計劃加速增產，推動整體營收與獲利提升。展望未來，臻鼎股價預期將穩健上揚。",
-      "median_target": 234.0,
-      "potential_return": -41.65,
+      "median_target": 240.0,
+      "potential_return": -41.75,
       "entries": [
         {
           "date": "20260427",
@@ -27468,36 +27572,44 @@
           "summary": "臻鼎科技預期在2025年將持續增長，特別在高階軟板和IC載板的開發上展現競爭力。有賴於5G手機和穿戴設備的需求增長，預計在2025年的營收和淨利都有所增加。公司也將持續擴展其全球製造能力，以滿足市場對更細間距和高效能產品的需求。此外，摺疊手機市場的蓬勃發展將進一步推助公司在相關零組件供應上的地位。"
         }
       ],
-      "recent_count": 14,
+      "recent_count": 13,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "4961",
       "stock_name": "天鈺",
-      "close": 170.0,
-      "max_target": 166.0,
-      "max_target_date": "20260226",
-      "max_target_broker": "國票",
-      "max_target_rating": "區間操作",
-      "max_target_summary": "天鈺科技正在逐步推動轉型，預期將透過新產品線的推出與市場佈局，穩步提升公司的競爭力，以及未來可能受惠於行業整體需求回升的趨勢。然而，公司目前仍面臨挑戰，例如產業環境的不確定性與競爭壓力對營收造成影響。",
-      "latest_target": 166.0,
-      "latest_target_date": "20260226",
-      "latest_target_broker": "國票",
-      "latest_target_rating": "區間操作",
-      "latest_target_summary": "天鈺科技正在逐步推動轉型，預期將透過新產品線的推出與市場佈局，穩步提升公司的競爭力，以及未來可能受惠於行業整體需求回升的趨勢。然而，公司目前仍面臨挑戰，例如產業環境的不確定性與競爭壓力對營收造成影響。",
-      "median_target": 160.0,
-      "potential_return": -5.88,
+      "close": 170.5,
+      "max_target": 192.0,
+      "max_target_date": "20260512",
+      "max_target_broker": "群益證券",
+      "max_target_rating": "TRADING BUY",
+      "max_target_summary": "天鈺於顯示器驅動IC與電源管理IC市場發展活躍，未來在多元產品線及技術優化上投入重大精力，並積極擴展全球市場如印度。預期2026年營收與EPS正面表現將持續推動。",
+      "latest_target": 192.0,
+      "latest_target_date": "20260512",
+      "latest_target_broker": "群益證券",
+      "latest_target_rating": "TRADING BUY",
+      "latest_target_summary": "天鈺於顯示器驅動IC與電源管理IC市場發展活躍，未來在多元產品線及技術優化上投入重大精力，並積極擴展全球市場如印度。預期2026年營收與EPS正面表現將持續推動。",
+      "median_target": 163.0,
+      "potential_return": -4.4,
       "entries": [
         {
+          "date": "20260512",
+          "broker": "群益證券",
+          "rating": "TRADING BUY",
+          "target": 192.0,
+          "close": 177.5,
+          "summary": "天鈺於顯示器驅動IC與電源管理IC市場發展活躍，未來在多元產品線及技術優化上投入重大精力，並積極擴展全球市場如印度。預期2026年營收與EPS正面表現將持續推動。"
+        },
+        {
           "date": "20260226",
-          "broker": "國票",
-          "rating": "區間操作",
-          "target": 166.0,
+          "broker": "福邦投顧",
+          "rating": "中立",
+          "target": 150.0,
           "close": 148.5,
-          "summary": "天鈺科技正在逐步推動轉型，預期將透過新產品線的推出與市場佈局，穩步提升公司的競爭力，以及未來可能受惠於行業整體需求回升的趨勢。然而，公司目前仍面臨挑戰，例如產業環境的不確定性與競爭壓力對營收造成影響。"
+          "summary": "天鈺在2026年面臨消費性市場需求下降和製造成本上升的挑戰，研究員預估其全年營收將達到172億元（年減4.4%），而每股盈餘將為8.83元（年減8.4%）。雖然記憶體價格上揚，但消費性電子需求疲弱影響了公司的整體獲利能力，且評估現有估值並未明顯低估，故被給予中立評等。"
         },
         {
           "date": "20260226",
@@ -27509,11 +27621,11 @@
         },
         {
           "date": "20260226",
-          "broker": "福邦投顧",
-          "rating": "中立",
-          "target": 150.0,
+          "broker": "國票",
+          "rating": "區間操作",
+          "target": 166.0,
           "close": 148.5,
-          "summary": "天鈺在2026年面臨消費性市場需求下降和製造成本上升的挑戰，研究員預估其全年營收將達到172億元（年減4.4%），而每股盈餘將為8.83元（年減8.4%）。雖然記憶體價格上揚，但消費性電子需求疲弱影響了公司的整體獲利能力，且評估現有估值並未明顯低估，故被給予中立評等。"
+          "summary": "天鈺科技正在逐步推動轉型，預期將透過新產品線的推出與市場佈局，穩步提升公司的競爭力，以及未來可能受惠於行業整體需求回升的趨勢。然而，公司目前仍面臨挑戰，例如產業環境的不確定性與競爭壓力對營收造成影響。"
         },
         {
           "date": "20251110",
@@ -27540,16 +27652,16 @@
           "summary": ""
         }
       ],
-      "recent_count": 3,
+      "recent_count": 4,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "4966",
       "stock_name": "譜瑞-KY",
-      "close": 735.0,
+      "close": 761.0,
       "max_target": 750.0,
       "max_target_date": "20260423",
       "max_target_broker": "兆豐",
@@ -27560,8 +27672,8 @@
       "latest_target_broker": "元大投顧",
       "latest_target_rating": "持有-超越同業",
       "latest_target_summary": "",
-      "median_target": 580.0,
-      "potential_return": -21.09,
+      "median_target": 604.0,
+      "potential_return": -20.63,
       "entries": [
         {
           "date": "20260423",
@@ -27892,16 +28004,16 @@
           "summary": "未來展望偏向謹慎，原因包含美國關稅政策的不確定性以及台幣大幅升值對獲利的潛在影響。即便如此，公司仍預期USB4 Re-timer產品的顯著增長，預期未來能夠支撐營收進一步成長。由于高估新產品的驅動潛力，市場對美國客戶的訂購行為保持積極，而這是公司在未來兩年中持續擴展競爭優勢的重要因素。"
         }
       ],
-      "recent_count": 25,
+      "recent_count": 20,
       "market": "上櫃",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "4979",
       "stock_name": "華星光",
-      "close": 672.0,
+      "close": 659.0,
       "max_target": 870.0,
       "max_target_date": "20260505",
       "max_target_broker": "群益證券",
@@ -27913,7 +28025,7 @@
       "latest_target_rating": "Buy",
       "latest_target_summary": "華星光 (LuxNet, 4979) 將於下半年量產 800G ZR 模組，並穩步擴增 CW Epi 處理量，致力於滿足 AI 基礎建設擴展產生的高速數據需求。未來預計憑藉市場需求增長及技術優勢帶動營運穩定成長，並持續推動獲利成長。",
       "median_target": 870.0,
-      "potential_return": 29.46,
+      "potential_return": 32.02,
       "entries": [
         {
           "date": "20260505",
@@ -27959,13 +28071,13 @@
       "recent_count": 1,
       "market": "上櫃",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "5347",
       "stock_name": "世界",
-      "close": 174.5,
+      "close": 170.0,
       "max_target": 200.0,
       "max_target_date": "20260506",
       "max_target_broker": "中國信託綜合證券",
@@ -27977,7 +28089,7 @@
       "latest_target_rating": "持有-超越同業",
       "latest_target_summary": "世界半導體即將於2027年量產的VSMC廠房將對其營收成長有所助益，但由於2027年開始折舊費用的增高將壓抑利潤表現。2026年和2027年所預估的年營收成長率分別為19.6%與14.7%。",
       "median_target": 170.0,
-      "potential_return": -2.58,
+      "potential_return": 0.0,
       "entries": [
         {
           "date": "20260506",
@@ -28503,13 +28615,13 @@
       "recent_count": 15,
       "market": "上櫃",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "5388",
       "stock_name": "中磊",
-      "close": 85.1,
+      "close": 87.3,
       "max_target": 107.0,
       "max_target_date": "20260310",
       "max_target_broker": "凱基證券",
@@ -28521,7 +28633,7 @@
       "latest_target_rating": "Buy",
       "latest_target_summary": "中磊公司在2026年的成長展望中體現出多樣新產品的推進，客戶需求穩健及技術創新是其主要特色。公司於2026年備足半導體零組件需求，同時推出新產品如WiFi-7 AP等，支撐銷售與獲利恢復成長軌道。受益於5G FWA及10G PON等技術的需求，公司前景明朗。",
       "median_target": 92.5,
-      "potential_return": 8.7,
+      "potential_return": 5.96,
       "entries": [
         {
           "date": "20260507",
@@ -28791,13 +28903,13 @@
       "recent_count": 8,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "5439",
       "stock_name": "高技",
-      "close": 391.0,
+      "close": 381.0,
       "max_target": null,
       "max_target_date": null,
       "max_target_broker": null,
@@ -28839,13 +28951,13 @@
       "recent_count": 0,
       "market": "上櫃",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "5483",
       "stock_name": "中美晶",
-      "close": 163.5,
+      "close": 155.0,
       "max_target": null,
       "max_target_date": null,
       "max_target_broker": null,
@@ -28879,13 +28991,13 @@
       "recent_count": 0,
       "market": "上櫃",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "5536",
       "stock_name": "聖暉*",
-      "close": 896.0,
+      "close": 885.0,
       "max_target": 975.0,
       "max_target_date": "20260324",
       "max_target_broker": "群益證券",
@@ -28897,7 +29009,7 @@
       "latest_target_rating": "Buy",
       "latest_target_summary": "聖暉公司2026年的業務展望看好。由於其海外訂單和建廠需求的增長，加上AI需求的驅動，公司預計未來營收及獲利將持續雙位數成長，同時該公司積極投資於綠色工程和新興應用，鞏固其在全球市場的競爭優勢。",
       "median_target": 850.0,
-      "potential_return": -5.13,
+      "potential_return": -3.95,
       "entries": [
         {
           "date": "20260324",
@@ -28999,13 +29111,13 @@
       "recent_count": 3,
       "market": "上櫃",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "6125",
       "stock_name": "廣運",
-      "close": 59.7,
+      "close": 60.7,
       "max_target": null,
       "max_target_date": null,
       "max_target_broker": null,
@@ -29039,13 +29151,13 @@
       "recent_count": 0,
       "market": "上櫃",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "6139",
       "stock_name": "亞翔",
-      "close": 714.0,
+      "close": 679.0,
       "max_target": 1000.0,
       "max_target_date": "20260415",
       "max_target_broker": "中國信託綜合證券",
@@ -29057,7 +29169,7 @@
       "latest_target_rating": "買進",
       "latest_target_summary": "",
       "median_target": 1000.0,
-      "potential_return": 40.06,
+      "potential_return": 47.28,
       "entries": [
         {
           "date": "20260415",
@@ -29119,13 +29231,13 @@
       "recent_count": 1,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "6147",
       "stock_name": "頎邦",
-      "close": 196.5,
+      "close": 196.0,
       "max_target": 210.0,
       "max_target_date": "20260430",
       "max_target_broker": "花旗美邦證券",
@@ -29137,7 +29249,7 @@
       "latest_target_rating": "Buy",
       "latest_target_summary": "頎邦在2026年的核心業務穩定，且其新興的LPO應用帶來新的市場機會。基於2026年第二季度的價格上漲與LPO市場的進展，預期頎邦在未來的毛利率與盈餘將有所提升。目標價因此上調至210元。",
       "median_target": 188.0,
-      "potential_return": -4.33,
+      "potential_return": -4.08,
       "entries": [
         {
           "date": "20260430",
@@ -29167,13 +29279,13 @@
       "recent_count": 3,
       "market": "上櫃",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "6187",
       "stock_name": "萬潤",
-      "close": 1110.0,
+      "close": 1220.0,
       "max_target": 1800.0,
       "max_target_date": "20260421",
       "max_target_broker": "高盛證券",
@@ -29184,8 +29296,8 @@
       "latest_target_broker": "高盛證券",
       "latest_target_rating": "Buy",
       "latest_target_summary": "",
-      "median_target": 744.0,
-      "potential_return": -32.97,
+      "median_target": 800.0,
+      "potential_return": -34.43,
       "entries": [
         {
           "date": "20260421",
@@ -29372,16 +29484,16 @@
           "summary": "未來的看法集中於萬潤與其晶圓代工合作夥伴的產能擴展。預期至2025年，CoWoS月產能將顯著提升，而2026年也將持續增長，加速整體設備需求的提升。由於新一代AI GPU晶片的尺寸增加，每台WoS設備的處理量可能減少，這可能進一步推升設備需求。此外，AI半導體供應鏈市場情緒轉為樂觀，整體看法持續向好。即便面對前期營收不如預期的挑戰，公司預計在技術設計調整與市場擴展的雙重推動下，未來仍具上行潛力。"
         }
       ],
-      "recent_count": 6,
+      "recent_count": 5,
       "market": "上櫃",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "6191",
       "stock_name": "精成科",
-      "close": 95.5,
+      "close": 94.8,
       "max_target": 125.0,
       "max_target_date": "20260225",
       "max_target_broker": "群益證券",
@@ -29393,7 +29505,7 @@
       "latest_target_rating": "TRADING BUY",
       "latest_target_summary": "精成科於2026年的展望中，新馬來西亞廠的產能將開出並進行稼動率及學習曲線測試，由此可見其擴展策略將帶來長期增長，而短期內則可能因產能爬升需要時間而影響。市場需求的變動可能影響該公司在新興製造能力上的優勢發揮速度，然而公司擴展ASIC伺服器業務的策略仍預示著未來的積極成長可能性。",
       "median_target": 125.0,
-      "potential_return": 30.89,
+      "potential_return": 31.86,
       "entries": [
         {
           "date": "20260225",
@@ -29439,13 +29551,13 @@
       "recent_count": 2,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "6196",
       "stock_name": "帆宣",
-      "close": 410.0,
+      "close": 425.0,
       "max_target": 450.0,
       "max_target_date": "20260506",
       "max_target_broker": "元大投顧",
@@ -29457,7 +29569,7 @@
       "latest_target_rating": "買進",
       "latest_target_summary": "帆宣科技 2026 年展望良好，公司在手訂單總額達 1081 億元並持續攀升，其中廠務工程佔比約八成，反映未來的可見度至 2028 年。公司強調海外廠的營運槓桿效應及客戶的設備代工需求增長將推升獲利能力。預測 2026 全年營收可年增三成，毛利率目標定位在 12～13% 之間，未來數季財務表現有望持續改善。",
       "median_target": 336.0,
-      "potential_return": -18.05,
+      "potential_return": -20.94,
       "entries": [
         {
           "date": "20260506",
@@ -29607,13 +29719,13 @@
       "recent_count": 3,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "6213",
       "stock_name": "聯茂",
-      "close": 287.5,
+      "close": 300.5,
       "max_target": 345.0,
       "max_target_date": "20260505",
       "max_target_broker": "凱基證券",
@@ -29625,7 +29737,7 @@
       "latest_target_rating": "增加持股",
       "latest_target_summary": "聯茂第二季因銅箔等原物料調漲，毛利率預計大幅提升，同時產能擴張有助于促進未來收益。",
       "median_target": 175.0,
-      "potential_return": -39.13,
+      "potential_return": -41.76,
       "entries": [
         {
           "date": "20260505",
@@ -29863,26 +29975,34 @@
       "recent_count": 7,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "6223",
       "stock_name": "旺矽",
-      "close": 4985.0,
-      "max_target": 5815.0,
-      "max_target_date": "20260409",
-      "max_target_broker": "群益證券",
-      "max_target_rating": "Buy",
-      "max_target_summary": "旺矽於近期表現穩健，2026年第三月營收優於預期，月增率達5.47%，年增率達38.62%。該公司積極推進產能擴張計畫，且其MEMS探針卡月產能預計提升至200萬針。進一步，PCB自製率將於2027年開始量產時提升至50%。展望未來，由於行業需求增長及技術進步，旺矽預估稅後EPS在2026年與2027年分別增至43.70元及51.41元，顯示其具潛在成長空間。",
-      "latest_target": 5800.0,
-      "latest_target_date": "20260508",
-      "latest_target_broker": "摩根士丹利證券",
-      "latest_target_rating": "Overweight",
-      "latest_target_summary": "旺矽公司持續專注於其探針卡技術，並透過研發階段的第三方認證系統，確保差異化的生產和技術能力。經過與技術競爭者的法律挑戰，公司預期法律行為不會對營運和財務造成影響。展望未來，MEMS探針卡技術的成熟和市場需求將驅動相關營收在2026年同比增長逾93%。",
-      "median_target": 4215.0,
-      "potential_return": -15.45,
+      "close": 5480.0,
+      "max_target": 8000.0,
+      "max_target_date": "20260511",
+      "max_target_broker": "凱基證券",
+      "max_target_rating": "增加持股",
+      "max_target_summary": "旺矽 (6223) 在 CPU 探針卡和 AI/HPC 測試應用領域表現出相當優勢。由於無法滿足供需的狀況，市場需求持續增加，公司有望進一步擴產。未來，隨著更多高階運算應用的擴展，公司長期成長潛力被外界看好。",
+      "latest_target": 8000.0,
+      "latest_target_date": "20260511",
+      "latest_target_broker": "凱基證券",
+      "latest_target_rating": "增加持股",
+      "latest_target_summary": "旺矽 (6223) 在 CPU 探針卡和 AI/HPC 測試應用領域表現出相當優勢。由於無法滿足供需的狀況，市場需求持續增加，公司有望進一步擴產。未來，隨著更多高階運算應用的擴展，公司長期成長潛力被外界看好。",
+      "median_target": 4357.5,
+      "potential_return": -20.48,
       "entries": [
+        {
+          "date": "20260511",
+          "broker": "凱基證券",
+          "rating": "增加持股",
+          "target": 8000.0,
+          "close": 4985.0,
+          "summary": "旺矽 (6223) 在 CPU 探針卡和 AI/HPC 測試應用領域表現出相當優勢。由於無法滿足供需的狀況，市場需求持續增加，公司有望進一步擴產。未來，隨著更多高階運算應用的擴展，公司長期成長潛力被外界看好。"
+        },
         {
           "date": "20260508",
           "broker": "摩根士丹利證券",
@@ -30204,16 +30324,16 @@
           "summary": "半導體行業預計在2025年持續增長，受惠於高效能運算（HPC）、人工智慧（AI）等需求。公司計劃擴充探針卡產能，特別是在高階的VPC和MEMS探針卡領域，以滿足不斷增長的市場需求。此外，與主要客戶的緊密合作以及產品品質的提升，將進一步推動公司的業務增長。"
         }
       ],
-      "recent_count": 11,
+      "recent_count": 12,
       "market": "上櫃",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "6239",
       "stock_name": "力成",
-      "close": 222.0,
+      "close": 225.5,
       "max_target": 400.0,
       "max_target_date": "20260429",
       "max_target_broker": "中國信託綜合證券",
@@ -30225,7 +30345,7 @@
       "latest_target_rating": "買進",
       "latest_target_summary": "力成（6239）的業務涵蓋半導體後段封測服務，並積極拓展扇出型面板級封裝（FOPLP）技術以因應高階AI應用需求。2026年至2027年間，預估因FOPLP需求推動營收與毛利率顯著成長。公司針對技術開發和設備投資已經明確規劃，為未來成長奠定基礎。",
       "median_target": 283.5,
-      "potential_return": 27.7,
+      "potential_return": 25.72,
       "entries": [
         {
           "date": "20260429",
@@ -30599,26 +30719,42 @@
       "recent_count": 12,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "6274",
       "stock_name": "台燿",
-      "close": 1455.0,
+      "close": 1450.0,
       "max_target": 2000.0,
       "max_target_date": "20260507",
       "max_target_broker": "HSBC",
       "max_target_rating": "MAINTAIN BUY",
       "max_target_summary": "台燿 (TUC, 6274) 預期在2026年第二季改寫其營收記錄，受惠於高階CCL訂單增加以及更佳的產品組合。未來，AI相關專案及新技術的供應需求將成為台燿營運的重要推動力。",
-      "latest_target": 1905.0,
-      "latest_target_date": "20260508",
-      "latest_target_broker": "永豐金",
-      "latest_target_rating": "買進",
-      "latest_target_summary": "台燿在2026年表現出顯著的成長趨勢，尤其是在AI伺服器推動的高頻高速材料需求增加的驅動下，營收和利潤持續提升。隨著800G和1.6T Switch等新技術的推進，未來業績預期將繼續增長。",
-      "median_target": 1030.0,
-      "potential_return": -29.21,
+      "latest_target": 1890.0,
+      "latest_target_date": "20260512",
+      "latest_target_broker": "元富證券投顧",
+      "latest_target_rating": "BUY",
+      "latest_target_summary": "台燿為高頻高速銅箔基板(CCL)供應商，受惠於高階交換器及AI伺服器需求快速增長，產品組合持續升級。2026年公司預計顯著增長的營收，並大幅提高毛利率至28%，展現其高階材料市場佔有率的成長動能。泰國工廠次階段產能將於年中陸續開出，高階材料漲價預測亦加速，其厚銅產品更因800V架構伺服需求推升技術門檻和平均售價，進一步鞏固公司的市場地位。",
+      "median_target": 1535.0,
+      "potential_return": 5.86,
       "entries": [
+        {
+          "date": "20260512",
+          "broker": "元富證券投顧",
+          "rating": "BUY",
+          "target": 1890.0,
+          "close": 1450.0,
+          "summary": "台燿為高頻高速銅箔基板(CCL)供應商，受惠於高階交換器及AI伺服器需求快速增長，產品組合持續升級。2026年公司預計顯著增長的營收，並大幅提高毛利率至28%，展現其高階材料市場佔有率的成長動能。泰國工廠次階段產能將於年中陸續開出，高階材料漲價預測亦加速，其厚銅產品更因800V架構伺服需求推升技術門檻和平均售價，進一步鞏固公司的市場地位。"
+        },
+        {
+          "date": "20260512",
+          "broker": "中國信託綜合證券",
+          "rating": "買進",
+          "target": 1800.0,
+          "close": 1450.0,
+          "summary": "台燿公司（TUC, 6274）於2026年的市場需求持續增長，主要驅動因素包括AI伺服器及高階材料應用的擴增。該公司通過提升產品售價應對銅價及化學品成本上漲，並著眼於更高毛利率的厚銅型CCL技術。此外，其策略性佈局於泰國廠以及與全球領導廠商建立的新產品合作關係有望進一步強化未來的增長潛力。公司上修至2026年的EPS目標，並上調股價目標至1800元。"
+        },
         {
           "date": "20260508",
           "broker": "永豐金",
@@ -30626,22 +30762,6 @@
           "target": 1905.0,
           "close": 1370.0,
           "summary": "台燿在2026年表現出顯著的成長趨勢，尤其是在AI伺服器推動的高頻高速材料需求增加的驅動下，營收和利潤持續提升。隨著800G和1.6T Switch等新技術的推進，未來業績預期將繼續增長。"
-        },
-        {
-          "date": "20260507",
-          "broker": "高盛證券",
-          "rating": "Buy",
-          "target": 1888.0,
-          "close": 1445.0,
-          "summary": "台燿(Taiwan Union Technology Corp., 6274.TWO)持續擴展市場占有率，積極推動高端AI伺服器材料及高性能CCL產品開發，增長動力主要來自行業需求增長和技術升級帶動利潤提升。此外，公司計劃在未來一年半內擴產產能以支持新AI項目需求，並受惠於CCL市場定價上漲，進一步提高產品結構，進一步增強競爭力。短期內原材料價格波動與供應鍊稀缺可能對營運產生挑戰，但公司有應對策略降低影響。"
-        },
-        {
-          "date": "20260507",
-          "broker": "HSBC",
-          "rating": "MAINTAIN BUY",
-          "target": 2000.0,
-          "close": 1445.0,
-          "summary": "台燿 (TUC, 6274) 預期在2026年第二季改寫其營收記錄，受惠於高階CCL訂單增加以及更佳的產品組合。未來，AI相關專案及新技術的供應需求將成為台燿營運的重要推動力。"
         },
         {
           "date": "20260507",
@@ -30653,19 +30773,27 @@
         },
         {
           "date": "20260507",
+          "broker": "HSBC",
+          "rating": "MAINTAIN BUY",
+          "target": 2000.0,
+          "close": 1445.0,
+          "summary": "台燿 (TUC, 6274) 預期在2026年第二季改寫其營收記錄，受惠於高階CCL訂單增加以及更佳的產品組合。未來，AI相關專案及新技術的供應需求將成為台燿營運的重要推動力。"
+        },
+        {
+          "date": "20260507",
+          "broker": "高盛證券",
+          "rating": "Buy",
+          "target": 1888.0,
+          "close": 1445.0,
+          "summary": "台燿(Taiwan Union Technology Corp., 6274.TWO)持續擴展市場占有率，積極推動高端AI伺服器材料及高性能CCL產品開發，增長動力主要來自行業需求增長和技術升級帶動利潤提升。此外，公司計劃在未來一年半內擴產產能以支持新AI項目需求，並受惠於CCL市場定價上漲，進一步提高產品結構，進一步增強競爭力。短期內原材料價格波動與供應鍊稀缺可能對營運產生挑戰，但公司有應對策略降低影響。"
+        },
+        {
+          "date": "20260507",
           "broker": "統一證券",
           "rating": "買進",
           "target": 1535.0,
           "close": 1445.0,
           "summary": "台燿公司2026年的財務表現及未來展望受到產品結構優化及市場需求支撐。根據報告顯示，公司於2026年全年毛利率將顯著增長，並由於全球CCL市場供應緊缺而提供漲價空間，進一步提高銷售表現。此外，公司計劃於泰國新增產能以應對未來需求，顯示其對市場趨勢的快速調整能力。"
-        },
-        {
-          "date": "20260506",
-          "broker": "高盛證券",
-          "rating": "Buy",
-          "target": 1888.0,
-          "close": 1315.0,
-          "summary": "台燿在2026年第一季的營運表現強勁，受惠於加速增長的AI伺服器需求和產品組合改善。在未來，憑藉額外的產能擴充和定價提升，公司有望進一步增加盈利能力。此外，中高端產品的需求增強，對其長遠表現提供了更多保障。"
         },
         {
           "date": "20260506",
@@ -30692,6 +30820,14 @@
           "summary": "台燿 (TUC) 的成績亮眼，主要受益於 AI ASIC 與提升生產產能。此外，其泰國廠即將全面啟動以因應需求，並預計未來銷售成績與毛利率將進一步增長。儘管存在市場壓力，該公司於高階材料供應方面的穩固地位有助於支持其未來表現。"
         },
         {
+          "date": "20260506",
+          "broker": "高盛證券",
+          "rating": "Buy",
+          "target": 1888.0,
+          "close": 1315.0,
+          "summary": "台燿在2026年第一季的營運表現強勁，受惠於加速增長的AI伺服器需求和產品組合改善。在未來，憑藉額外的產能擴充和定價提升，公司有望進一步增加盈利能力。此外，中高端產品的需求增強，對其長遠表現提供了更多保障。"
+        },
+        {
           "date": "20260415",
           "broker": "元大投顧",
           "rating": "買進",
@@ -30701,19 +30837,19 @@
         },
         {
           "date": "20260408",
-          "broker": "富邦證券",
-          "rating": "買進",
-          "target": 920.0,
-          "close": 725.0,
-          "summary": "台燿目前透過產品組合優化、漲價和持續的產能提升，以維持市場競爭力並開拓新客戶。隨著AI伺服器等高端需求的增加，公司適時擴展產能以爭取更多訂單。"
-        },
-        {
-          "date": "20260408",
           "broker": "群益證券",
           "rating": "Buy",
           "target": 900.0,
           "close": 725.0,
           "summary": "台燿於 2026 年第二季度將新增產能，並伴隨高階材料的引入，預計營運將大幅提升。隨著國內外新一世代產品需求的提升，公司的營收和利潤預估將持續成長至 2027 年，營運成長動能顯著。"
+        },
+        {
+          "date": "20260408",
+          "broker": "富邦證券",
+          "rating": "買進",
+          "target": 920.0,
+          "close": 725.0,
+          "summary": "台燿目前透過產品組合優化、漲價和持續的產能提升，以維持市場競爭力並開拓新客戶。隨著AI伺服器等高端需求的增加，公司適時擴展產能以爭取更多訂單。"
         },
         {
           "date": "20260331",
@@ -30909,19 +31045,19 @@
         },
         {
           "date": "20251114",
-          "broker": "國泰",
-          "rating": "買進",
-          "target": 500.0,
-          "close": 397.5,
-          "summary": "未來幾年，台燿預期在高階CCL市場的需求驟增下，營運將持續成長。隨著AI伺服器和高頻交換器需求的擴大，特別是AI GPU和ASIC的出貨量持續增加，台燿已技轉並開始量產更高等級的M8/M9 CCL，以適應新世代產品對性能及傳輸速率的更高要求。泰國新廠的產能開出和新客戶的拓展也將助力台燿在市場中獲得更大的份額，預期到2026年營收和毛利將再創高峰。"
-        },
-        {
-          "date": "20251114",
           "broker": "統一證券",
           "rating": "買進",
           "target": 468.0,
           "close": 397.5,
           "summary": "未來的展望顯示，在AI技術及雲端運算推動下，PCB產業面臨著新一波的升級趨勢。公司在產品材料上的全面升級，使得營運成長具備強勁動力。此外，材料供應鏈的優勢將有助於公司長期的競爭力和成長潛力。在未來幾年，公司預計將受惠於高階產品出貨比例增加及產能提升，特別是新技術平台的升級將進一步推動公司的收入與盈利增長。"
+        },
+        {
+          "date": "20251114",
+          "broker": "國泰",
+          "rating": "買進",
+          "target": 500.0,
+          "close": 397.5,
+          "summary": "未來幾年，台燿預期在高階CCL市場的需求驟增下，營運將持續成長。隨著AI伺服器和高頻交換器需求的擴大，特別是AI GPU和ASIC的出貨量持續增加，台燿已技轉並開始量產更高等級的M8/M9 CCL，以適應新世代產品對性能及傳輸速率的更高要求。泰國新廠的產能開出和新客戶的拓展也將助力台燿在市場中獲得更大的份額，預期到2026年營收和毛利將再創高峰。"
         },
         {
           "date": "20251112",
@@ -31100,36 +31236,36 @@
           "summary": "2025年，台燿的營運主要受到800G和AI技術的驅動。隨著市場對高階無鹵M8 CCL需求的增長，公司潛在客戶將增加。未來展望良好，尤其是AI和800G技術的持續發展，這將進一步鞏固台燿在市場上的地位。儘管市場波動和泰國新工廠的費用可能導致短期盈利能力受影響，但長期來看，公司預期會有不錯的營收增長。"
         }
       ],
-      "recent_count": 19,
+      "recent_count": 21,
       "market": "上櫃",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "6285",
       "stock_name": "啟碁",
-      "close": 247.5,
+      "close": 259.0,
       "max_target": 348.0,
       "max_target_date": "20260508",
       "max_target_broker": "兆豐",
       "max_target_rating": "買進",
       "max_target_summary": "啟碁(6285)在2026年進一步發展其交換機及低軌衛星地面終端設備產品，預計產品的高價值化將提升整體毛利率和盈利能力。此外，隨著全球低軌衛星系統的快速擴展，相關市場需求顯現良好前景，啟碁有望穩固其市場領導地位。解析顯示，2026年稅後淨利和每股盈餘預估顯著成長，並保持「買進」評等以反映未來增長潛力。",
-      "latest_target": 302.0,
-      "latest_target_date": "20260508",
-      "latest_target_broker": "永豐金",
-      "latest_target_rating": "買進",
-      "latest_target_summary": "啟碁的營運展望顯示，其產品LEO與800G Switch的需求提高，推動了公司營收的增長。在2026年，營收預計以季增的方式進行，並在下半年有明顯的上揚，主要由於800G Switch的放量與LEO需求回升的影響。此外，公司年底目標價被上調至302元。",
-      "median_target": 257.5,
-      "potential_return": 4.04,
+      "latest_target": 318.0,
+      "latest_target_date": "20260512",
+      "latest_target_broker": "高盛證券",
+      "latest_target_rating": "Buy",
+      "latest_target_summary": "啟碁(WNC)預計受益於LEO衛星與Wi-Fi 7技術的主流化應用，這將推動其用戶端設備和網路設備需求的顯著增長，進一步實現收入及利潤的提升。公司計畫專注於新技術的發展和擴展用途，並持續投入研發以支持未來的產品交付。",
+      "median_target": 270.0,
+      "potential_return": 4.25,
       "entries": [
         {
-          "date": "20260508",
-          "broker": "永豐金",
-          "rating": "買進",
-          "target": 302.0,
-          "close": 247.5,
-          "summary": "啟碁的營運展望顯示，其產品LEO與800G Switch的需求提高，推動了公司營收的增長。在2026年，營收預計以季增的方式進行，並在下半年有明顯的上揚，主要由於800G Switch的放量與LEO需求回升的影響。此外，公司年底目標價被上調至302元。"
+          "date": "20260512",
+          "broker": "高盛證券",
+          "rating": "Buy",
+          "target": 318.0,
+          "close": 282.0,
+          "summary": "啟碁(WNC)預計受益於LEO衛星與Wi-Fi 7技術的主流化應用，這將推動其用戶端設備和網路設備需求的顯著增長，進一步實現收入及利潤的提升。公司計畫專注於新技術的發展和擴展用途，並持續投入研發以支持未來的產品交付。"
         },
         {
           "date": "20260508",
@@ -31138,6 +31274,14 @@
           "target": 348.0,
           "close": 247.5,
           "summary": "啟碁(6285)在2026年進一步發展其交換機及低軌衛星地面終端設備產品，預計產品的高價值化將提升整體毛利率和盈利能力。此外，隨著全球低軌衛星系統的快速擴展，相關市場需求顯現良好前景，啟碁有望穩固其市場領導地位。解析顯示，2026年稅後淨利和每股盈餘預估顯著成長，並保持「買進」評等以反映未來增長潛力。"
+        },
+        {
+          "date": "20260508",
+          "broker": "永豐金",
+          "rating": "買進",
+          "target": 302.0,
+          "close": 247.5,
+          "summary": "啟碁的營運展望顯示，其產品LEO與800G Switch的需求提高，推動了公司營收的增長。在2026年，營收預計以季增的方式進行，並在下半年有明顯的上揚，主要由於800G Switch的放量與LEO需求回升的影響。此外，公司年底目標價被上調至302元。"
         },
         {
           "date": "20260508",
@@ -31301,6 +31445,14 @@
         },
         {
           "date": "20251107",
+          "broker": "統一證券",
+          "rating": "買進",
+          "target": 133.0,
+          "close": 111.5,
+          "summary": "未來的幾年，公司將專注於從無線產品轉向有線產品的發展，這將成為2026年及之後的主要成長來源。隨著AI技術的推動，相關產品的產業成長將超越傳統無線產品，公司預期透過保持高研發投入來提升營運上限。此外，新的製造基地將在越南和墨西哥擴展生產能力，以支持未來的需求。"
+        },
+        {
+          "date": "20251107",
           "broker": "群益證券",
           "rating": "TRADING BUY",
           "target": 130.0,
@@ -31378,14 +31530,6 @@
           "target": 163.0,
           "close": 111.5,
           "summary": "這份報告預測未來會以WiFi-7和800G交換機為主要成長動力，特別是面向品牌交換機客戶和LEO衛星用戶端。公司雖然面臨研發支出高昂的挑戰，但其位於越南的新廠逐漸爬升及外匯影響減少有助提升毛利率。儘管第三季的收入表現平平，未來的收入預計會因新產品的推動而有所增長。因此報告對公司的未來持正向看法。"
-        },
-        {
-          "date": "20251107",
-          "broker": "統一證券",
-          "rating": "買進",
-          "target": 133.0,
-          "close": 111.5,
-          "summary": "未來的幾年，公司將專注於從無線產品轉向有線產品的發展，這將成為2026年及之後的主要成長來源。隨著AI技術的推動，相關產品的產業成長將超越傳統無線產品，公司預期透過保持高研發投入來提升營運上限。此外，新的製造基地將在越南和墨西哥擴展生產能力，以支持未來的需求。"
         },
         {
           "date": "20251106",
@@ -31492,16 +31636,16 @@
           "summary": "該公司在2025年展望中，營收預計維持穩健增長，主要受到客戶庫存回補和新技術導入的帶動。儘管面臨匯率波動和關稅的不確定性挑戰，公司的營收結構改善及自動化提升均助於增強競爭力。未來市場需求將集中在WiFi-7和5G設備出貨上，尤其在北美市場。而汽車電子化的持續發展也將是推動力之一。但台幣升值可能抑制整體營收的成長動能，這需要密切觀察市場變化。"
         }
       ],
-      "recent_count": 12,
+      "recent_count": 13,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "6438",
       "stock_name": "迅得",
-      "close": 170.5,
+      "close": 171.0,
       "max_target": 215.0,
       "max_target_date": "20260320",
       "max_target_broker": "元大投顧",
@@ -31513,7 +31657,7 @@
       "latest_target_rating": "買進",
       "latest_target_summary": "迅得公司因為其在導入高附加價值產品與市場上擴大市佔率，預期其財務表現將大幅提升。明顯成長動能來自於 PCB 與 IC 載板需求的穩固成長以及半導體市場的快速發展造就的資本支出增加。",
       "median_target": 210.0,
-      "potential_return": 23.17,
+      "potential_return": 22.81,
       "entries": [
         {
           "date": "20260320",
@@ -31615,13 +31759,13 @@
       "recent_count": 3,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "6442",
       "stock_name": "光聖",
-      "close": 1965.0,
+      "close": 1950.0,
       "max_target": 2450.0,
       "max_target_date": "20260319",
       "max_target_broker": "兆豐",
@@ -31633,7 +31777,7 @@
       "latest_target_rating": "買進",
       "latest_target_summary": "光聖公司受益於AI資料中心光纖基礎設施需求快速增長，2026年和2027年的獲利被預期持續高速成長。此外，延續資料中心光纖需求並開發定製化高密度光纖規格促使其產品結構往高附加價值方向升級。管理層於2026年表態全年業績目標將優於前一年，並預計以CPO技術推動全新增長端。",
       "median_target": 2300.0,
-      "potential_return": 17.05,
+      "potential_return": 17.95,
       "entries": [
         {
           "date": "20260319",
@@ -31711,13 +31855,13 @@
       "recent_count": 3,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "6488",
       "stock_name": "環球晶",
-      "close": 835.0,
+      "close": 785.0,
       "max_target": 901.0,
       "max_target_date": "20260506",
       "max_target_broker": "永豐金",
@@ -31729,7 +31873,7 @@
       "latest_target_rating": "區間操作",
       "latest_target_summary": "環球晶 2026 年第一季毛利率達到 20.8%，為循環谷底，預計之後會逐步回升，第二季開始稼動率改善。投資評等為區間操作，目標價定為 650 元。未來持續關注公司在第三代半導體的布局，及美國與義大利新廠量產進度對其表現的可能影響。",
       "median_target": 626.5,
-      "potential_return": -24.97,
+      "potential_return": -20.19,
       "entries": [
         {
           "date": "20260507",
@@ -32071,13 +32215,13 @@
       "recent_count": 16,
       "market": "上櫃",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "6510",
       "stock_name": "精測",
-      "close": 3790.0,
+      "close": 3860.0,
       "max_target": 5665.0,
       "max_target_date": "20260423",
       "max_target_broker": "群益證券",
@@ -32088,8 +32232,8 @@
       "latest_target_broker": "元大投顧",
       "latest_target_rating": "買進",
       "latest_target_summary": "精測 (6520 TT) 將於未來兩年透過 HPC 測試板及相關探針卡業務的高速成長，成為主要獲利成長動能，並且計劃提前於 9 月完成產能倍增。公司目標價為 4400 元，表現低於國內外同業的平均本益比，具有投資價值。",
-      "median_target": 4865.0,
-      "potential_return": 28.36,
+      "median_target": 4900.0,
+      "potential_return": 26.94,
       "entries": [
         {
           "date": "20260430",
@@ -32412,16 +32556,16 @@
           "summary": "本研究報告指出，未來幾年，公司在智慧型手機SoC探針卡以及AI GPU等高成長領域的市占率預計將會提高。同時，公司計畫在2025至2026年期間維持雙位數的營收增長，主要得益於生產良率的提高和產品組合的優化。管理層對於2026年的營收持樂觀態度，預期將比2025年增長17.5%。報告強調，公司未來將集中資源於高潛力客戶，並持續優化成本和效率以保持競爭力。"
         }
       ],
-      "recent_count": 8,
+      "recent_count": 7,
       "market": "上櫃",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "6515",
       "stock_name": "穎崴",
-      "close": 9630.0,
+      "close": 10090.0,
       "max_target": 15000.0,
       "max_target_date": "20260505",
       "max_target_broker": "高盛證券",
@@ -32433,7 +32577,7 @@
       "latest_target_rating": "Buy",
       "latest_target_summary": "穎崴科技正受益於全球人工智慧(AI)及高效能計算(HPC)需求增加的趨勢，其產品的針腳數量增加及營收成長預期持續提升至2027年及之後。公司正積極擴大產能，其中針腳月產能預期於2026年底達到1000萬，較2025年增長186%。此外，其探針卡和SLT市場滲透有望繼續推動收入，同時公司承諾以研發及成本結構支撐毛利率的提升。以目前財務估值及市場未來的需求動力，公司營收和盈利能力持續增強，可望達成收入持續成長的目標。",
       "median_target": 8152.5,
-      "potential_return": -15.34,
+      "potential_return": -19.2,
       "entries": [
         {
           "date": "20260505",
@@ -32775,13 +32919,13 @@
       "recent_count": 10,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "6526",
       "stock_name": "達發",
-      "close": 753.0,
+      "close": 750.0,
       "max_target": 810.0,
       "max_target_date": "20260508",
       "max_target_broker": "群益證券",
@@ -32793,7 +32937,7 @@
       "latest_target_rating": "TRADING BUY",
       "latest_target_summary": "達發（Airoha Semiconductor, 6526）在未來的業務展望具有增長潛力，主因包括光通訊產品需求的持續增長，並且在低軌衛星及AI資料中心等領域的收入占比上升，預期2026年收入達到222.09億元，相較2025年年增6.13%。",
       "median_target": 650.0,
-      "potential_return": -13.68,
+      "potential_return": -13.33,
       "entries": [
         {
           "date": "20260508",
@@ -33039,26 +33183,34 @@
       "recent_count": 15,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "6531",
       "stock_name": "愛普*",
-      "close": 875.0,
-      "max_target": 911.0,
-      "max_target_date": "20260423",
-      "max_target_broker": "富邦證券",
-      "max_target_rating": "買進",
-      "max_target_summary": "",
-      "latest_target": 911.0,
-      "latest_target_date": "20260423",
-      "latest_target_broker": "富邦證券",
-      "latest_target_rating": "買進",
-      "latest_target_summary": "",
-      "median_target": 604.0,
-      "potential_return": -30.97,
+      "close": 962.0,
+      "max_target": 1150.0,
+      "max_target_date": "20260511",
+      "max_target_broker": "摩根大通證券",
+      "max_target_rating": "Overweight",
+      "max_target_summary": "愛普公司展現出強勁的成長前景，其主要驅動因素包括 IPD 和互聯基板業務的市場擴張，以及多個新供應商資格的取得使其供應能力得以增強。",
+      "latest_target": 1150.0,
+      "latest_target_date": "20260511",
+      "latest_target_broker": "摩根大通證券",
+      "latest_target_rating": "Overweight",
+      "latest_target_summary": "愛普公司展現出強勁的成長前景，其主要驅動因素包括 IPD 和互聯基板業務的市場擴張，以及多個新供應商資格的取得使其供應能力得以增強。",
+      "median_target": 690.5,
+      "potential_return": -28.22,
       "entries": [
+        {
+          "date": "20260511",
+          "broker": "摩根大通證券",
+          "rating": "Overweight",
+          "target": 1150.0,
+          "close": 962.0,
+          "summary": "愛普公司展現出強勁的成長前景，其主要驅動因素包括 IPD 和互聯基板業務的市場擴張，以及多個新供應商資格的取得使其供應能力得以增強。"
+        },
         {
           "date": "20260423",
           "broker": "富邦證券",
@@ -33196,29 +33348,45 @@
           "summary": "AP Memory Technology公司預期在未來的幾年間，隨著其記憶體技術的改進和新產品的推出，業務將穩定增長。公司正在積極開發Wafer-on-Wafer (WoW)技術，以應對AI運算中的記憶體帶寬及功耗問題。預計到2027年，其AI業務將顯著增長，這將正面促進公司利潤率的提升。公司還強調了未來對於VHMStack技術的進一步推進，並計畫在新產品製造上的投入，預期這些新技術和業務將在未來幾年內提供穩定的成長動能。"
         }
       ],
-      "recent_count": 5,
+      "recent_count": 6,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "6584",
       "stock_name": "南俊國際",
-      "close": 687.0,
-      "max_target": 1000.0,
-      "max_target_date": "20260417",
+      "close": 681.0,
+      "max_target": 1022.0,
+      "max_target_date": "20260511",
       "max_target_broker": "大和",
       "max_target_rating": "Buy",
-      "max_target_summary": "",
-      "latest_target": 1000.0,
-      "latest_target_date": "20260417",
+      "max_target_summary": "南俊國際（NAN JUEN）預期在AI伺服器部門中的市場份額獲得增長。此外，由於近期組件短缺影響而導致的出貨量下降，公司銷售預估主要依賴後期需求的推動，可能在26年下半年至27年間更廣泛恢復。儘管近期期無銷疲軟，業務基本面進一步穩固，通過多樣化的產品組合與主要客戶的良好合作關係加強公司的長期市場定位。",
+      "latest_target": 1022.0,
+      "latest_target_date": "20260511",
       "latest_target_broker": "大和",
       "latest_target_rating": "Buy",
-      "latest_target_summary": "",
-      "median_target": 700.0,
-      "potential_return": 1.89,
+      "latest_target_summary": "南俊國際（NAN JUEN）預期在AI伺服器部門中的市場份額獲得增長。此外，由於近期組件短缺影響而導致的出貨量下降，公司銷售預估主要依賴後期需求的推動，可能在26年下半年至27年間更廣泛恢復。儘管近期期無銷疲軟，業務基本面進一步穩固，通過多樣化的產品組合與主要客戶的良好合作關係加強公司的長期市場定位。",
+      "median_target": 800.0,
+      "potential_return": 17.47,
       "entries": [
+        {
+          "date": "20260511",
+          "broker": "大和",
+          "rating": "Buy",
+          "target": 1022.0,
+          "close": 687.0,
+          "summary": "南俊國際（NAN JUEN）預期在AI伺服器部門中的市場份額獲得增長。此外，由於近期組件短缺影響而導致的出貨量下降，公司銷售預估主要依賴後期需求的推動，可能在26年下半年至27年間更廣泛恢復。儘管近期期無銷疲軟，業務基本面進一步穩固，通過多樣化的產品組合與主要客戶的良好合作關係加強公司的長期市場定位。"
+        },
+        {
+          "date": "20260511",
+          "broker": "凱基證券",
+          "rating": "增加持股",
+          "target": 800.0,
+          "close": 687.0,
+          "summary": "南俊國際預期於2026年下半年及2027年將因AI伺服器滑軌業務顯著成長，儘管短期存在供應鏈挑戰，該公司依然道路向前，目標價維持穩定，展望持續看好。"
+        },
         {
           "date": "20260417",
           "broker": "大和",
@@ -33407,13 +33575,13 @@
       "recent_count": 7,
       "market": "上櫃",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "6664",
       "stock_name": "群翊",
-      "close": 439.5,
+      "close": 467.0,
       "max_target": 520.0,
       "max_target_date": "20260410",
       "max_target_broker": "群益證券",
@@ -33425,7 +33593,7 @@
       "latest_target_rating": "Buy",
       "latest_target_summary": "群翊(6664)憑藉低軌衛星與先進封裝的技術優勢，訂單能見度提升至2026年底，且預計新產能於2028年開出。公司近期產品展示與研發突破均顯示在特定應用領域的競爭力，未來可望持續受惠於相關市場需求的增長，營收及獲利能力將有所提升。",
       "median_target": 370.0,
-      "potential_return": -15.81,
+      "potential_return": -20.77,
       "entries": [
         {
           "date": "20260410",
@@ -33503,25 +33671,25 @@
       "recent_count": 3,
       "market": "上櫃",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "6669",
       "stock_name": "緯穎",
-      "close": 5200.0,
-      "max_target": 8000.0,
-      "max_target_date": "20260507",
-      "max_target_broker": "花旗美邦證券",
+      "close": 5340.0,
+      "max_target": 8500.0,
+      "max_target_date": "20260511",
+      "max_target_broker": "野村證券",
       "max_target_rating": "Buy",
-      "max_target_summary": "2026年的第一季度，緯穎的業務受到一般用途伺服器需求的助力，而新一代AI ASIC伺服器的採用過渡期壓力仍然明顯。2026年的下半年，GPU伺服器可能會陸續大規模量產，這僅可能結束目前的過渡期帶來的負面影響。公司的經營策略如為高效能資料中心提供直接服務則能進一步提升競爭力。",
+      "max_target_summary": "緯穎公司在雲端IT基礎架構市場的表現持續增強。推動未來成長的主要因子包括AWS的Trainium 3、AMD的MI450以及因AI推斷需求而快速成長的CPU伺服器市場。2026年營收預期會因記憶體銷售停火政策下降，但公司的伺服器出貨量預計未來能保持高增率。2027年公司的銷售組合預期將更加平衡，反映主要平台的多元化。目標價位已上調至新目標以反映公司增長預期及市場進展，但下調本益比倍數以計入可能的募集資金稀釋影響。",
       "latest_target": 6600.0,
       "latest_target_date": "20260511",
       "latest_target_broker": "元大投顧",
       "latest_target_rating": "買進",
       "latest_target_summary": "緯穎預期2026年ASIC及MI455機櫃產品具有穩定增長動能，主要受惠於雲端業者需求上升、AI伺服器需求提升以及相關晶片產品出貨的增加。因此，公司預期2026年收入將達到1.2兆新台幣，較去年成長26%，每股盈餘（EPS）預估達330.16元，顯示良好的成長潛力。同時隨著下半年AWS TRN3的放量生產，以及新技術對產品需求的帶動，預期第二供應商的加入將進一步支持公司的持續增長表現。",
-      "median_target": 5875.0,
-      "potential_return": 12.98,
+      "median_target": 6000.0,
+      "potential_return": 12.36,
       "entries": [
         {
           "date": "20260511",
@@ -33538,6 +33706,14 @@
           "target": 7005.0,
           "close": 5340.0,
           "summary": "緯穎 (6669) 在大型資料中心伺服器需求不斷增長的背景下，顯示其營運及財務的成長潛力。未來該公司將因 AI 伺服器建置趨勢，尤其是新產品的推出與主要客戶的攜手合作，於業務上獲得更多動能逐季擴展。"
+        },
+        {
+          "date": "20260511",
+          "broker": "野村證券",
+          "rating": "Buy",
+          "target": 8500.0,
+          "close": 5340.0,
+          "summary": "緯穎公司在雲端IT基礎架構市場的表現持續增強。推動未來成長的主要因子包括AWS的Trainium 3、AMD的MI450以及因AI推斷需求而快速成長的CPU伺服器市場。2026年營收預期會因記憶體銷售停火政策下降，但公司的伺服器出貨量預計未來能保持高增率。2027年公司的銷售組合預期將更加平衡，反映主要平台的多元化。目標價位已上調至新目標以反映公司增長預期及市場進展，但下調本益比倍數以計入可能的募集資金稀釋影響。"
         },
         {
           "date": "20260508",
@@ -33557,11 +33733,11 @@
         },
         {
           "date": "20260507",
-          "broker": "凱基證券",
-          "rating": "增加持股",
-          "target": 6475.0,
+          "broker": "高盛證券",
+          "rating": "Buy",
+          "target": 7147.0,
           "close": 4880.0,
-          "summary": "預期緯穎於2026年下半至2027年間，受惠於AI伺服器專案的強力需求與出貨擴張，營收和EPS將持續呈現穩健的年增長。管理層表達了對未來收入成長動能的樂觀看法，並重點提及對Meta與AWS等主要客戶提供的產品預定出貨計劃將支持業績表現。"
+          "summary": "緯穎於2026年第1季的營收達到2770億新台幣，雖季減5%，但年增62%，並展現毛利率改善至7.6%，超出預期。本季淨利為140億新台幣，顯示非經常性收益表現良好。公司從4月起對部分伺服器專案改採記憶體代管模式，有助毛利率提升且降低庫存風險，並在AI伺服器需求增長下逐步拓展策略市場。"
         },
         {
           "date": "20260507",
@@ -33573,11 +33749,11 @@
         },
         {
           "date": "20260507",
-          "broker": "高盛證券",
-          "rating": "Buy",
-          "target": 7147.0,
+          "broker": "凱基證券",
+          "rating": "增加持股",
+          "target": 6475.0,
           "close": 4880.0,
-          "summary": "緯穎於2026年第1季的營收達到2770億新台幣，雖季減5%，但年增62%，並展現毛利率改善至7.6%，超出預期。本季淨利為140億新台幣，顯示非經常性收益表現良好。公司從4月起對部分伺服器專案改採記憶體代管模式，有助毛利率提升且降低庫存風險，並在AI伺服器需求增長下逐步拓展策略市場。"
+          "summary": "預期緯穎於2026年下半至2027年間，受惠於AI伺服器專案的強力需求與出貨擴張，營收和EPS將持續呈現穩健的年增長。管理層表達了對未來收入成長動能的樂觀看法，並重點提及對Meta與AWS等主要客戶提供的產品預定出貨計劃將支持業績表現。"
         },
         {
           "date": "20260429",
@@ -33669,11 +33845,11 @@
         },
         {
           "date": "20260302",
-          "broker": "富邦證券",
-          "rating": "買進",
-          "target": 5750.0,
+          "broker": "摩根士丹利證券",
+          "rating": "Overweight",
+          "target": 5600.0,
           "close": 4150.0,
-          "summary": "緯穎股份有限公司在2026年將繼續受益於AI伺服器業務的強勢需求，其市場份額有望從2025年的50%提升至2026年的55-60%。同時，公司也在積極推動相關基礎設施建設，並具備極大的長期增長潛力。"
+          "summary": "緯穎未來的主要成長動能來源於其AI伺服器業務的顯著增長。管理層預測2026年度的AI伺服器出貨量將實現同比增長，並將集中在下半年。此成長由新一代GPU伺服器的出貨推動，並且公司作為主要的VR200和Trainium 3產品合作夥伴將受益。此外，公司總營收也由於一般伺服器業務的增長維持穩健態勢。"
         },
         {
           "date": "20260302",
@@ -33685,11 +33861,11 @@
         },
         {
           "date": "20260302",
-          "broker": "摩根士丹利證券",
-          "rating": "Overweight",
-          "target": 5600.0,
+          "broker": "富邦證券",
+          "rating": "買進",
+          "target": 5750.0,
           "close": 4150.0,
-          "summary": "緯穎未來的主要成長動能來源於其AI伺服器業務的顯著增長。管理層預測2026年度的AI伺服器出貨量將實現同比增長，並將集中在下半年。此成長由新一代GPU伺服器的出貨推動，並且公司作為主要的VR200和Trainium 3產品合作夥伴將受益。此外，公司總營收也由於一般伺服器業務的增長維持穩健態勢。"
+          "summary": "緯穎股份有限公司在2026年將繼續受益於AI伺服器業務的強勢需求，其市場份額有望從2025年的50%提升至2026年的55-60%。同時，公司也在積極推動相關基礎設施建設，並具備極大的長期增長潛力。"
         },
         {
           "date": "20260226",
@@ -34228,16 +34404,16 @@
           "summary": "在2025年的報告中，Wiwynn的需求展望和產品組合提升預示著強勁的增長潛力。由於AI/ASIC伺服器的強勁需求，該公司報告的第二季度銷售勢頭超乎預期，預計下半年的需求展望也令人樂觀。這種增長主要受到ASIC伺服器的強勁需求以及GB200的推升帶動，這使該公司的股票價格有望進一步上升。此外，隨著市場對數據中心的持續需求，Wiwynn也正從中受益。儘管部分伺服器因關稅而提前出貨可能導致下半年的短暫下降，但總體趨勢仍舊樂觀。"
         }
       ],
-      "recent_count": 26,
+      "recent_count": 27,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "6770",
       "stock_name": "力積電",
-      "close": 61.4,
+      "close": 62.5,
       "max_target": 65.0,
       "max_target_date": "20260422",
       "max_target_broker": "康和證券",
@@ -34249,7 +34425,7 @@
       "latest_target_rating": "買進",
       "latest_target_summary": "",
       "median_target": 62.5,
-      "potential_return": 1.79,
+      "potential_return": 0.0,
       "entries": [
         {
           "date": "20260422",
@@ -34351,26 +34527,34 @@
       "recent_count": 2,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "6781",
       "stock_name": "AES-KY",
-      "close": 1230.0,
-      "max_target": 1455.0,
-      "max_target_date": "20260304",
-      "max_target_broker": "凱基證券",
-      "max_target_rating": "增加持股",
-      "max_target_summary": "AES-KY公佈了截至2025年第4季度財報，其表現略低於預期。然而，公司展望2026年，預測營收將保持雙位數增長，並且伺服器市場的需求帶動BBU（備援電池單元）成為主要增長推動力。此外，公司的越南工廠將提升產能滿足市場需求。公司預估EPS在2026年將有顯著成長。",
-      "latest_target": 1450.0,
-      "latest_target_date": "20260506",
-      "latest_target_broker": "凱基證券",
-      "latest_target_rating": "增加持股",
-      "latest_target_summary": "AES-KY 公司於 2026 年預計其 BBU 業務將成為營收及獲利成長的核心動力，受到 AI 伺服器需求的推動，營收增幅樂觀，並伴隨電源規格升級需求的增加產業領導地位堅固。EPS 成長受到毛利率及營業利率穩健支持並上修至更高水平。",
-      "median_target": 1452.5,
-      "potential_return": 18.09,
+      "close": 1320.0,
+      "max_target": 1600.0,
+      "max_target_date": "20260512",
+      "max_target_broker": "國泰",
+      "max_target_rating": "買進",
+      "max_target_summary": "AES-KY 在 2026 至 2027 年間的成長展望受到高壓備援電力產品及 AI 資料中心需求推升支持，該公司預計導入高容量與高壓電池方案提升市場份額，並持續擴大技術領先優勢。",
+      "latest_target": 1600.0,
+      "latest_target_date": "20260512",
+      "latest_target_broker": "國泰",
+      "latest_target_rating": "買進",
+      "latest_target_summary": "AES-KY 在 2026 至 2027 年間的成長展望受到高壓備援電力產品及 AI 資料中心需求推升支持，該公司預計導入高容量與高壓電池方案提升市場份額，並持續擴大技術領先優勢。",
+      "median_target": 1455.0,
+      "potential_return": 10.23,
       "entries": [
+        {
+          "date": "20260512",
+          "broker": "國泰",
+          "rating": "買進",
+          "target": 1600.0,
+          "close": 1285.0,
+          "summary": "AES-KY 在 2026 至 2027 年間的成長展望受到高壓備援電力產品及 AI 資料中心需求推升支持，該公司預計導入高容量與高壓電池方案提升市場份額，並持續擴大技術領先優勢。"
+        },
         {
           "date": "20260506",
           "broker": "凱基證券",
@@ -34468,16 +34652,16 @@
           "summary": "在2025年和2026年，BBU（背板單元）從未來幾年中被期待成為公司主要的收入與獲利動力，特別是受到AI需求增長的帶動。公司預期BBU營收會在這段期間大幅增長，而LEV（電動自行車）方面的需求持平不前，因此公司將繼續優化產品組合以提高利潤率。然而，由於新台幣升值對財務結果有不利影響，公司下調了2025年的EPS（每股盈餘）預測。"
         }
       ],
-      "recent_count": 2,
+      "recent_count": 3,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "6805",
       "stock_name": "富世達",
-      "close": 1980.0,
+      "close": 1995.0,
       "max_target": 3200.0,
       "max_target_date": "20260506",
       "max_target_broker": "中國信託綜合證券",
@@ -34489,7 +34673,7 @@
       "latest_target_rating": "Buy",
       "latest_target_summary": "富世達公司在2026年第一季度的表現超過市場共識，其主要驅動力來自伺服器收入快速增長，以及高於預期的毛利率。展望未來，基於AI伺服器的強大需求與液冷技術普及率的提升，公司預期收入與毛利率將於2026年至2028年間持續上升。",
       "median_target": 2315.0,
-      "potential_return": 16.92,
+      "potential_return": 16.04,
       "entries": [
         {
           "date": "20260507",
@@ -34959,13 +35143,13 @@
       "recent_count": 20,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "7769",
       "stock_name": "鴻勁",
-      "close": 5800.0,
+      "close": 6380.0,
       "max_target": 7260.0,
       "max_target_date": "20260505",
       "max_target_broker": "群益證券",
@@ -34977,7 +35161,7 @@
       "latest_target_rating": "Buy",
       "latest_target_summary": "鴻勁在近期法說上宣布產能提升，並表示CPO（共封裝光學技術）相關設備將於2026年年底開始量產，預計於2027年需求量將大幅增加，該技術的相關設備單價預期提升加劇公司營收潛力。此外，公司在2026年的全年營收預估達523.06億元，同比增長72.8%，並且預測稅後EPS達111.02元，展示了強勁的成長動能。",
       "median_target": 5850.0,
-      "potential_return": 0.86,
+      "potential_return": -8.31,
       "entries": [
         {
           "date": "20260505",
@@ -35175,13 +35359,13 @@
       "recent_count": 14,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "8016",
       "stock_name": "矽創",
-      "close": 273.0,
+      "close": 268.5,
       "max_target": 230.0,
       "max_target_date": "20260407",
       "max_target_broker": "統一證券",
@@ -35193,7 +35377,7 @@
       "latest_target_rating": "買進",
       "latest_target_summary": "矽創公司在2026年的營運展望預期穩健成長，主要受惠於零電容TDDI市場的蓬勃需求及產品漲價的推動。該公司於2025年第四季度毛利率與盈利均超越預期，顯示出產品組合及費用控管持續改善的成果。展望2026年，矽創在手機及車用領域的業務將持續增長，而其創新的高刷新率零電容TDDI產品亦能進一步擴展市場占有率，帶來更豐厚的營收。",
       "median_target": 230.0,
-      "potential_return": -15.75,
+      "potential_return": -14.34,
       "entries": [
         {
           "date": "20260407",
@@ -35239,13 +35423,13 @@
       "recent_count": 1,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "8021",
       "stock_name": "尖點",
-      "close": 401.0,
+      "close": 429.0,
       "max_target": 400.0,
       "max_target_date": "20260309",
       "max_target_broker": "福邦投顧",
@@ -35257,7 +35441,7 @@
       "latest_target_rating": "買進",
       "latest_target_summary": "尖點展望未來，基於AI基礎建設的需求，PCB鑽針消耗量預計將顯著增加。公司著力提升產能以應對需求，並通過產品組合優化來提升競爭力。鎢鋼價格上漲對成本有所影響，但公司有效運用調整報價與提升產能利用率以降低成本壓力，市場需求表現佳並支撐其成長。",
       "median_target": 280.0,
-      "potential_return": -30.17,
+      "potential_return": -34.73,
       "entries": [
         {
           "date": "20260309",
@@ -35319,26 +35503,34 @@
       "recent_count": 3,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "8046",
       "stock_name": "南電",
-      "close": 854.0,
+      "close": 908.0,
       "max_target": 1222.0,
       "max_target_date": "20260507",
       "max_target_broker": "大和",
       "max_target_rating": "Buy",
       "max_target_summary": "南電於2026年第一季度表現符合市場預期，銷售額達新台幣106億，毛利率達15.8%，反映出基板價格的上漲。根據展望，其ABF基板部門預計今年基板價格將顯著調漲約30%，並受益於基板產業供需不平衡狀況。未來數年，南電亦將持續受益於BT基板產品需求和價格的提升，因薄型T玻璃短缺及產品類型轉移至ABF，並預測總營收將逐年穩步增長。",
       "latest_target": 1100.0,
-      "latest_target_date": "20260508",
-      "latest_target_broker": "花旗美邦證券",
-      "latest_target_rating": "Buy",
-      "latest_target_summary": "南電（N.P.C.，8046）在2026年第一季度的整體表現顯示出需求逐漸復甦的跡象，並且未來得益於伺服器CPU需求和價格上升的預期，進一步增強了ABF產業的復甦態勢。其2026年第一季度的毛利率雖低於市場高期望值，但仍符合內部預期並展露出向上修訂的空間。",
-      "median_target": 775.0,
-      "potential_return": -9.25,
+      "latest_target_date": "20260511",
+      "latest_target_broker": "富邦證券",
+      "latest_target_rating": "買進",
+      "latest_target_summary": "",
+      "median_target": 850.0,
+      "potential_return": -6.39,
       "entries": [
+        {
+          "date": "20260511",
+          "broker": "富邦證券",
+          "rating": "買進",
+          "target": 1100.0,
+          "close": 908.0,
+          "summary": ""
+        },
         {
           "date": "20260508",
           "broker": "花旗美邦證券",
@@ -35668,29 +35860,45 @@
           "summary": "ABF產業在2025年預期取得顯著成長，非AI與800G的需求超出預期，這些因素讓2025年營收預期上調3%。雖然ABF整體供需平衡可能要到下半年才會達成，但產業復甦的趨勢明顯。未來，AI應用的普及與美系主要企業的資本支出增長將助推市場進一步擴張。"
         }
       ],
-      "recent_count": 8,
+      "recent_count": 9,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "8210",
       "stock_name": "勤誠",
-      "close": 1415.0,
-      "max_target": 1905.0,
-      "max_target_date": "20260508",
-      "max_target_broker": "凱基證券",
-      "max_target_rating": "增加持股",
-      "max_target_summary": "根據所提供的資料，勤誠未來的成長動能主要來自AI伺服器需求的強勁增長，以及新產品的推出。公司成功切入CSP供應鏈，並在2026和2027年取得多家客戶的訂單，這些因素將推動盈利和毛利率的提升。",
-      "latest_target": 1755.0,
-      "latest_target_date": "20260511",
-      "latest_target_broker": "宏遠證券",
+      "close": 1555.0,
+      "max_target": 2110.0,
+      "max_target_date": "20260512",
+      "max_target_broker": "兆豐",
+      "max_target_rating": "買進",
+      "max_target_summary": "勤誠科技預計在2026年及2027年營收強勁增長，主要受到AI伺服器的出貨量上升及新型機種的貢獻。同時，公司的EPS持續提升，反映了主管產品及市場的需求成長。在產品策略方面，公司切入CDU水冷技術及與新GPU客戶合作，擴大市場滲透及規模。上述因素配合目標價提高，展現公司長期穩健發展的前景。",
+      "latest_target": 2110.0,
+      "latest_target_date": "20260512",
+      "latest_target_broker": "兆豐",
       "latest_target_rating": "買進",
-      "latest_target_summary": "勤誠（Chenbro，8210）在2026年第一季達成歷史同期新高的營收與EPS表現，未來展望亦維持正面。得益於AI伺服器需求拉動，公司伺服器相關產品占比高達99.6%，並持續提升專案出貨能力與毛利率。此外，公司正在擴大其全球生產基地，預計美國與馬來西亞的新設廠將支持未來產能需求。",
+      "latest_target_summary": "勤誠科技預計在2026年及2027年營收強勁增長，主要受到AI伺服器的出貨量上升及新型機種的貢獻。同時，公司的EPS持續提升，反映了主管產品及市場的需求成長。在產品策略方面，公司切入CDU水冷技術及與新GPU客戶合作，擴大市場滲透及規模。上述因素配合目標價提高，展現公司長期穩健發展的前景。",
       "median_target": 1280.0,
-      "potential_return": -9.54,
+      "potential_return": -17.68,
       "entries": [
+        {
+          "date": "20260512",
+          "broker": "兆豐",
+          "rating": "買進",
+          "target": 2110.0,
+          "close": 1550.0,
+          "summary": "勤誠科技預計在2026年及2027年營收強勁增長，主要受到AI伺服器的出貨量上升及新型機種的貢獻。同時，公司的EPS持續提升，反映了主管產品及市場的需求成長。在產品策略方面，公司切入CDU水冷技術及與新GPU客戶合作，擴大市場滲透及規模。上述因素配合目標價提高，展現公司長期穩健發展的前景。"
+        },
+        {
+          "date": "20260511",
+          "broker": "大和",
+          "rating": "Buy",
+          "target": 1888.0,
+          "close": 1555.0,
+          "summary": "勤誠(Chenbro, 8210) 將營收焦點轉向支援AI伺服器及機箱模組化設計，預計2026至2028年間進一步推升毛利率。"
+        },
         {
           "date": "20260511",
           "broker": "宏遠證券",
@@ -35706,6 +35914,14 @@
           "target": 1630.0,
           "close": 1555.0,
           "summary": "勤誠在AI需求帶動下，1Q26創下單季歷史新高，並預期營運將呈現逐季成長至2026年，主要由於AI營收占比的提升以及新機櫃專案的開展，未來將持續拓展與增強生產基地布局。"
+        },
+        {
+          "date": "20260511",
+          "broker": "康和證券",
+          "rating": "買進",
+          "target": 1980.0,
+          "close": 1555.0,
+          "summary": "勤誠(8210)迎來AI伺服器需求增長機會，市場開拓與機殼升級帶動營收成長，多地生產布局亦有助於長期穩定營運。"
         },
         {
           "date": "20260511",
@@ -35773,17 +35989,17 @@
         },
         {
           "date": "20260312",
-          "broker": "元富證券投顧",
-          "rating": "中立",
-          "target": 1000.0,
+          "broker": "宏遠證券",
+          "rating": "買進",
+          "target": 1200.0,
           "close": 881.0,
           "summary": ""
         },
         {
           "date": "20260312",
-          "broker": "宏遠證券",
-          "rating": "買進",
-          "target": 1200.0,
+          "broker": "元富證券投顧",
+          "rating": "中立",
+          "target": 1000.0,
           "close": 881.0,
           "summary": ""
         },
@@ -35805,22 +36021,6 @@
         },
         {
           "date": "20260224",
-          "broker": "美林證券",
-          "rating": "BUY",
-          "target": 1250.0,
-          "close": 870.0,
-          "summary": "勤誠企業正因AI需求快速增長而受益，並且在產品創新以及市場份額的提升中取得了穩定的進步。未來幾年，公司AI伺服器機殼的收入增長將成為其主要驅動力。"
-        },
-        {
-          "date": "20260224",
-          "broker": "美林證券",
-          "rating": "BUY",
-          "target": 1250.0,
-          "close": 870.0,
-          "summary": "勤誠企業正因AI需求快速增長而受益，並且在產品創新以及市場份額的提升中取得了穩定的進步。未來幾年，公司AI伺服器機殼的收入增長將成為其主要驅動力。"
-        },
-        {
-          "date": "20260224",
           "broker": "中國信託綜合證券",
           "rating": "買進",
           "target": 1205.0,
@@ -35836,12 +36036,20 @@
           "summary": "勤誠 CHENBRO (8210) 在2026年各種AI伺服器需求推動下，預計營收與獲利將持續成長。隨著其提升產能並專注於高附加值的機櫃業務，公司的市場地位和財務表現預料將進一步加強。"
         },
         {
-          "date": "20260211",
-          "broker": "元富證券投顧",
-          "rating": "維持中立",
-          "target": 1000.0,
-          "close": 975.0,
-          "summary": "勤誠未來三年會持續擴充全球產能布局，積極因應地緣政治影響帶來的製造轉型，並在 AI 伺服器需求強勁的推動下，預期營收和毛利率將維持成長。而短期內，儘管獲利基期處於高檔，公司仍面臨毛利率波動和估值壓力的挑戰。"
+          "date": "20260224",
+          "broker": "美林證券",
+          "rating": "BUY",
+          "target": 1250.0,
+          "close": 870.0,
+          "summary": "勤誠企業正因AI需求快速增長而受益，並且在產品創新以及市場份額的提升中取得了穩定的進步。未來幾年，公司AI伺服器機殼的收入增長將成為其主要驅動力。"
+        },
+        {
+          "date": "20260224",
+          "broker": "美林證券",
+          "rating": "BUY",
+          "target": 1250.0,
+          "close": 870.0,
+          "summary": "勤誠企業正因AI需求快速增長而受益，並且在產品創新以及市場份額的提升中取得了穩定的進步。未來幾年，公司AI伺服器機殼的收入增長將成為其主要驅動力。"
         },
         {
           "date": "20260211",
@@ -35852,6 +36060,14 @@
           "summary": "勤誠公司在AI伺服器出貨動能支持下，於2026年的營運展望相當樂觀。淡季不淡情況已於1Q26呈現，公司將藉由持續擴充產能並推出新一代伺服器產品，預期可在全球市場中建立更強大的競爭優勢。公司預估年度EPS持續攀升顯示其高效管理營運並回應市場需求，未來成長可期。"
         },
         {
+          "date": "20260211",
+          "broker": "元富證券投顧",
+          "rating": "維持中立",
+          "target": 1000.0,
+          "close": 975.0,
+          "summary": "勤誠未來三年會持續擴充全球產能布局，積極因應地緣政治影響帶來的製造轉型，並在 AI 伺服器需求強勁的推動下，預期營收和毛利率將維持成長。而短期內，儘管獲利基期處於高檔，公司仍面臨毛利率波動和估值壓力的挑戰。"
+        },
+        {
           "date": "20260209",
           "broker": "凱基證券",
           "rating": "增加持股",
@@ -35898,6 +36114,22 @@
           "target": 1200.0,
           "close": 975.0,
           "summary": "勤誠(Chenbro)在2026年的成長動能受到其AI伺服器出貨的增加及市場需求提升的驅動。同時，公司憑藉其GPU與ASIC領域的市場份額增長以及新推出的定製產品，吸引了更多未來的顧客群體。這些因素有望為公司帶來持續性的業務成長。"
+        },
+        {
+          "date": "20251223",
+          "broker": "大和",
+          "rating": "Buy",
+          "target": 1200.0,
+          "close": 955.0,
+          "summary": "預計未來的營收與獲利將受到AI伺服器需求的快速增長所驅動。隨著AI伺服器的滲透率上升，公司預期會抓住市場份額並實現大幅成長。類似NVL和ASIC伺服器機架的技術複雜性增強，將推高平均單價（ASP），進一步推動收入成長。"
+        },
+        {
+          "date": "20251223",
+          "broker": "大和",
+          "rating": "Buy",
+          "target": 1200.0,
+          "close": 955.0,
+          "summary": "預計未來的營收與獲利將受到AI伺服器需求的快速增長所驅動。隨著AI伺服器的滲透率上升，公司預期會抓住市場份額並實現大幅成長。類似NVL和ASIC伺服器機架的技術複雜性增強，將推高平均單價（ASP），進一步推動收入成長。"
         },
         {
           "date": "20251223",
@@ -35906,22 +36138,6 @@
           "target": 1180.0,
           "close": 955.0,
           "summary": "在未來的營運中，公司將專注於擴展產能及改進產品規格，以確保能夠應對市場需求的增長。未來的收益增長主要依賴於AI伺服器和新型機櫃的推出，結合已有的供應鏈地位和新品的市場推出，公司預期將能持續擴展其市場佔有率。此外，馬來西亞新廠的啟用將成為關鍵的增長動力，預期會提升產能以滿足全球需求。全球製造和在地供應的策略將進一步強化其在國際市場的競爭力。"
-        },
-        {
-          "date": "20251223",
-          "broker": "大和",
-          "rating": "Buy",
-          "target": 1200.0,
-          "close": 955.0,
-          "summary": "預計未來的營收與獲利將受到AI伺服器需求的快速增長所驅動。隨著AI伺服器的滲透率上升，公司預期會抓住市場份額並實現大幅成長。類似NVL和ASIC伺服器機架的技術複雜性增強，將推高平均單價（ASP），進一步推動收入成長。"
-        },
-        {
-          "date": "20251223",
-          "broker": "大和",
-          "rating": "Buy",
-          "target": 1200.0,
-          "close": 955.0,
-          "summary": "預計未來的營收與獲利將受到AI伺服器需求的快速增長所驅動。隨著AI伺服器的滲透率上升，公司預期會抓住市場份額並實現大幅成長。類似NVL和ASIC伺服器機架的技術複雜性增強，將推高平均單價（ASP），進一步推動收入成長。"
         },
         {
           "date": "20251210",
@@ -35989,19 +36205,19 @@
         },
         {
           "date": "20251110",
-          "broker": "華南永昌",
-          "rating": "買進",
-          "target": 1200.0,
-          "close": 1015.0,
-          "summary": "看待公司Q4及明年營運展望，AI伺服器需求持續強勁，促使公司Q3稅後EPS再創新高，加上新的產能於年底至明年逐步投產，展望2026年整體營運增長。"
-        },
-        {
-          "date": "20251110",
           "broker": "國票",
           "rating": "區間操作",
           "target": 1110.0,
           "close": 1015.0,
           "summary": "展望未來，公司預計在2025及2026年持續以AI伺服器為驅動力，在美國、馬來西亞及其他多地強化產能。客製化產品的需求與伺服器業務的推進有望持續提升企業價值。積極的資本支出預示著公司對技術發展與市場擴張的信心，這可能持續增進市占率與盈利能力。公司的營收及獲利預期將在未來數年持續成長，主要得益於AI伺服器訂單的穩健成長，這一切都反映出對於技術出眾與市場前景的樂觀看法。"
+        },
+        {
+          "date": "20251110",
+          "broker": "華南永昌",
+          "rating": "買進",
+          "target": 1200.0,
+          "close": 1015.0,
+          "summary": "看待公司Q4及明年營運展望，AI伺服器需求持續強勁，促使公司Q3稅後EPS再創新高，加上新的產能於年底至明年逐步投產，展望2026年整體營運增長。"
         },
         {
           "date": "20251110",
@@ -36244,16 +36460,16 @@
           "summary": "未來展望顯示出強勁的成長潛力，主要受惠於新產品出貨優於預期，其中降噪櫃和ASIC伺服器機殼的表現尤為突出。公司不僅在出貨量上有所提升，且毛利率亦高於平均值，有助於改善產品組合並提升獲利。此外，由於客戶群的多元化，未來訂單的動能更加廣泛，預期營業收入和獲利能力將顯著提高。然而，台幣升值導致的匯損可能對獲利造成一定壓力。"
         }
       ],
-      "recent_count": 20,
+      "recent_count": 23,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "8299",
       "stock_name": "群聯",
-      "close": 2670.0,
+      "close": 2725.0,
       "max_target": 4000.0,
       "max_target_date": "20260511",
       "max_target_broker": "兆豐",
@@ -36265,7 +36481,7 @@
       "latest_target_rating": "買進",
       "latest_target_summary": "群聯(8299)因報價攀升和供需吃緊態勢，未來業績表現可能保持高速增長。其控制芯片與模組銷售業務的獨特模式有助於提高市場競爭力。此外，持續加速高端產品研發和製程升級，並通過長期協議確保原材料及客戶供應，形成穩定的經營基礎。預期AI應用推展、NAND Flash需求增長將成為主要推動力。",
       "median_target": 2488.0,
-      "potential_return": -6.82,
+      "potential_return": -8.7,
       "entries": [
         {
           "date": "20260511",
@@ -36815,26 +37031,34 @@
       "recent_count": 27,
       "market": "上櫃",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "8358",
       "stock_name": "金居",
-      "close": 462.0,
-      "max_target": 325.0,
-      "max_target_date": "20260306",
-      "max_target_broker": "國泰",
+      "close": 477.0,
+      "max_target": 600.0,
+      "max_target_date": "20260512",
+      "max_target_broker": "中國信託綜合證券",
       "max_target_rating": "買進",
-      "max_target_summary": "金居公司因應全球AI伺服器及高速通訊技術需求的快速成長，持續擴大高階銅箔HVLP系列產品的生產，2026年將因銅箔需求激增與產品多元化而達到業務新高，其營收、EPS及獲利率均有顯著提升。未來也計畫透過擴新增產能來支持需求，並在ESG方面進行積極改善，以提升競爭力和可持續性。",
-      "latest_target": 320.0,
-      "latest_target_date": "20260312",
-      "latest_target_broker": "統一證券",
+      "max_target_summary": "預計金居將藉由其HVLP4相關產品的成長與市場需求的推動，於未來數季持續取得顯著增長，預測毛利率與營利水準將逐步改善。公司新資本支出的投入及產能的提升也將進一步促進其市場競爭力和財務表現。",
+      "latest_target": 600.0,
+      "latest_target_date": "20260512",
+      "latest_target_broker": "中國信託綜合證券",
       "latest_target_rating": "買進",
-      "latest_target_summary": "",
-      "median_target": 322.5,
-      "potential_return": -30.19,
+      "latest_target_summary": "預計金居將藉由其HVLP4相關產品的成長與市場需求的推動，於未來數季持續取得顯著增長，預測毛利率與營利水準將逐步改善。公司新資本支出的投入及產能的提升也將進一步促進其市場競爭力和財務表現。",
+      "median_target": 325.0,
+      "potential_return": -31.87,
       "entries": [
+        {
+          "date": "20260512",
+          "broker": "中國信託綜合證券",
+          "rating": "買進",
+          "target": 600.0,
+          "close": 477.0,
+          "summary": "預計金居將藉由其HVLP4相關產品的成長與市場需求的推動，於未來數季持續取得顯著增長，預測毛利率與營利水準將逐步改善。公司新資本支出的投入及產能的提升也將進一步促進其市場競爭力和財務表現。"
+        },
         {
           "date": "20260312",
           "broker": "統一證券",
@@ -36956,16 +37180,16 @@
           "summary": "隨著高頻高速銅箔需求的提升，尤其在伺服器平台升級的背景下，高階產品的需求不斷增加。公司預期在2026年，隨著ASIC伺服器的動能增強和新技術的應用，整體營收和獲利能力將大幅提升。市場對先進銅箔的認證及需求讓公司找尋到更高的成長機會。"
         }
       ],
-      "recent_count": 2,
+      "recent_count": 3,
       "market": "上櫃",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     },
     {
       "stock_id": "8996",
       "stock_name": "高力",
-      "close": 1015.0,
+      "close": 1055.0,
       "max_target": 1390.0,
       "max_target_date": "20260508",
       "max_target_broker": "凱基證券",
@@ -36977,7 +37201,7 @@
       "latest_target_rating": "增加持股",
       "latest_target_summary": "高力公司在 2026 年第一季財務表現優於市場預期，主要受益於液冷系統與燃料電池的業務增長。未來的收益增長預測包括燃料電池的高速擴張及液冷業務的穩定需求。公司整體的營收增長主要來自於市場需求的提升及技術的進展。",
       "median_target": 1140.0,
-      "potential_return": 12.32,
+      "potential_return": 8.06,
       "entries": [
         {
           "date": "20260508",
@@ -37199,7 +37423,7 @@
       "recent_count": 5,
       "market": "上市",
       "has_target_price": true,
-      "close_date": "20260511",
+      "close_date": "20260512",
       "close_source": "kline"
     }
   ],
