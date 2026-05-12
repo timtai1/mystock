@@ -297,9 +297,11 @@ def generate():
     name_map = load_stock_name_map()
     
     root = SCRIPT_DIR / LOG_ROOT_DIR
+    kroot = SCRIPT_DIR / KLINE_DIR
     all_parsed_stocks = {}
     latest_mtime = 0.0
     
+    # 掃描法人目標價檔案
     if root.exists():
         for f in sorted(root.glob("*.json")):
             parsed = parse_stock_file(f)
@@ -307,20 +309,6 @@ def generate():
                 continue
             
             sid = parsed["stock_id"]
-            parsed["market"] = market_map.get(sid) or None
-            parsed["has_target_price"] = True
-            
-            lc = latest_closes.get(sid)
-            if lc and lc.get("close") is not None:
-                parsed["close"] = lc["close"]
-                parsed["close_date"] = lc.get("date")
-                parsed["close_source"] = "kline"
-                if parsed.get("median_target") is not None and parsed["close"]:
-                    parsed["potential_return"] = round(100.0 * (parsed["median_target"] - parsed["close"]) / parsed["close"], 2)
-            else:
-                parsed["close_date"] = None
-                parsed["close_source"] = "broker_report"
-                
             all_parsed_stocks[sid] = parsed
             try:
                 mt = f.stat().st_mtime
@@ -328,6 +316,32 @@ def generate():
                     latest_mtime = mt
             except OSError:
                 pass
+
+    # 掃描日K線檔案更新時間
+    if kroot.exists():
+        for f in kroot.glob("*.json"):
+            try:
+                mt = f.stat().st_mtime
+                if mt > latest_mtime:
+                    latest_mtime = mt
+            except OSError:
+                pass
+
+    # 補全 market, close 等資訊
+    for sid, parsed in all_parsed_stocks.items():
+        parsed["market"] = market_map.get(sid) or None
+        parsed["has_target_price"] = True
+        
+        lc = latest_closes.get(sid)
+        if lc and lc.get("close") is not None:
+            parsed["close"] = lc["close"]
+            parsed["close_date"] = lc.get("date")
+            parsed["close_source"] = "kline"
+            if parsed.get("median_target") is not None and parsed["close"]:
+                parsed["potential_return"] = round(100.0 * (parsed["median_target"] - parsed["close"]) / parsed["close"], 2)
+        else:
+            parsed["close_date"] = None
+            parsed["close_source"] = "broker_report"
 
     # 取得檔案最後修改時間，並轉換為台灣時間 (UTC+8)
     last_updated = None

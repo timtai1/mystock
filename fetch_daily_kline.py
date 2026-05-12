@@ -209,10 +209,41 @@ def fetch_twse_stock_month(stock_id, year, month):
 # 全市場（當日或指定日）
 # ------------------------------------------------------------
 def fetch_twse_all_today():
-    """TWSE OpenAPI：當日全市場 → {code: {date, open, high, low, close, volume}}
-
-    STOCK_DAY_ALL 只有「最新一個交易日」的資料，無法指定日期。
+    """優先使用 TWSE 官網 JSON API，若失敗則回退到 OpenAPI。
+    
+    Returns: {code: {date, open, high, low, close, volume}}
     """
+    # 方案 A: 官網 JSON API (較即時，含日期)
+    official_url = "https://www.twse.com.tw/exchangeReport/STOCK_DAY_ALL?response=json"
+    try:
+        r = SESSION.get(official_url, timeout=HTTP_TIMEOUT, verify=VERIFY_SSL)
+        if r.status_code == 200:
+            data = r.json()
+            raw_date = data.get("date")  # e.g. "20240514"
+            rows = data.get("data") or []
+            if raw_date and rows:
+                out = {}
+                for row in rows:
+                    if not isinstance(row, list) or len(row) < 8:
+                        continue
+                    code = str(row[0]).strip()
+                    close = parse_number(row[7])
+                    if not code or close is None:
+                        continue
+                    out[code] = {
+                        "date":   raw_date,
+                        "open":   parse_number(row[4]),
+                        "high":   parse_number(row[5]),
+                        "low":    parse_number(row[6]),
+                        "close":  close,
+                        "volume": parse_number(row[2]),
+                    }
+                log(f"[TWSE] 從官網取得 {len(out)} 檔，日期 {raw_date}")
+                return out
+    except Exception as e:
+        log(f"[TWSE] 官網 API 失敗：{e}，嘗試回退到 OpenAPI")
+
+    # 方案 B: OpenAPI (可能延遲)
     url = "https://openapi.twse.com.tw/v1/exchangeReport/STOCK_DAY_ALL"
     try:
         r = SESSION.get(url, timeout=HTTP_TIMEOUT, verify=VERIFY_SSL)
@@ -221,6 +252,8 @@ def fetch_twse_all_today():
     except Exception as e:
         log(f"[TWSE] STOCK_DAY_ALL 失敗：{e}")
         return {}
+    
+    # OpenAPI 通常沒給日期，只能用執行日 (today_ymd)
     day = today_ymd()
     out = {}
     for item in data or []:
@@ -238,6 +271,7 @@ def fetch_twse_all_today():
             "close":  close,
             "volume": parse_number(item.get("TradeVolume")),
         }
+    log(f"[TWSE] 從 OpenAPI 取得 {len(out)} 檔，暫定日期 {day}")
     return out
 
 
@@ -330,9 +364,9 @@ def fetch_tpex_all_by_date(dt=None):
         # 注意：此 endpoint 實際忽略 d=，永遠回今日快照。保留是為了 incremental。
         roc_y = dt.year - 1911
         params["d"] = f"{roc_y}/{dt.month:02d}/{dt.day:02d}"
-        day = dt.strftime("%Y%m%d")
+        fallback_day = dt.strftime("%Y%m%d")
     else:
-        day = today_ymd()
+        fallback_day = today_ymd()
 
     try:
         r = SESSION.get(url, params=params, timeout=HTTP_TIMEOUT, verify=VERIFY_SSL)
@@ -349,9 +383,17 @@ def fetch_tpex_all_by_date(dt=None):
         return {}
 
     out = {}
+    data_date = None
     for item in data or []:
         if not isinstance(item, dict):
             continue
+        
+        # 嘗試從回應中抓日期 (e.g. "115/05/12" or "1150512")
+        if not data_date:
+            raw_d = item.get("Date")
+            if raw_d:
+                data_date = roc_to_ymd(raw_d) if "/" in str(raw_d) else f"{int(str(raw_d)[:3])+1911}{str(raw_d)[3:]}"
+
         # TPEX 欄位命名跨端點不一致，多試幾個 key
         code = (item.get("SecuritiesCompanyCode")
                 or item.get("Code")
@@ -365,7 +407,7 @@ def fetch_tpex_all_by_date(dt=None):
         if not code or close is None:
             continue
         out[code] = {
-            "date":   day,
+            "date":   data_date or fallback_day,
             "open":   parse_number(item.get("Open") or item.get("OpeningPrice")),
             "high":   parse_number(item.get("High") or item.get("HighestPrice")),
             "low":    parse_number(item.get("Low") or item.get("LowestPrice")),
@@ -376,6 +418,7 @@ def fetch_tpex_all_by_date(dt=None):
                 or item.get("Volume")
             ),
         }
+    log(f"[TPEX] 取得 {len(out)} 檔，日期 {data_date or fallback_day}")
     return out
 
 
@@ -526,11 +569,10 @@ def incremental_update(stocks, market_map):
     updated = 0
     skipped_same_day = 0
     skipped_duplicate_data = 0
-    backfilled_stocks = []
+    backfilled_count = 0
     not_found = []
 
-    # 假日檢查：若是週六 (5) 或週日 (6)，且非強制執行，則跳過更新
-    # 台灣股市週六日不開盤
+    # 假日檢查：若是週六 (5) 或週日 (6)
     now = datetime.now()
     is_weekend = now.weekday() >= 5
     
@@ -539,13 +581,37 @@ def incremental_update(stocks, market_map):
         kline = load_kline(code)
         entries = kline.get("entries", [])
 
-        # ... (backfill logic remains same)
+        # --- 自動回補機制 ---
+        # 若最後一筆日期與今天差距過大（例如超過 4 天，扣除週末代表可能漏了 2 天以上）
+        # 則觸發該檔的 bootstrap (回補近 1 個月即可)
+        need_backfill = False
+        if entries:
+            last_date_str = entries[-1].get("date")
+            if last_date_str:
+                try:
+                    last_dt = datetime.strptime(last_date_str, "%Y%m%d")
+                    if (now - last_dt).days > 4:
+                        need_backfill = True
+                except ValueError:
+                    pass
+        else:
+            # 沒資料也視為需要 bootstrap
+            need_backfill = True
 
-        # 如果最後一筆已是今天，跳過
-        if entries and entries[-1].get("date") == day:
-            skipped_same_day += 1
-            continue
-            
+        if need_backfill:
+            log(f"  [{code}] 偵測到資料中斷，執行回補...")
+            if market == "上櫃":
+                _, added = bootstrap_tpex_stock(code, months=1)
+            else:
+                _, added = bootstrap_twse_stock(code, months=1)
+            if added > 0:
+                backfilled_count += 1
+                # 重新讀取回補後的資料
+                kline = load_kline(code)
+                entries = kline.get("entries", [])
+
+        # ------------------
+
         # 主來源依 market 決定，若沒有再去另一個找
         if market == "上櫃":
             rec = tpex_today.get(code) or twse_today.get(code)
@@ -553,26 +619,34 @@ def incremental_update(stocks, market_map):
             rec = twse_today.get(code) or tpex_today.get(code)
 
         if not rec or rec.get("close") is None:
-            if code not in backfilled_stocks:
-                not_found.append(code)
+            not_found.append(code)
+            continue
+
+        rec_date = rec.get("date") or day
+
+        # 如果最後一筆已是 rec_date，跳過
+        if entries and entries[-1].get("date") == rec_date:
+            skipped_same_day += 1
             continue
 
         # 關鍵修正：檢查 OHLCV 是否與最後一筆完全相同（代表可能是拿舊快照充數）
+        # 但如果日期不同，則允許寫入（可能是剛好收平盤且量完全一樣，雖然機率極低）
         if entries:
             last = entries[-1]
-            if (last.get("close") == rec.get("close") and
+            if (last.get("date") == rec_date or (
+                last.get("close") == rec.get("close") and
                 last.get("open") == rec.get("open") and
                 last.get("high") == rec.get("high") and
                 last.get("low") == rec.get("low") and
-                last.get("volume") == rec.get("volume")):
+                last.get("volume") == rec.get("volume"))):
+                
+                # 如果日期不同但數據完全一樣，且是週末或非開盤時間，可能是 API 還沒更新
+                # 我們保守一點，只有在日期真的不同且資料也不同時才增加
                 skipped_duplicate_data += 1
                 continue
 
-        # 如果是週末且資料沒變，或是 API 尚未更新成今天的資料，通常會發生在此
-        # 但如果資料變了（例如週六補盤），則允許寫入
-        
         entries.append({
-            "date":   rec.get("date") or day,
+            "date":   rec_date,
             "open":   rec.get("open"),
             "high":   rec.get("high"),
             "low":    rec.get("low"),
@@ -584,7 +658,7 @@ def incremental_update(stocks, market_map):
         updated += 1
 
     log(f"更新 {updated} 檔；已是最新 {skipped_same_day} 檔；重複資料跳過 {skipped_duplicate_data} 檔"
-        + (f"；補回 {len(backfilled_stocks)} 檔" if backfilled_stocks else "")
+        + (f"；補回 {backfilled_count} 檔" if backfilled_count else "")
         + (f"；找不到 {len(not_found)} 檔" if not_found else "")
         + (f"：{not_found[:20]}{'…' if len(not_found) > 20 else ''}" if not_found else ""))
 
