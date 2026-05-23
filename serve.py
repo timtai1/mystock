@@ -577,11 +577,26 @@ def api_kline():
     if not path.exists():
         needs_fetch = True
     else:
-        # 檢查更新時間
+        # 檢查更新時間與資料長度
         try:
             mtime = path.stat().st_mtime
-            if (time.time() - mtime) > 4 * 3600:  # 4 小時
+            # 若超過 4 小時未更新，則更新
+            if (time.time() - mtime) > 4 * 3600:
                 needs_fetch = True
+            else:
+                # 若更新時間尚早，但資料長度不足 22 個月 (約 2 年)，也補抓
+                with open(path, "r", encoding="utf-8") as f:
+                    data = json.load(f)
+                entries = data.get("entries") or []
+                if entries:
+                    first_date_str = entries[0].get("date")
+                    if first_date_str:
+                        first_dt = datetime.strptime(first_date_str, "%Y%m%d")
+                        # 差距小於 660 天 (約 22 個月)
+                        if (datetime.now() - first_dt).days < 660:
+                            needs_fetch = True
+                else:
+                    needs_fetch = True
         except Exception:
             needs_fetch = True
 
