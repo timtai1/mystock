@@ -66,11 +66,11 @@ STOCKLIST_GLOB = "stocklist_*.txt"
 MARKET_LIST_FILE = SCRIPT_DIR / "tw_stock_list.csv"
 KLINE_DIR = SCRIPT_DIR / "日K線_log_file"
 
-BOOTSTRAP_MONTHS = 6
+BOOTSTRAP_MONTHS = 24  # 預設改為 24 個月
 # TWSE 限制 3 次 / 5 秒，留安全邊界
 REQUEST_INTERVAL_SEC = 1.8
-# FinMind 匿名限制 300/hr；保守留 0.3 秒間隔
-FINMIND_INTERVAL_SEC = 0.3
+# FinMind 限制
+FINMIND_INTERVAL_SEC = 0.5
 FINMIND_API_URL = "https://api.finmindtrade.com/api/v4/data"
 FINMIND_TOKEN = os.environ.get("FINMIND_TOKEN", "")
 VERIFY_SSL = False  # 公司 MITM 自簽環境請設 False
@@ -465,53 +465,19 @@ def save_kline(stock_id, kline, market=None):
 
 
 # ------------------------------------------------------------
-# Bootstrap: TWSE（上市，逐檔逐月）
+# Unified Bootstrap: Using FinMind (Fast, for both TWSE/TPEX)
 # ------------------------------------------------------------
-def bootstrap_twse_stock(stock_id, months=BOOTSTRAP_MONTHS):
-    """TWSE 上市：一檔股票呼叫 STOCK_DAY N 次取得近 N 個月 OHLCV"""
-    kline = load_kline(stock_id)
-    existing = {e["date"] for e in kline.get("entries", []) if e.get("date")}
-
-    # 從本月往前回推 months 個月
-    today = datetime.today()
-    month_list = []
-    y, m = today.year, today.month
-    for _ in range(months):
-        month_list.append((y, m))
-        m -= 1
-        if m == 0:
-            m = 12
-            y -= 1
-
-    added = 0
-    for y, m in month_list:
-        rows = fetch_twse_stock_month(stock_id, y, m)
-        for r in rows:
-            if r["date"] not in existing:
-                kline["entries"].append(r)
-                existing.add(r["date"])
-                added += 1
-        time.sleep(REQUEST_INTERVAL_SEC)
-
-    save_kline(stock_id, kline, market="上市")
-    return len(kline["entries"]), added
-
-
-# ------------------------------------------------------------
-# Bootstrap: TPEX（上櫃，改走 FinMind，每檔 1 次 API 呼叫）
-# ------------------------------------------------------------
-def bootstrap_tpex_stock(stock_id, months=BOOTSTRAP_MONTHS):
-    """TPEX 上櫃：FinMind 一次 API 呼叫就能取得一檔整段日期範圍的 OHLCV。
-
-    比舊版「逐日批次」省下極大量 API 呼叫：
-      舊：N 個交易日 × 1 call/day（但 d= 被忽略，資料全錯）
-      新：1 call/stock，範圍整段涵蓋
+def bootstrap_stock_finmind(stock_id, months=BOOTSTRAP_MONTHS, market=None):
+    """使用 FinMind 一次 API 呼叫取得一檔整段日期範圍的 OHLCV。
+    適用於上市 (TWSE) 與 上櫃 (TPEX)。
     """
     kline = load_kline(stock_id)
     existing = {e["date"] for e in kline.get("entries", []) if e.get("date")}
 
     today = datetime.today()
     start = today - timedelta(days=months * 31 + 5)
+    
+    log(f"  [FinMind][{stock_id}] 抓取近 {months} 個月歷史資料...")
     rows = fetch_finmind_stock_history(stock_id, start, today)
 
     added = 0
@@ -521,32 +487,10 @@ def bootstrap_tpex_stock(stock_id, months=BOOTSTRAP_MONTHS):
             existing.add(r["date"])
             added += 1
 
-    save_kline(stock_id, kline, market="上櫃")
-    return len(kline["entries"]), added
-
-
-def bootstrap_tpex_batch(tpex_codes, months=BOOTSTRAP_MONTHS):
-    """Bootstrap 所有上櫃檔：逐檔呼叫 FinMind。"""
-    if not tpex_codes:
-        return 0
-
-    est_min = len(tpex_codes) * FINMIND_INTERVAL_SEC / 60
-    log(f"  TPEX（FinMind）：{len(tpex_codes)} 檔，預估 {est_min:.1f} 分鐘")
-    if not FINMIND_TOKEN:
-        log(f"  （未設 FINMIND_TOKEN，使用匿名模式；匿名限 300 次/小時）")
-
-    added_total = 0
-    for i, code in enumerate(tpex_codes, 1):
-        try:
-            total, added = bootstrap_tpex_stock(code, months=months)
-            added_total += added
-            log(f"    [TPEX {i}/{len(tpex_codes)}] {code} → 累計 {total} 筆（本次新增 {added}）")
-        except Exception as e:
-            log(f"    [TPEX {i}/{len(tpex_codes)}] {code} 失敗：{e}")
-        time.sleep(FINMIND_INTERVAL_SEC)
-
-    log(f"  TPEX 完成：共新增 {added_total} 筆")
-    return added_total
+    # 寫入時會自動排序與去重
+    save_kline(stock_id, kline, market=market)
+    total = len(kline["entries"])
+    return total, added
 
 
 # ------------------------------------------------------------
@@ -600,10 +544,7 @@ def incremental_update(stocks, market_map):
 
         if need_backfill:
             log(f"  [{code}] 偵測到資料中斷，執行回補...")
-            if market == "上櫃":
-                _, added = bootstrap_tpex_stock(code, months=1)
-            else:
-                _, added = bootstrap_twse_stock(code, months=1)
+            _, added = bootstrap_stock_finmind(code, months=1, market=market)
             if added > 0:
                 backfilled_count += 1
                 # 重新讀取回補後的資料
@@ -669,7 +610,7 @@ def incremental_update(stocks, market_map):
 def main():
     ap = argparse.ArgumentParser(description="TWSE/TPEX 日 K 線擷取")
     ap.add_argument("--bootstrap", action="store_true",
-                    help="回補近 N 個月歷史 K 線（每檔多次 API 呼叫）")
+                    help="回補近 N 個月歷史 K 線（高速 FinMind 版）")
     ap.add_argument("--months", type=int, default=BOOTSTRAP_MONTHS,
                     help=f"回補月數，預設 {BOOTSTRAP_MONTHS}")
     ap.add_argument("--stock", type=str, default=None,
@@ -684,32 +625,15 @@ def main():
     KLINE_DIR.mkdir(exist_ok=True)
 
     if args.bootstrap:
-        # 分離上市 / 上櫃（找不到市場別的預設走 TWSE）
-        twse_codes = [c for c in stocks if market_map.get(c, "上市") != "上櫃"]
-        tpex_codes = [c for c in stocks if market_map.get(c) == "上櫃"]
-
-        log(f"Bootstrap 模式：TWSE {len(twse_codes)} 檔（逐檔逐月）"
-            f" + TPEX {len(tpex_codes)} 檔（逐日批次）")
-
-        # --- TWSE 段 ---
-        if twse_codes:
-            est_min = len(twse_codes) * args.months * REQUEST_INTERVAL_SEC / 60
-            log(f"--- TWSE 開始，預估 {est_min:.1f} 分鐘 ---")
-            for i, code in enumerate(twse_codes, 1):
-                log(f"[TWSE {i}/{len(twse_codes)}] {code}")
-                try:
-                    total, added = bootstrap_twse_stock(code, months=args.months)
-                    log(f"  → 累計 {total} 筆（本次新增 {added}）")
-                except Exception as e:
-                    log(f"  失敗：{e}")
-
-        # --- TPEX 段 ---
-        if tpex_codes:
-            log("--- TPEX 開始 ---")
+        log(f"Bootstrap 模式 (FinMind): 處理 {len(stocks)} 檔，每檔 {args.months} 個月")
+        for i, code in enumerate(stocks, 1):
             try:
-                bootstrap_tpex_batch(tpex_codes, months=args.months)
+                total, added = bootstrap_stock_finmind(code, months=args.months, market=market_map.get(code))
+                log(f"    [{i}/{len(stocks)}] {code} → 累計 {total} 筆（本次新增 {added}）")
             except Exception as e:
-                log(f"TPEX batch 失敗：{e}")
+                log(f"    [{i}/{len(stocks)}] {code} 失敗：{e}")
+            if i < len(stocks):
+                time.sleep(FINMIND_INTERVAL_SEC)
     else:
         log(f"Incremental：更新 {len(stocks)} 檔")
         incremental_update(stocks, market_map)

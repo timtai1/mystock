@@ -13,7 +13,11 @@ export CMONEY_AUTH_TOKEN="你的_bearer_jwt"
 
 每日執行
 python fetch_target_price.py                       # 自動掃描 stocklist_*.txt（所有自選股清單）
-python fetch_daily_kline.py                        # 每日增量 K 線
+# python fetch_daily_kline.py                      # (註：目前已改為隨選補抓，非必要執行)
+
+隨選自動補抓 (On-Demand Fetching)
+1. 點開 K 線圖時，系統會自動檢查並補齊近 2 年資料。
+2. 若資料超過 4 小時未更新，背景會自動重抓，保持最新。
 
 首次回補 K 線（或上櫃資料壞掉重抓時用）
 python fetch_daily_kline.py --bootstrap --months 13

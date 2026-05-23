@@ -69,10 +69,9 @@ mystock/
 
 | 市場 | Bootstrap API | Incremental API | 策略 |
 |------|---------------|-----------------|------|
-| 上市 TWSE | `STOCK_DAY`（單股單月 OHLCV） | `STOCK_DAY_ALL`（單日全市場） | 按「每檔 × 每月」呼叫 |
-| 上櫃 TPEX | **FinMind `TaiwanStockPrice`**（單股整段日期範圍） | `tpex_mainboard_daily_close_quotes`（當日全市場） | 按「每檔」一次 API 取整段 |
+| 全市場 (TWSE/TPEX) | **FinMind `TaiwanStockPrice`** | `STOCK_DAY_ALL` / `daily_close_quotes` | **On-Demand**: 點開 K 線時自動抓取 2 年歷史 |
 
-TPEX 的這個架構在 2026-04 改過一次（見 §6.10）：原本 bootstrap 用 TPEX OpenAPI 的「單日全市場」，結果發現 `d=` 參數被官方完全忽略，不管傳哪一天都只回今日快照，導致歷史資料整批壞掉。現在改用 **FinMind** 的 `TaiwanStockPrice` dataset，一次 API 呼叫就能拿到單檔整段日期範圍的逐日 OHLCV。
+TPEX 的這個架構在 2026-04 改過一次（見 §6.10）：原本 bootstrap 用 TPEX OpenAPI 的「單日全市場」，結果發現 `d=` 參數被官方完全忽略，不管傳哪一天一律只回今日快照，導致歷史資料整批壞掉。現在改用 **FinMind** 的 `TaiwanStockPrice` dataset，一次 API 呼叫就能拿到單檔整段日期範圍的逐日 OHLCV。
 
 **FinMind 重點**
 
@@ -85,9 +84,8 @@ TPEX 的這個架構在 2026-04 改過一次（見 §6.10）：原本 bootstrap 
 **關鍵常數**
 
 ```python
-BOOTSTRAP_MONTHS = 6
-REQUEST_INTERVAL_SEC = 1.8     # TWSE 官方限制 3 req / 5s，留安全邊界
-FINMIND_INTERVAL_SEC = 0.3     # 匿名限 300/hr，保守留 0.3 秒
+BOOTSTRAP_MONTHS = 24          # 預設改為 24 個月 (2 年)
+FINMIND_INTERVAL_SEC = 0.5     # 頻率限制安全邊界
 FINMIND_API_URL = "https://api.finmindtrade.com/api/v4/data"
 FINMIND_TOKEN = os.environ.get("FINMIND_TOKEN", "")
 VERIFY_SSL = False             # 公司 MITM
@@ -97,11 +95,12 @@ HTTP_TIMEOUT = 30
 **執行**
 
 ```bash
-python fetch_daily_kline.py --bootstrap             # 首次回補近 6 個月
-python fetch_daily_kline.py --bootstrap --months 12 # 回補 12 個月
-python fetch_daily_kline.py                         # 每日增量
+python fetch_daily_kline.py --bootstrap             # 回補近 24 個月 (FinMind 高速版)
+python fetch_daily_kline.py --bootstrap --months 60 # 回補 5 年
 python fetch_daily_kline.py --stock 2330            # 測單檔
+# 註：不再建議每日全量跑 incremental_update，改由 Web 介面點擊時自動補抓。
 ```
+
 
 **輸出格式**
 
@@ -127,7 +126,8 @@ python fetch_daily_kline.py --stock 2330            # 測單檔
   - `GET /` → 回 `index.html`。
   - `GET /api/stocks` → 回所有股票的聚合結果，附 `last_updated` 欄位（取自目錄內最新檔的 mtime，格式 `YYYY-MM-DD HH:MM`）。
   - `GET /api/stocks?watchlist=<群組名>` → 只回該自選股清單內的股票；清單有但還沒抓到法人目標價的股票會補空殼列（`has_target_price: false`，其他欄位 null，僅 `stock_id` / `stock_name` / `market` / `close` 可能有值）。回應會多帶 `watchlist_total`（清單原始檔數）。
-  - `GET /api/kline?code=XXXX` → 單檔 K 線資料（`code.isalnum()` 防 path traversal）。
+  - `GET /api/kline?code=XXXX` → 單檔 K 線資料。
+    - **自動補抓機制**：若本機無該檔 JSON 或檔案更新時間超過 4 小時，會自動在後端執行 `fetch_daily_kline.py --bootstrap` 抓取 2 年歷史，確保圖表始終為最新且長度足夠。
   - `GET /api/watchlists` → 列出所有 `stocklist_*.txt` 清單，回 `[{name, count}]`。
   - `POST /api/watchlists` → 新增清單；body `{"name":"..."}`，省略 `name` 會自動編號「自選股N」（找最小未使用整數）。
   - `PATCH /api/watchlists/<name>` → 改名；body `{"new_name":"..."}`，同時改 `stocklist_{舊名}.txt` → `stocklist_{新名}.txt`。

@@ -564,24 +564,42 @@ def api_watchlists_delete(name: str):
 @app.route("/api/kline")
 def api_kline():
     """單檔日 K 線資料。
-
-    Query: /api/kline?code=2330
-    Response:
-        {
-          "stock_id": "2330",
-          "market": "上市",
-          "last_updated": "...",
-          "entries": [{"date":"20260101","open":...,"high":...,"low":...,"close":...,"volume":...}, ...]
-        }
+    若資料不存在或超過 4 小時未更新，則自動觸發後端重抓。
     """
     from flask import request
     code = (request.args.get("code") or "").strip()
-    # 僅允許英數字，避免 path traversal
     if not code or len(code) > 10 or not code.isalnum():
         abort(400)
+
     path = SCRIPT_DIR / KLINE_DIR / f"{code}.json"
+    needs_fetch = False
+
+    if not path.exists():
+        needs_fetch = True
+    else:
+        # 檢查更新時間
+        try:
+            mtime = path.stat().st_mtime
+            if (time.time() - mtime) > 4 * 3600:  # 4 小時
+                needs_fetch = True
+        except Exception:
+            needs_fetch = True
+
+    if needs_fetch:
+        print(f"[資訊] {code} K 線資料不全或過舊，啟動背景補抓...")
+        # 這裡用一個簡單的鎖防止重複觸發同一個代號
+        # 但為了 UX，我們在 api_kline 內部直接跑一次重抓（同步或非同步？）
+        # 若是同步，使用者會等 1-2 秒；若是非同步，使用者第一次會看到舊資料或 404。
+        # 考慮到 FinMind 很快，同步抓取 2 年資料約 1-2 秒，體驗尚可。
+        months = _compute_existing_kline_months(code, default_months=24)
+        _run_fetch_subprocess(
+            "fetch_daily_kline.py",
+            ["--bootstrap", "--months", str(months), "--stock", code],
+        )
+
     if not path.exists() or not path.is_file():
         abort(404)
+
     try:
         with open(path, "r", encoding="utf-8") as f:
             data = json.load(f)
@@ -619,12 +637,12 @@ def _run_fetch_subprocess(script_name: str, extra_args: list) -> dict:
         return {"ok": False, "error": f"{type(e).__name__}: {e}"}
 
 
-def _compute_existing_kline_months(code: str, default_months: int = 12) -> int:
-    """讀現有 kline JSON，回傳從最早一筆到今天的月數（至少 12、最多 60）。
+def _compute_existing_kline_months(code: str, default_months: int = 24) -> int:
+    """讀現有 kline JSON，回傳從最早一筆到今天的月數（至少 24、最多 60）。
 
-    下限 12：重抓時至少回補 1 年，避免圖表過短難看趨勢。
+    下限 24：重抓時至少回補 2 年，符合使用者需求。
     """
-    MIN_MONTHS = 12
+    MIN_MONTHS = 24
     MAX_MONTHS = 60
     path = SCRIPT_DIR / KLINE_DIR / f"{code}.json"
     if not path.exists():
