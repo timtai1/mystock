@@ -506,6 +506,33 @@ body.resizing * { cursor: ew-resize !important; }
   animation: spin 1s linear infinite;
 }
 
+.kline-period-switcher {
+  display: flex;
+  gap: 2px;
+  background: var(--hover);
+  padding: 2px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  margin-right: 4px;
+}
+.kline-period-switcher button {
+  border: none !important;
+  background: transparent !important;
+  padding: 4px 10px !important;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 4px !important;
+  color: var(--muted);
+  box-shadow: none !important;
+  height: auto !important;
+}
+.kline-period-switcher button:hover { background: rgba(0,0,0,0.05) !important; }
+.kline-period-switcher button.active {
+  background: var(--canvas) !important;
+  color: var(--fg);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1) !important;
+}
+
 .kline-toolbar {
   display: flex;
   flex-wrap: wrap;
@@ -950,6 +977,12 @@ body.resizing * { cursor: ew-resize !important; }
       </div>
     </div>
     <div class="kline-toolbar" id="kline-toolbar">
+      <div class="kline-period-switcher" id="kline-period-switcher">
+        <button class="active" data-period="daily">日 K</button>
+        <button data-period="weekly">週 K</button>
+        <button data-period="monthly">月 K</button>
+      </div>
+      <span class="sep"></span>
       <span class="tool-label">畫線工具：</span>
       <button data-tool="segment" title="線段">線段</button>
       <button data-tool="straightLine" title="直線">直線</button>
@@ -1466,12 +1499,16 @@ body.resizing * { cursor: ew-resize !important; }
     openKlineModal(list[newIdx]);
   }
 
-  async function openKlineModal(stockId) {
+  let currentKlinePeriod = 'daily'; // 'daily' | 'weekly' | 'monthly'
+
+  async function openKlineModal(stockId, period = 'daily') {
     if (typeof klinecharts === 'undefined') {
       alert('K 線元件載入失敗，請檢查網路連線（需要 CDN：jsdelivr klinecharts）。');
       return;
     }
     currentKlineStockId = stockId;
+    currentKlinePeriod = period;
+    
     const stock = allStocks.find(s => s.stock_id === stockId);
     const stockName = stock ? stock.stock_name : '';
     const backdrop = document.getElementById('kline-backdrop');
@@ -1483,6 +1520,12 @@ body.resizing * { cursor: ew-resize !important; }
       `<span class="id">${escapeHtml(stockId)}</span> ` +
       `<span>${escapeHtml(stockName)}</span> ` +
       `<span class="id">· K 線圖</span>`;
+    
+    // 更新 switcher UI
+    document.querySelectorAll('#kline-period-switcher button').forEach(b => {
+      b.classList.toggle('active', b.dataset.period === period);
+    });
+
     updateKlineNavButtons();
     backdrop.classList.add('open');
     backdrop.setAttribute('aria-hidden', 'false');
@@ -1502,9 +1545,20 @@ body.resizing * { cursor: ew-resize !important; }
       const r = await fetch(url);
       if (!r.ok) throw new Error('HTTP ' + r.status);
       const data = await r.json();
-      const entries = (data.entries || []).slice()
+      
+      let rawEntries = [];
+      if (period === 'weekly') {
+        rawEntries = data.entries_weekly || [];
+      } else if (period === 'monthly') {
+        rawEntries = data.entries_monthly || [];
+      } else {
+        rawEntries = data.entries || [];
+      }
+
+      const entries = (rawEntries).slice()
         .sort((a, b) => String(a.date || '').localeCompare(String(b.date || '')));
-      if (!entries.length) throw new Error('沒有日 K 線資料');
+      
+      if (!entries.length) throw new Error(`沒有 ${period === 'daily' ? '日' : (period === 'weekly' ? '週' : '月')} K 線資料`);
 
       const points = entries.map(e => {
         const d = String(e.date);
@@ -1569,6 +1623,15 @@ body.resizing * { cursor: ew-resize !important; }
       errEl.style.display = 'flex';
     }
   }
+
+  // 綁定 switcher 事件
+  document.getElementById('kline-period-switcher').addEventListener('click', (e) => {
+    const btn = e.target.closest('button');
+    if (!btn || !currentKlineStockId) return;
+    const period = btn.dataset.period;
+    if (period === currentKlinePeriod) return;
+    openKlineModal(currentKlineStockId, period);
+  });
 
   function closeKlineModal() {
     const backdrop = document.getElementById('kline-backdrop');

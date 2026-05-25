@@ -446,19 +446,78 @@ def load_kline(stock_id):
         return {"stock_id": stock_id, "entries": []}
 
 
+def aggregate_kline(entries, period='W'):
+    """將日 K 線聚合為週 K 或月 K。
+    period: 'W' (週) 或 'M' (月)
+    """
+    if not entries:
+        return []
+    
+    aggregated = []
+    current_group = []
+    
+    def get_group_key(date_str):
+        dt = datetime.strptime(date_str, "%Y%m%d")
+        if period == 'W':
+            # 使用 ISO 年份與週數
+            year, week, _ = dt.isocalendar()
+            return f"{year}W{week:02d}"
+        else:
+            return dt.strftime("%Y%m")
+
+    last_key = None
+    for e in entries:
+        key = get_group_key(e['date'])
+        if key != last_key and current_group:
+            # 結算上一組
+            aggregated.append({
+                "date":   current_group[-1]['date'], # 以該週期最後一天為日期
+                "open":   current_group[0]['open'],
+                "high":   max(x['high'] for x in current_group if x['high'] is not None),
+                "low":    min(x['low'] for x in current_group if x['low'] is not None),
+                "close":  current_group[-1]['close'],
+                "volume": sum(x['volume'] for x in current_group if x['volume'] is not None),
+            })
+            current_group = []
+        
+        current_group.append(e)
+        last_key = key
+        
+    # 處理最後一組
+    if current_group:
+        aggregated.append({
+            "date":   current_group[-1]['date'],
+            "open":   current_group[0]['open'],
+            "high":   max(x['high'] for x in current_group if x['high'] is not None),
+            "low":    min(x['low'] for x in current_group if x['low'] is not None),
+            "close":  current_group[-1]['close'],
+            "volume": sum(x['volume'] for x in current_group if x['volume'] is not None),
+        })
+        
+    return aggregated
+
+
 def save_kline(stock_id, kline, market=None):
     KLINE_DIR.mkdir(exist_ok=True)
     path = KLINE_DIR / f"{stock_id}.json"
     kline["stock_id"] = stock_id
     if market:
         kline["market"] = market
+    
     # 日期升冪排序 + 去重（以 date 為 key）
     by_date = {}
     for e in kline.get("entries", []):
         d = e.get("date")
         if d:
             by_date[d] = e
-    kline["entries"] = [by_date[d] for d in sorted(by_date.keys())]
+    
+    sorted_entries = [by_date[d] for d in sorted(by_date.keys())]
+    kline["entries"] = sorted_entries
+    
+    # 新增週 K 與 月 K 聚合
+    kline["entries_weekly"] = aggregate_kline(sorted_entries, 'W')
+    kline["entries_monthly"] = aggregate_kline(sorted_entries, 'M')
+    
     kline["last_updated"] = datetime.now().strftime("%Y%m%d%H%M%S")
     with open(path, "w", encoding="utf-8") as f:
         json.dump(kline, f, ensure_ascii=False, separators=(",", ":"))
