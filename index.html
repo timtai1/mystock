@@ -529,8 +529,9 @@ body.resizing * { cursor: ew-resize !important; }
 .kline-period-switcher button:hover { background: rgba(0,0,0,0.05) !important; }
 .kline-period-switcher button.active {
   background: var(--canvas) !important;
-  color: var(--fg);
+  color: var(--link) !important; /* 改用連結藍或深色，避免與白色背景混淆 */
   box-shadow: 0 1px 3px rgba(0,0,0,0.1) !important;
+  font-weight: 700;
 }
 
 .kline-toolbar {

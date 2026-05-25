@@ -66,7 +66,7 @@ STOCKLIST_GLOB = "stocklist_*.txt"
 MARKET_LIST_FILE = SCRIPT_DIR / "tw_stock_list.csv"
 KLINE_DIR = SCRIPT_DIR / "日K線_log_file"
 
-BOOTSTRAP_MONTHS = 24  # 預設改為 24 個月
+BOOTSTRAP_MONTHS = 120  # 預設改為 120 個月 (10 年)
 # TWSE 限制 3 次 / 5 秒，留安全邊界
 REQUEST_INTERVAL_SEC = 1.8
 # FinMind 限制
@@ -586,7 +586,7 @@ def incremental_update(stocks, market_map):
 
         # --- 自動回補機制 ---
         # 1. 若資料中斷（最後一筆日期與今天差距 > 4 天）
-        # 2. 若資料總長度不足（少於 22 個月）
+        # 2. 若資料總長度不足（少於 110 個月，約 9 年多，確保有 10 年趨勢）
         need_backfill = False
         if entries:
             last_date_str = entries[-1].get("date")
@@ -599,8 +599,8 @@ def incremental_update(stocks, market_map):
                 
                 if not need_backfill and first_date_str:
                     first_dt = datetime.strptime(first_date_str, "%Y%m%d")
-                    # 差距小於 660 天 (約 22 個月)
-                    if (now - first_dt).days < 660:
+                    # 差距小於 3300 天 (約 110 個月)
+                    if (now - first_dt).days < 3300:
                         need_backfill = True
             except ValueError:
                 need_backfill = True
@@ -609,7 +609,7 @@ def incremental_update(stocks, market_map):
             need_backfill = True
 
         if need_backfill:
-            log(f"  [{code}] 偵測到資料中斷或長度不足，執行回補 (24個月)...")
+            log(f"  [{code}] 偵測到資料中斷或長度不足，執行回補 (120個月)...")
             _, added = bootstrap_stock_finmind(code, months=BOOTSTRAP_MONTHS, market=market)
             if added > 0:
                 backfilled_count += 1
