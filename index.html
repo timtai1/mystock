@@ -1054,6 +1054,7 @@ body.resizing * { cursor: ew-resize !important; }
     { key: 'stock_id',           label: '股票代號',     align: 'left',  always: true },
     { key: 'stock_name',         label: '股票名稱',     align: 'left',  always: true },
     { key: 'close',              label: '收盤價',       align: 'right', format: fmtNum },
+    { key: 'percent_b',          label: '%B',          align: 'right', format: fmtPercentB, title: '布林極限 %B：0 為下軌，0.5 為月線，1.0 為上軌' },
     { key: 'latest_target',        label: '最新目標價',   align: 'right', format: fmtNum },
     { key: 'latest_target_date',   label: '預估日期',     align: 'left',  format: fmtDate },
     { key: 'latest_target_broker', label: '券商名稱',     align: 'left' },
@@ -1066,6 +1067,24 @@ body.resizing * { cursor: ew-resize !important; }
 
   // ===== Formatters =====
   function fmtNum(v) { return v == null ? '—' : Number(v).toFixed(2); }
+  function fmtPercentB(v) {
+    if (v == null) return '—';
+    const num = Number(v);
+    let cls = '';
+    let hint = '';
+    if (num >= 1.0) {
+      cls = 'pos';
+      hint = '突破上軌';
+    } else if (num <= 0.0) {
+      cls = 'neg';
+      hint = '跌破下軌';
+    }
+    const txt = num.toFixed(2);
+    if (cls) {
+      return `<span class="${cls}" title="${hint}">${txt}</span>`;
+    }
+    return txt;
+  }
   function fmtInt(v) { return v == null ? '—' : String(v); }
   function fmtDate(v) {
     if (!v) return '—';
@@ -1206,7 +1225,8 @@ body.resizing * { cursor: ew-resize !important; }
       const active = c.key === sortKey;
       const arrow = active ? `<span class="dir">${sortDir === 'asc' ? '▲' : '▼'}</span>` : '';
       const cls = [c.always ? 'always' : ''].join(' ').trim();
-      return `<th class="${cls}" data-key="${c.key}" style="text-align:${c.align}">${escapeHtml(c.label)}${arrow}</th>`;
+      const titleAttr = c.title ? ` title="${escapeHtml(c.title)}"` : '';
+      return `<th class="${cls}" data-key="${c.key}" style="text-align:${c.align}"${titleAttr}>${escapeHtml(c.label)}${arrow}</th>`;
     }).join('') + '</tr></thead>';
 
     const tbody = '<tbody>' + pageData.map(s => {
@@ -1351,6 +1371,17 @@ body.resizing * { cursor: ew-resize !important; }
             stock.close_date
               ? fmtDate(stock.close_date) + (stock.close_source === 'kline' ? '' : '（券商報告）')
               : (stock.close_source === 'broker_report' ? '來自券商報告' : '—')
+          }</div>
+        </div>
+        <div class="card">
+          <div class="card-label">布林 %B</div>
+          <div class="card-value ${stock.percent_b == null ? '' : (stock.percent_b >= 1.0 ? 'pos' : (stock.percent_b <= 0.0 ? 'neg' : ''))}">${
+            stock.percent_b != null ? Number(stock.percent_b).toFixed(2) : '—'
+          }</div>
+          <div class="card-sub">${
+            stock.percent_b != null
+              ? (stock.percent_b >= 1.0 ? '突破上軌' : (stock.percent_b <= 0.0 ? '跌破下軌' : (stock.percent_b >= 0.5 ? '月線之上' : '月線之下')))
+              : '無日 K 資料'
           }</div>
         </div>
       </div>

@@ -11,6 +11,7 @@
 
 import csv
 import json
+import math
 import os
 import subprocess
 import sys
@@ -81,10 +82,12 @@ def _empty_stock_row(stock_id: str, stock_name: str, market: str | None, latest_
     close = None
     close_date = None
     close_source = None
+    percent_b = None
     if latest_close and latest_close.get("close") is not None:
         close = latest_close["close"]
         close_date = latest_close.get("date")
         close_source = "kline"
+        percent_b = latest_close.get("percent_b")
     return {
         "stock_id": stock_id,
         "stock_name": stock_name,
@@ -93,6 +96,7 @@ def _empty_stock_row(stock_id: str, stock_name: str, market: str | None, latest_
         "close": close,
         "close_date": close_date,
         "close_source": close_source,
+        "percent_b": percent_b,
         "max_target": None,
         "max_target_date": None,
         "max_target_broker": None,
@@ -146,10 +150,46 @@ def load_market_map() -> dict:
     return m
 
 
-def load_latest_closes() -> dict:
-    """讀 日K線_log_file/ 下每一檔的最後一筆 entry
+def calculate_bollinger_b(entries: list, period: int = 20) -> float | None:
+    """計算日 K 線最新收盤價之布林通道 %B (Percent B)。
 
-    回 {code: {"date": "YYYYMMDD", "close": float}}
+    0.0 代表在下軌 (Lower Band)
+    0.5 代表在月線/中軌 (MA20)
+    1.0 代表在上軌 (Upper Band)
+    """
+    if not entries:
+        return None
+    # 確保依日期遞增排序，並過濾有效收盤價
+    valid_entries = [
+        e for e in entries
+        if isinstance(e.get("close"), (int, float)) and e["close"] > 0
+    ]
+    if len(valid_entries) < period:
+        return None
+
+    recent = valid_entries[-period:]
+    closes = [e["close"] for e in recent]
+    current_close = closes[-1]
+
+    ma = sum(closes) / float(period)
+    variance = sum((c - ma) ** 2 for c in closes) / float(period)
+    std_dev = math.sqrt(variance)
+
+    if std_dev == 0:
+        return 0.5
+
+    upper_band = ma + 2.0 * std_dev
+    lower_band = ma - 2.0 * std_dev
+    bandwidth = upper_band - lower_band
+
+    percent_b = (current_close - lower_band) / bandwidth
+    return round(percent_b, 4)
+
+
+def load_latest_closes() -> dict:
+    """讀 日K線_log_file/ 下每一檔的最後一筆 entry 及計算 %B
+
+    回 {code: {"date": "YYYYMMDD", "close": float, "percent_b": float | None}}
     """
     root = SCRIPT_DIR / KLINE_DIR
     if not root.exists():
@@ -172,7 +212,8 @@ def load_latest_closes() -> dict:
         if close_val is None:
             continue
         code = (data.get("stock_id") or f.stem).strip()
-        out[code] = {"date": last.get("date"), "close": close_val}
+        percent_b = calculate_bollinger_b(entries)
+        out[code] = {"date": last.get("date"), "close": close_val, "percent_b": percent_b}
     return out
 
 
@@ -440,6 +481,7 @@ def api_stocks():
             parsed["close"] = lc["close"]
             parsed["close_date"] = lc.get("date")
             parsed["close_source"] = "kline"
+            parsed["percent_b"] = lc.get("percent_b")
             if parsed.get("median_target") is not None and parsed["close"]:
                 parsed["potential_return"] = round(
                     100.0 * (parsed["median_target"] - parsed["close"]) / parsed["close"], 2
@@ -447,6 +489,7 @@ def api_stocks():
         else:
             parsed["close_date"] = None
             parsed["close_source"] = "broker_report"
+            parsed["percent_b"] = None
 
         stocks.append(parsed)
         seen_ids.add(parsed["stock_id"])
